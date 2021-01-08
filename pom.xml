@@ -19,7 +19,7 @@
     </properties>
 
 
-<!--    依赖并没有写全，需要可以添加-->
+<!--    依赖并没有写全，需要可以添加 -->
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
