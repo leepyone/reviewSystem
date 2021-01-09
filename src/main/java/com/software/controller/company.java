@@ -63,6 +63,10 @@ public class company {
         return "login";
     }
 
+    public String demo(){
+        return "a";
+    }
+
 //    @RequestMapping("toselect")
 //    public String Toselect(HttpServletRequest request,
 //                           @RequestParam(required = false,defaultValue="1",value="pageNum")Integer pageNum,
