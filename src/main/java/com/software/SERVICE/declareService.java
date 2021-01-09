@@ -16,6 +16,4 @@ public interface declareService {
 
     public List<Declare> getDeclareByCorID(int corID);//通过职改办ID获取评审单列表
 
-
-
 }
