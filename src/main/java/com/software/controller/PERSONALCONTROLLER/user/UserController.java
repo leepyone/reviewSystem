@@ -45,7 +45,7 @@ public class UserController {
         }
         else{
             map.put("LoginFailMsg","用户名或密码错误");
-            return "登录界面";
+            return "登录界面";//返回登录界面
         }
     }
 
@@ -54,7 +54,7 @@ public class UserController {
         if(true){
             //注册成功
             //创建相同id的记录，其余字段为空
-            return "redirect:登录界面";
+            return "redirect:/PersonalUser/Login";//返回登录界面
         }
         else if(true){
             //身份证重复

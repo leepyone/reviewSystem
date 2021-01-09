@@ -22,7 +22,7 @@ public class UserDetailController {
         //xxx=session.getAttribute("PersonalLoginUser");//获取用户
         if(!isLogin(session)){
             //如果没有登录
-            return "redirect:登录界面";
+            return "redirect:/PersonalUser/Login";//返回登录界面
         }
         //插入用户基本信息
 
@@ -35,7 +35,7 @@ public class UserDetailController {
         //xxx=session.getAttribute("PersonalLoginUser");//获取用户
         if(!isLogin(session)){
             //如果没有登录
-            return "redirect:登录界面";
+            return "redirect:/PersonalUser/Login";//返回登录界面
         }
         //添加学历基本信息
 
@@ -48,7 +48,7 @@ public class UserDetailController {
         //xxx=session.getAttribute("PersonalLoginUser");//获取用户
         if(!isLogin(session)){
             //如果没有登录
-            return "redirect:登录界面";
+            return "redirect:/PersonalUser/Login";//返回登录界面
         }
 
         //添加工作经历记录
