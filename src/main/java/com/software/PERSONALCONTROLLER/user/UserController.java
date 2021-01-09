@@ -1,4 +1,4 @@
 package com.software.PERSONALCONTROLLER.user;
 
-public class Usercontroller {
+public class UserController {
 }
