@@ -24,6 +24,7 @@ import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 @Controller
@@ -35,6 +36,8 @@ public class company {
 
     @Autowired
     private CorporationService corporationService;
+    @Autowired
+    private declareService declareService;
 
     @RequestMapping("toindex")
     public String ToIndex() { return "index"; }
@@ -63,83 +66,41 @@ public class company {
         return "login";
     }
 
-    public String demo(){
-        return "a";
+    @RequestMapping("toselect")
+    public String Toselect(HttpServletRequest request){
+        List<Declare> declareList = declareService.getAllDeclare();
+        request.setAttribute("userList",declareList);
+        return "selectuser";
     }
-
-//    @RequestMapping("toselect")
-//    public String Toselect(HttpServletRequest request,
-//                           @RequestParam(required = false,defaultValue="1",value="pageNum")Integer pageNum,
-//                           @RequestParam(defaultValue="5",value="pageSize")Integer pageSize){
-//        if(pageNum == null){
-//            pageNum = 1;
-//        }
-//        if(pageNum <= 0){
-//            pageNum = 1;
-//        }
-//        if(pageSize == null){
-//            pageSize = 5;
-//        }
-//        PageHelper.startPage(pageNum,pageSize);
-//        try {
-//            List<Declare> userList = userService.SelectUserPage();
-//            LOGGER.info("分页数据："+userList);
-//            //使用PageInfo包装查询后的结果,5是连续显示的条数,结果list类型是Page<E>
-//            PageInfo<Declare> pageInfo = new PageInfo<Declare>(userList,pageSize);
-//            request.setAttribute("userList",userList);
-//            request.setAttribute("pageInfo",pageInfo);
-//        }finally {
-//            PageHelper.clearPage(); //清理 ThreadLocal 存储的分页参数,保证线程安全
-//        }
-//        return "selectuser";
-//    }
-//    @RequestMapping("selectuser")
-//    public String SelectUser(String username,String realname,String department,HttpServletRequest request,
-//                             @RequestParam(required = false,defaultValue="1",value="pageNum")Integer pageNum,
-//                             @RequestParam(defaultValue="5",value="pageSize")Integer pageSize){
-//        LOGGER.info("查询用户！");
-//        if(pageNum == null){
-//            pageNum = 1;
-//        }
-//        if(pageNum <= 0){
-//            pageNum = 1;
-//        }
-//        if(pageSize == null){
-//            pageSize = 5;
-//        }
-//        List<Declare> userList2 = new ArrayList<Model>();
-//        PageHelper.startPage(pageNum,pageSize);
-//        if(!username.equals("") && realname.equals("") && department.equals("所在部门")){
-//            userList2 = userService.SelectUserIdPage(username);
-//        }
-//        else if(username.equals("") && !realname.equals("") && department.equals("所在部门")){
-//            userList2 = userService.SelectUserRnPage(realname);
-//        }
-//        else if(username.equals("") && realname.equals("") && !department.equals("所在部门")){
-//            userList2 = userService.SelectUserDpPage(department);
-//        }
-//        else if(!username.equals("") && !realname.equals("") && department.equals("所在部门")){
-//            userList2 = userService.SelectUserIRPage(username,realname);
-//        }
-//        else if(!username.equals("") && realname.equals("") && !department.equals("所在部门")){
-//            userList2 = userService.SelectUserIDPage(username,department);
-//        }
-//        else if(username.equals("") && !realname.equals("") && !department.equals("所在部门")){
-//            userList2 = userService.SelectUserRDPage(realname,department);
-//        }
-//        else if(!username.equals("") && !realname.equals("") && !department.equals("所在部门")){
-//            userList2 = userService.SelectUserIRDPage(username,realname,department);
-//        }
-//        else {
-//            userList2 = userService.SelectUserPage();
-//        }
-//        LOGGER.info("分页数据："+userList2);
-//        //使用PageInfo包装查询后的结果,5是连续显示的条数,结果list类型是Page<E>
-//        PageInfo<Declare> pageInfo = new PageInfo<Model>(userList2,pageSize);
-//        request.setAttribute("userList",userList2);
-//        request.setAttribute("pageInfo",pageInfo);
-//        LOGGER.info("查询成功！");
-//        return "selectuser";
-//    }
+    @RequestMapping("selectuser")
+    public String SelectUser(String userName,String identifyNum,int status,
+                             int level,String year,HttpServletRequest request){
+        LOGGER.info("查询用户！");
+        List<Declare> declareUsernameList = new ArrayList<Declare>();
+        List<Declare> declareIdentifynumList = new ArrayList<Declare>();
+        List<Declare> declareStatusList = new ArrayList<Declare>();
+        List<Declare> declareLevelList = new ArrayList<Declare>();
+        List<Declare> declareYearList = new ArrayList<Declare>();
+        List<Declare> declareList = new ArrayList<Declare>();
+        if(!userName.equals(""))
+            declareUsernameList=declareService.getDeclareByUserName(userName);
+        if(!userName.equals(""))
+            declareUsernameList=declareService.getDeclareByIdentifyNum(identifyNum);
+        if(!userName.equals(""))
+            declareUsernameList=declareService.getDeclareByStatus(status);
+        if(!userName.equals(""))
+            declareUsernameList=declareService.getDeclareByLevel(level);
+        if(!userName.equals(""))
+            declareUsernameList=declareService.getDeclareByYear(year);
+        declareList.addAll(declareUsernameList);
+        declareList.addAll(declareIdentifynumList);
+        declareList.addAll(declareStatusList);
+        declareList.addAll(declareLevelList);
+        declareList.addAll(declareYearList);
+        declareList = new ArrayList<Declare>(new LinkedHashSet<>(declareList));
+        request.setAttribute("userList",declareList);
+        LOGGER.info("查询成功！");
+        return "selectuser";
+    }
 
 }

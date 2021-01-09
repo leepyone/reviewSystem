@@ -19,25 +19,28 @@ public class declareServiceImpl implements declareService {
     @Override
     public List<Declare> getAllDeclare(){return declareDao.getAllDeclare();}
 
-    //通过用户id获取评审单集合
     @Override
-    public List<Declare> getDeclareByUserID(int userID){return declareDao.getDeclareByUserID(userID); }
-
-    //通过评审单id获取响应评审单
-    @Override
-    public Declare getDeclareByDeclareID(int declareID) {
-        return null;
+    public List<Declare> getDeclareByUserName(String userName) {
+        return declareDao.getDeclareByUserName(userName);
     }
 
-    //通过报送公司ID获取评审单列表
     @Override
-    public List<Declare> getDeclareByCorporationID(int corporationID) {
-        return null;
+    public List<Declare> getDeclareByIdentifyNum(String identifyNum) {
+        return declareDao.getDeclareByIdentifyNumber(identifyNum);
     }
 
-    //通过职改办ID获取评审单列表
     @Override
-    public List<Declare> getDeclareByCorID(int corID) {
-        return null;
+    public List<Declare> getDeclareByStatus(int status) {
+        return declareDao.getDeclareByStatus(status);
+    }
+
+    @Override
+    public List<Declare> getDeclareByLevel(int level) {
+        return declareDao.getDeclareByLevel(level);
+    }
+
+    @Override
+    public List<Declare> getDeclareByYear(String year){
+        return declareDao.getDeclareByYear(year);
     }
 }
