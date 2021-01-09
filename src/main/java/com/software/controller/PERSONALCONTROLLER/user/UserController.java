@@ -1,8 +1,6 @@
-package com.software.PERSONALCONTROLLER.user;
+package com.software.controller.PERSONALCONTROLLER.user;
 
 import com.software.MODULE.User;
-import com.sun.media.jfxmedia.logging.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
