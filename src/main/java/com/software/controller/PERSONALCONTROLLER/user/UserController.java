@@ -4,6 +4,7 @@ import com.software.MODULE.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpSession;
 import java.util.Map;
@@ -49,6 +50,15 @@ public class UserController {
         }
     }
 
+    //个人版退出登录
+    @RequestMapping("/logout")
+    public String logout(HttpSession session, SessionStatus sessionStatus){
+        session.invalidate();
+        sessionStatus.setComplete();
+        return "redirect:/PersonalUser/Login";//返回登录界面
+    }
+
+    //个人版注册
     @PostMapping("/doRegister")
     public String doRegister(User user, Map<String, Object> map, HttpSession session){
         if(true){

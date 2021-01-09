@@ -1,6 +1,9 @@
 package com.software.controller.PERSONALCONTROLLER.declare;
 
 import com.software.MODULE.Declare;
+import com.software.MODULE.Education;
+import com.software.MODULE.Experience;
+import com.software.MODULE.Paper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +16,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/PersonalDeclare")
 public class DeclareController {
+
     //@Autowired各种类
 
     //跳转至职称评审界面
@@ -95,6 +99,48 @@ public class DeclareController {
         //提交相应的信息
 
         return "redirect:/PersonalDeclare/Declare";
+    }
+
+    //添加学历信息记录
+    @PostMapping("AddEducation")
+    public String AddEducation(Education education, Map<String, Object> map, HttpSession session){
+
+
+        //添加学历基本信息
+
+        //返回学历的list
+
+        //map.put上去
+
+        return "新建评审界面,不刷新";
+    }
+
+    //添加工作经历记录
+    @PostMapping("AddExperience")
+    public String AddExperience(Experience experience, Map<String, Object> map, HttpSession session){
+
+
+        //添加工作经历基本信息
+
+        //返回工作经历的list
+
+        //map.put上去
+
+        return "新建评审界面,不刷新";
+    }
+
+    //添加工作经历记录
+    @PostMapping("AddPaper")
+    public String AddExperience(Paper paper, Map<String, Object> map, HttpSession session){
+
+
+        //添加论文记录
+
+        //返回论文的list
+
+        //map.put上去
+
+        return "新建评审界面,不刷新";
     }
 
     //判断登录

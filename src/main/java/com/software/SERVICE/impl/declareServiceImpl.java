@@ -35,5 +35,4 @@ public class declareServiceImpl implements declareService {
     public List<Declare> getDeclareByCorID(int corID) {
         return null;
     }
-
 }
