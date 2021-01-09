@@ -32,4 +32,16 @@ public class Declare_check {
         }
         return checkStatus_str;
     }
+
+    public Declare_check(){}
+
+    public Declare_check(int checkId, Date checkDate, int declareId, int userId, String checkOppoins, int checkStatus, String checkStatus_str) {
+        this.checkId = checkId;
+        this.checkDate = checkDate;
+        this.declareId = declareId;
+        this.userId = userId;
+        this.checkOppoins = checkOppoins;
+        this.checkStatus = checkStatus;
+        this.checkStatus_str = checkStatus_str;
+    }
 }
