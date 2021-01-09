@@ -60,7 +60,6 @@ public interface declareDao {
             "#{declare_isfirst},#{declare_lasttime}, #{declare_worktime}, #{declare_timelimit},#{declare_method}," +
             "#{declare_wenttime},#{declare_corperation_level}, #{declare_politics_post},#{declare_qualification}," +
             "#{declare_series})")
-
     @Options(useGeneratedKeys = true, keyProperty = "declareID", keyColumn = "declareID")
     public int InsertDeclare(Declare declare);//创建Declare评审表，
                                             // declare_time,declare_lasttime,declare_worktime三个日期字段的格式为'nn-mm-rr',declare_status状态初始值为0未审批
