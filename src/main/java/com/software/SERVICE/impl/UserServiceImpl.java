@@ -14,11 +14,13 @@ public class UserServiceImpl implements UserService {
     userDao userDao;
 
     //登录
+    @Override
     public User Login(String user_number, String user_password){
         return userDao.Login(user_number, user_password);
     }
 
     //个人版注册
+    @Override
     public String PersonalRegister(User user){
 
         User u=userDao.getUserByIDCard(user.getUserIdentifyID());
@@ -38,6 +40,7 @@ public class UserServiceImpl implements UserService {
 
 
     //修改密码
+    @Override
     public boolean changeUserPassword(String userPassword,String user_number){
         User u=userDao.Login(user_number,userPassword);
         if(u==null){
@@ -48,6 +51,7 @@ public class UserServiceImpl implements UserService {
     }
 
     //修改个人版用户信息
+    @Override
     public void changeUserDetail(UserDetails userDetails){
         userDao.changeUserDetail(userDetails);
     }

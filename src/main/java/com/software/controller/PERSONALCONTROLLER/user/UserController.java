@@ -38,12 +38,13 @@ public class UserController {
     //个人版登录
     @PostMapping("/doLogin")
     public String doLogin(String username, String password,Map<String, Object> map, HttpSession session){
-
         System.out.println(username+" "+password);
+
+        User user=userService.Login(username,password);
         //登录
-        if(true){
+        if(user!=null){
             //登录成功
-            session.setAttribute("PersonalLoginUser",username);//将User对象插入session，目前为String
+            session.setAttribute("PersonalLoginUser",user);
             return "redirect:个人资料页面(主界面)";
 
         }
@@ -54,7 +55,7 @@ public class UserController {
     }
 
     //个人版退出登录
-    @RequestMapping("/logout")
+    @RequestMapping("/doLogout")
     public String logout(HttpSession session, SessionStatus sessionStatus){
         session.invalidate();
         sessionStatus.setComplete();
@@ -64,17 +65,19 @@ public class UserController {
     //个人版注册
     @PostMapping("/doRegister")
     public String doRegister(User user, Map<String, Object> map, HttpSession session){
-        if(true){
+        String feature=userService.PersonalRegister(user);
+        if(feature.equals("success")){
             //注册成功
             //创建相同id的记录，其余字段为空
             return "redirect:/PersonalUser/Login";//返回登录界面
         }
-        else if(true){
+        else if(feature.equals("身份证已存在")){
             //身份证重复
             map.put("IdentifyIdRepeatMsg","身份证号码重复");
             return "注册界面";
         }
         else{
+            //电话号码重复
             map.put("PhoneRepeatMsg","电话号码重复");
             return "注册界面";
         }
@@ -82,9 +85,8 @@ public class UserController {
 
     //判断登录
     public boolean isLogin(HttpSession session){
-        //xxx=session.getAttribute("PersonalLoginUser");//获取用户
-        if(true){
-            //登录了
+        User user=(User) session.getAttribute("PersonalLoginUser");//获取用户
+        if(user!=null){
             return true;
         }
         return false;

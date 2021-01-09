@@ -44,7 +44,7 @@ public interface declareDao {
 
     @Insert("insert into `declare` (`declare_ID`,`user_ID`, `declare_year`,`declare_user_name`,`corporation_ID`,`declare_corID`,`declare_status`,`declare_user_sex`,`declare_user_identifynumber`,`declare_user_birthday`,`declare_user_nation`,`declare_user_hometown`,`declare_user_phone`,`declare_user_email`,`declare_level`,`declare_professional_series`, `declare_politics`,`declare_time`,`declare_explain`, `declare_institution`, `declare_communicate`, `declare_setuptime`,`declare_personcharacter`, `declare_isfirst`,`declare_lasttime`, `declare_worktime`, `declare_timelimit`,`declare_method`,`declare_wenttime`,`declare_corperation_level`, `declare_politics_post` ,`declare_qualification` ,`declare_series`) VALUES(#{declareID},#{userID}, #{declareYear},#{declareUserName},#{corporationID},#{declareCorID},#{declareStatus},#{declareUserSex},#{declareUserIdentifynumber},#{declareUserBirthday},#{declareUserNation},#{declareUserHometown},#{declareUserPhone},#{declareUserEmail},#{declareLevel},#{declareProfessionalSeries}, #{declarePolitics},#{declareTime},#{declareExplain}, #{declareInstitution}, #{declareCommunicate}, #{declareSetuptime},#{declarePersoncharacter}, #{declareIsfirst},#{declareLasttime}, #{declareWorktime}, #{declareTimelimit},#{declareMethod},#{declareWenttime},#{declareCorperationLevel}, #{declarePoliticsPost},#{declareQualification},#{declareSeries})")
     @Options(useGeneratedKeys = true, keyProperty = "declareID", keyColumn = "declareID")
-    public void InsertDeclare(Declare declare);//创建Declare评审表，
+    public int InsertDeclare(Declare declare);//创建Declare评审表，
                                             // declare_time,declare_lasttime,declare_worktime三个日期字段的格式为'nn-mm-rr',declare_status状态初始值为0未审批
 
     @Update("UPDATE `declare` SET declare.declare_status=#{status} where declare.declare_ID=#{declareID}")
@@ -52,6 +52,6 @@ public interface declareDao {
 
     @Insert("insert into declare_check (`check_id`,`check_date`,`declare_id`,`user_id`,`check_oppoins`,`check_status`)values(#{checkId},#{checkDate},#{declareId},#{userId},#{checkOppoins},#{checkStatus})")
     @Options(useGeneratedKeys = true, keyProperty = "declareId", keyColumn = "declareId")
-    public void InsertDeclareCheck(Declare_check declareCheck);//插入declare_check表
+    public int InsertDeclareCheck(Declare_check declareCheck);//插入declare_check表
 
 }

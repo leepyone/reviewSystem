@@ -1,15 +1,15 @@
 package com.software.controller.PERSONALCONTROLLER.declare;
 
-import com.software.MODULE.Declare;
-import com.software.MODULE.Education;
-import com.software.MODULE.Experience;
-import com.software.MODULE.Paper;
+import com.software.MODULE.*;
+import com.software.SERVICE.impl.declareServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Map;
 
 //职称评审
@@ -18,6 +18,8 @@ import java.util.Map;
 public class DeclareController {
 
     //@Autowired各种类
+    @Autowired
+    declareServiceImpl declareService;
 
     //跳转至职称评审界面
     @RequestMapping("/Declare")
@@ -28,8 +30,13 @@ public class DeclareController {
             return "redirect:/PersonalUser/Login";//返回登录界面
         }
         //查询出职称评审list
+        User user=(User) session.getAttribute("PersonalLoginUser");
+        List<Declare> declareList=declareService.getDeclareByUserID(user.getUserID());
+        //查询出职称评审状态list
 
-        //map.put("declareList",declareList);
+
+        //put上去
+        map.put("declareList",declareList);
         return "redirect:职称评审界面";
     }
 
@@ -52,11 +59,12 @@ public class DeclareController {
         if(!isLogin(session)){
             return "redirect:/PersonalUser/Login";//返回登录界面
         }
-
-        //查询相应的评审表,包含评审表的基本信息，学历信息，主要经历，
+        //查询相应的评审表
+        Declare declare=declareService.getDeclareByDeclareID(DeclareId);
+        //学历信息，主要经历，论文
 
         //map.put上去
-
+        map.put("declare",declare);
         return "评审表详细内容界面";
     }
 
@@ -66,11 +74,12 @@ public class DeclareController {
         if(!isLogin(session)){
             return "redirect:/PersonalUser/Login";//返回登录界面
         }
-
-        //查询相应的评审表,包含评审表的基本信息，学历信息，主要经历，
+        //查询相应的评审表
+        Declare declare=declareService.getDeclareByDeclareID(DeclareId);
+        //学历信息，主要经历，论文
 
         //map.put上去
-
+        map.put("declare",declare);
         return "评审推荐表界面";
     }
 
@@ -80,11 +89,12 @@ public class DeclareController {
         if(!isLogin(session)){
             return "redirect:/PersonalUser/Login";//返回登录界面
         }
-
-        //查询相应的评审表,包含评审表的基本信息，学历信息，主要经历，
+        //查询相应的评审表
+        Declare declare=declareService.getDeclareByDeclareID(DeclareId);
+        //学历信息，主要经历，论文
 
         //map.put上去
-
+        map.put("declare",declare);
         return "评审表界面";
     }
 
@@ -145,9 +155,8 @@ public class DeclareController {
 
     //判断登录
     public boolean isLogin(HttpSession session){
-        //xxx=session.getAttribute("PersonalLoginUser");//获取用户
-        if(true){
-            //登录了
+        User user=(User) session.getAttribute("PersonalLoginUser");//获取用户
+        if(user!=null){
             return true;
         }
         return false;
