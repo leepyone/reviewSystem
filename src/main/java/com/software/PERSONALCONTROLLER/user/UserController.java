@@ -2,6 +2,7 @@ package com.software.PERSONALCONTROLLER.user;
 
 import com.software.MODULE.User;
 import com.sun.media.jfxmedia.logging.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,10 +14,17 @@ import java.util.Map;
 @RequestMapping("/PersonalUser")
 public class UserController {
 
+    //@Autowired各种类
+
+
     //跳转个人版登录界面
     @RequestMapping("/Login")
-    public String toLogin(){
-        return "ok";//跳转页面
+    public String toLogin(HttpSession session){
+        if(isLogin(session)){
+            //如果登录了
+            return "redirect:个人资料页面(主界面)";
+        }
+        return "ok";//跳转到登录页面
     }
 
     //跳转个人版注册界面
@@ -33,8 +41,8 @@ public class UserController {
         //登录
         if(true){
             //登录成功
-            session.setAttribute("PersonalLoginUser",username);
-            return "redirect:个人资料页面";
+            session.setAttribute("PersonalLoginUser",username);//将User对象插入session，目前为String
+            return "redirect:个人资料页面(主界面)";
 
         }
         else{
@@ -47,6 +55,7 @@ public class UserController {
     public String doRegister(User user, Map<String, Object> map, HttpSession session){
         if(true){
             //注册成功
+            //创建相同id的记录，其余字段为空
             return "redirect:登录界面";
         }
         else if(true){
@@ -58,5 +67,15 @@ public class UserController {
             map.put("PhoneRepeatMsg","电话号码重复");
             return "注册界面";
         }
+    }
+
+    //判断登录
+    public boolean isLogin(HttpSession session){
+        //xxx=session.getAttribute("PersonalLoginUser");//获取用户
+        if(true){
+            //登录了
+            return true;
+        }
+        return false;
     }
 }
