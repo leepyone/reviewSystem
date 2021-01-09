@@ -13,6 +13,7 @@ public class Declare {
     String declareUserName;
     int corporationID;
     int declareCorID;//职改办ID
+    int declareStatus;//审批状态
     String declareUserSex;
     String declareUserIdentifynumber;
     String declareUserBirthday;
@@ -54,5 +55,24 @@ public class Declare {
                 break;
         }
         return declareLevel_str;
+    }
+
+    String declareStatus_str;
+    public String getdeclareStatus_str() {
+        switch (declareStatus) {
+            case 0:
+                declareStatus_str = "未审核";
+                break;
+            case 1:
+                declareStatus_str = "退回修改";
+                break;
+            case 2:
+                declareStatus_str = "审核不通过";
+                break;
+            case 3:
+                declareStatus_str = "审核通过";
+                break;
+        }
+        return declareStatus_str;
     }
 }

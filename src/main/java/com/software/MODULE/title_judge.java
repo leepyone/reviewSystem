@@ -18,6 +18,7 @@ public class title_judge {
     String picIdc2;
     String workSum;
     String laborContract;
+    int judgeStatus;
 
 
     String judgeLevel_str;
@@ -52,4 +53,20 @@ public class title_judge {
         }
         return userLevel_str;
     }
+
+    String judgeStatus_str;
+    public String getjudgeStatus_str() {
+        switch (judgeStatus) {
+            case 1:
+                judgeStatus_str = "事业单位人员";
+            case 2:
+                judgeStatus_str = "机关、事业单位非在编人员";
+                break;
+            case 3:
+                judgeStatus_str = "自由职业者";
+                break;
+        }
+        return judgeStatus_str;
+    }
+
 }
