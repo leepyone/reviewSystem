@@ -26,10 +26,10 @@ public class UserDetailController {
     public String UpdatePersonalUserDetail(UserDetails userDetails, Map<String, Object> map, HttpSession session){
 
         if(!isLogin(session)){
-            //如果没有登录
             return "redirect:/PersonalUser/Login";//返回登录界面
         }
         //插入用户基本信息
+        userDao.changeUserDetail(userDetails);
 
         return "个人资料页面(主界面)";
     }
