@@ -1,6 +1,8 @@
 package com.software.controller.PERSONALCONTROLLER.user;
 
 import com.software.MODULE.User;
+import com.software.SERVICE.impl.UserServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +16,8 @@ import java.util.Map;
 public class UserController {
 
     //@Autowired各种类
-
+    @Autowired
+    UserServiceImpl userService;
 
     //跳转个人版登录界面
     @RequestMapping("/Login")

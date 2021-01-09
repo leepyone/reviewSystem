@@ -9,11 +9,11 @@ public interface UserService {
     public User Login(String user_number, String user_password);
 
     //个人版注册
-    public void PersonalRegister(User user);
+    public String PersonalRegister(User user);
 
     //修改密码
-    public boolean changeUserPassword(String userPassword,int userId);
+    public boolean changeUserPassword(String userPassword,String user_number);
 
     //修改用户信息
-    public boolean changeUserDetail(UserDetails userDetails);
+    public void changeUserDetail(UserDetails userDetails);
 }

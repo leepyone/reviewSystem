@@ -19,9 +19,36 @@ public class UserServiceImpl implements UserService {
     }
 
     //个人版注册
-    public void PersonalRegister(User user){
+    public String PersonalRegister(User user){
+
+        User u=userDao.getUserByIDCard(user.getUserIdentifyID());
+        if(u==null) {
+            return "身份证已存在";
+        }
+        u=userDao.getUserByPhone(user.getUserPhone());
+        if(u==null){
+            return "电话号码已经存在已存在";
+        }
         int user_id=userDao.insertUser(user);
         UserDetails userDetails=new UserDetails();
+        userDetails.setUserID(user_id);
+        userDao.insertUserDetail(userDetails);
+        return "success";
+    }
 
+
+    //修改密码
+    public boolean changeUserPassword(String userPassword,String user_number){
+        User u=userDao.Login(user_number,userPassword);
+        if(u==null){
+            return false;//原密码不符
+        }
+        userDao.changeUserPassword(userPassword, user_number);
+        return true;
+    }
+
+    //修改个人版用户信息
+    public void changeUserDetail(UserDetails userDetails){
+        userDao.changeUserDetail(userDetails);
     }
 }
