@@ -34,4 +34,25 @@ public class UserDetails {
         }
         return politicsStatus_str;
     }
+    public UserDetails(){}
+
+    public UserDetails(int userID, int userSex, Date userBirthday, String userHometown, String userLiveplace, String userEmail, String userQQ, String userProfile, String userEducation, String userWorkexp, String userTitle, String userPhone, int politicsStatus, String userLanguage, String userSpecialty, String rewPub, String partTime) {
+        this.userID = userID;
+        this.userSex = userSex;
+        this.userBirthday = userBirthday;
+        this.userHometown = userHometown;
+        this.userLiveplace = userLiveplace;
+        this.userEmail = userEmail;
+        this.userQQ = userQQ;
+        this.userProfile = userProfile;
+        this.userEducation = userEducation;
+        this.userWorkexp = userWorkexp;
+        this.userTitle = userTitle;
+        this.userPhone = userPhone;
+        this.politicsStatus = politicsStatus;
+        this.userLanguage = userLanguage;
+        this.userSpecialty = userSpecialty;
+        this.rewPub = rewPub;
+        this.partTime = partTime;
+    }
 }
