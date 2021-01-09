@@ -14,7 +14,7 @@ public class UserDetails {
     String userEmail;
     String userQQ;
     String userProfile;
-    String userEducation;
+    String userEducation;//
     String userWorkexp;
     String userTitle;
     String userPhone;
