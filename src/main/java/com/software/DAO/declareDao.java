@@ -2,6 +2,7 @@ package com.software.DAO;
 
 
 import com.software.MODULE.Declare;
+import com.software.MODULE.Declare_check;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -36,7 +37,7 @@ public interface declareDao {
     public List<Declare> getDeclareByStatus(int status);//根据评审状态查询评审单列表List
 
     @Select("select * FROM  `declare` WHERE `declare`.declare_user_identifynumber=#{identifynumber}")
-    public List<Declare> getDeclareByIdentifynumber(String identifynumber);//根据身份证号查询评审表单List
+    public List<Declare> getDeclareByIdentifyNumber(String identifynumber);//根据身份证号查询评审表单List
 
     @Select("select * FROM  `declare` WHERE `declare`.declare_qualification=#{qualification}")
     public List<Declare> getDeclareByQualification(String qualification);//根据申报资格名称查询评审表单List
@@ -59,10 +60,16 @@ public interface declareDao {
             "#{declare_isfirst},#{declare_lasttime}, #{declare_worktime}, #{declare_timelimit},#{declare_method}," +
             "#{declare_wenttime},#{declare_corperation_level}, #{declare_politics_post},#{declare_qualification}," +
             "#{declare_series})")
+
     @Options(useGeneratedKeys = true, keyProperty = "declareID", keyColumn = "declareID")
-    public void InsertDeclare(Declare declare);//创建Declare评审表，
+    public int InsertDeclare(Declare declare);//创建Declare评审表，
                                             // declare_time,declare_lasttime,declare_worktime三个日期字段的格式为'nn-mm-rr',declare_status状态初始值为0未审批
 
     @Update("UPDATE `declare` SET declare.declare_status=#{status} where declare.declare_ID=#{declareID}")
-    public void setState(int status,int declareID);
+    public void setState(int status,int declareID);//更新评审表状态
+
+    @Insert("insert into declare_check (`check_id`,`check_date`,`declare_id`,`user_id`,`check_oppoins`,`check_status`)values(#{checkId},#{checkDate},#{declareId},#{userId},#{checkOppoins},#{checkStatus})")
+    @Options(useGeneratedKeys = true, keyProperty = "declareId", keyColumn = "declareId")
+    public int InsertDeclareCheck(Declare_check declareCheck);//插入declare_check表
+
 }
