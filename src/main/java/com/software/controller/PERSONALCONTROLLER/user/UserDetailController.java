@@ -1,4 +1,4 @@
-package com.software.PERSONALCONTROLLER.user;
+package com.software.controller.PERSONALCONTROLLER.user;
 
 import com.software.MODULE.Education;
 import com.software.MODULE.Experience;
