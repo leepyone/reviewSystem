@@ -41,7 +41,24 @@ public interface declareDao {
     @Select("select * FROM  `declare` WHERE `declare`.declare_qualification=#{qualification}")
     public List<Declare> getDeclareByQualification(String qualification);//根据申报资格名称查询评审表单List
 
-    @Insert("insert into `declare` (`declare_ID`,`user_ID`, `declare_year`,`declare_user_name`,`corporation_ID`,`declare_corID`,`declare_status`,`declare_user_sex`,`declare_user_identifynumber`,`declare_user_birthday`,`declare_user_nation`,`declare_user_hometown`,`declare_user_phone`,`declare_user_email`,`declare_level`,`declare_professional_series`, `declare_politics`,`declare_time`,`declare_explain`, `declare_institution`, `declare_communicate`, `declare_setuptime`,`declare_personcharacter`, `declare_isfirst`,`declare_lasttime`, `declare_worktime`, `declare_timelimit`,`declare_method`,`declare_wenttime`,`declare_corperation_level`, `declare_politics_post` ,`declare_qualification` ,`declare_series`) VALUES(#{declare_ID},#{user_ID}, #{declare_year},#{declare_user_name},#{corporation_ID},#{declare_corID},#{declare_status},#{declare_user_sex},#{declare_user_identifynumber},#{declare_user_birthday},#{declare_user_nation},#{declare_user_hometown},#{declare_user_phone},#{declare_user_email},#{declare_level},#{declare_professional_series}, #{declare_politics},#{declare_time},#{declare_explain}, #{declare_institution}, #{declare_communicate}, #{declare_setuptime},#{declare_personcharacter}, #{declare_isfirst},#{declare_lasttime}, #{declare_worktime}, #{declare_timelimit},#{declare_method},#{declare_wenttime},#{declare_corperation_level}, #{declare_politics_post},#{declare_qualification},#{declare_series})")
+    @Insert("insert into `declare` (`declare_ID`,`user_ID`, `declare_year`,`declare_user_name`," +
+            "`corporation_ID`,`declare_corID`,`declare_status`,`declare_user_sex`," +
+            "`declare_user_identifynumber`,`declare_user_birthday`,`declare_user_nation`," +
+            "`declare_user_hometown`,`declare_user_phone`,`declare_user_email`,`declare_level`," +
+            "`declare_professional_series`, `declare_politics`,`declare_time`,`declare_explain`, " +
+            "`declare_institution`, `declare_communicate`, `declare_setuptime`,`declare_personcharacter`, " +
+            "`declare_isfirst`,`declare_lasttime`, `declare_worktime`, `declare_timelimit`,`declare_method`," +
+            "`declare_wenttime`,`declare_corperation_level`, `declare_politics_post` ,`declare_qualification` ," +
+            "`declare_series`) " +
+            "VALUES(#{declare_ID},#{user_ID}, #{declare_year},#{declare_user_name}," +
+            "#{corporation_ID},#{declare_corID},#{declare_status},#{declare_user_sex}," +
+            "#{declare_user_identifynumber},#{declare_user_birthday},#{declare_user_nation}," +
+            "#{declare_user_hometown},#{declare_user_phone},#{declare_user_email},#{declare_level}," +
+            "#{declare_professional_series}, #{declare_politics},#{declare_time},#{declare_explain}, " +
+            "#{declare_institution}, #{declare_communicate}, #{declare_setuptime},#{declare_personcharacter}, " +
+            "#{declare_isfirst},#{declare_lasttime}, #{declare_worktime}, #{declare_timelimit},#{declare_method}," +
+            "#{declare_wenttime},#{declare_corperation_level}, #{declare_politics_post},#{declare_qualification}," +
+            "#{declare_series})")
     @Options(useGeneratedKeys = true, keyProperty = "declareID", keyColumn = "declareID")
     public void InsertDeclare(Declare declare);//创建Declare评审表，
                                             // declare_time,declare_lasttime,declare_worktime三个日期字段的格式为'nn-mm-rr',declare_status状态初始值为0未审批
