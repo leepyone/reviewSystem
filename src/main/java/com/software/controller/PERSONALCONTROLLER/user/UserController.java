@@ -1,7 +1,8 @@
 package com.software.controller.PERSONALCONTROLLER.user;
 
 import com.software.MODULE.User;
-import com.software.SERVICE.impl.UserServiceImpl;
+import com.software.SERVICE.PersonalUserService;
+import com.software.SERVICE.impl.PersonalUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ public class UserController {
 
     //@Autowired各种类
     @Autowired
-    UserServiceImpl userService;
+    PersonalUserService userService;
 
     //跳转个人版登录界面
     @RequestMapping("/Login")
@@ -68,7 +69,6 @@ public class UserController {
         String feature=userService.PersonalRegister(user);
         if(feature.equals("success")){
             //注册成功
-            //创建相同id的记录，其余字段为空
             return "redirect:/PersonalUser/Login";//返回登录界面
         }
         else if(feature.equals("身份证已存在")){
