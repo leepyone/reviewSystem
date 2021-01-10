@@ -88,7 +88,7 @@ public class DeclareController {
             return "redirect:/PersonalUser/Login";//返回登录界面
         }
         User user=(User)session.getAttribute("PersonalLoginUser");
-        //查询相应的评审表
+        //查询相应的评审表和declare_check表
         Declare declareTemp=new Declare();
         declareTemp.setDeclareID(declareId);
         Declare declare=personalDeclareService.getDeclareByDeclareID(declareTemp);
