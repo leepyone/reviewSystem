@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="plugins/css/bootstrap.min.css">
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+     <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+     <link rel="stylesheet" href="assets/libs/css/style.css">
+     <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+     <link rel="stylesheet" href="assets/vendor/charts/chartist-bundle/chartist.css">
+     <link rel="stylesheet" href="assets/vendor/charts/morris-bundle/morris.css">
+     <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+     <link rel="stylesheet" href="assets/vendor/charts/c3charts/c3.css">
+     <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <style>
+     
+      body{
+        padding-top: 70px;
+
+      }
+      .col-sm-9{border-radius: 10px;}
+      .div{border-radius: 10px;}
+      .starter{
+        padding: 40px 15px;
+        text-align:center;
+      }
+      
+      .row{
+        border-radius: 10px;
+        margin-bottom: 25px;
+        display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+      }
+
+      .row .row{
+        margin-top:-13px;
+        margin-bottom: 20px;
+      }
+      [class*="col-"]{
+        padding-top: 15px;
+        padding-bottom: 15px;
+        background-color: #eee;
+        background-color:#eef1f6;
+        border:1px solid #ddd;
+        border:1px solid rgba(75, 74, 74, 0.2);
+      }
+    </style>
+</head>
+<script language="javascript">
+
+    function tanchuang()
+    
+    {
+    
+    //这个基本没有什么说的，就是弹出一个提醒的对话框
+    
+    alert("操作成功");
+    
+    }
+</script>   
+<body>
+
+  <!--1.以下是导航栏-->
+  <div class="dashboard-main-wrapper">
+    <!-- ============================================================== -->
+    <!-- navbar -->
+    <!-- ============================================================== -->
+    <div class="dashboard-header">
+        <nav class="navbar navbar-expand-lg bg-white fixed-top">
+            <a class="navbar-brand" href="#">职称管理服务平台</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto navbar-right-top">
+                   
+                    <li class="nav-item dropdown nav-user">
+                        <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                        <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                            <div class="nav-user-info">
+                                <h5 class="mb-0 text-white nav-user-name">李明</h5>
+                                <!-- <span class="status"></span><span class="ml-2">Available</span> -->
+                            </div>
+                            <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>账户</a>
+                            <!-- <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>推出</a> -->
+                            <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>登出</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end navbar -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- left sidebar -->
+    <!-- ============================================================== -->
+    <div class="nav-left-sidebar sidebar-dark">
+        <div class="menu-list">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-divider">
+                            Menu
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link " href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>待办事项 <span class="badge badge-success">6</span></a>
+                            <div id="submenu-1" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href="#" >职称认定</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./company.html">职称评审</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">重新确认</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" >遗失补办</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>操作记录</a>
+                            <div id="submenu-2" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href="#" >职称认定</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./company.html">职称评审</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">重新确认</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" >遗失补办</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-fw fa-chart-pie"></i>历年操作情况</a>
+                            <div id="submenu-3" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href="#" >职称认定</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./company.html">职称评审</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">重新确认</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" >遗失补办</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                       
+                        
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    
+    <!--1.以上是导航栏-->
+
+
+      
+        
+ 
+
+    
+        
+            <div class="col-sm-9 col-md-offset-3" style=" border-style:hidden" >
+          <button   type="button" class="btn btn-success" 
+          onclick="window.location.href = './company.html'" > 返回</button>
+        
+         
+        </div>
+      
+
+
+<!--以下是基本信息-->
+
+<div class="row">
+  <div class="col-sm-9 col-md-offset-3" style="background-color: rgb(254, 254, 255);">
+    <div class="row" style=" background-color :#e4f0ff" >
+    
+      <h4><font color="#1a56a8"> <strong>基本信息</strong></font></h4>
+                
+  </div>
+    <div class="row">
+      <div class="col-sm-2 ">
+        <img src="./img/smile.png">
+      </div>
+      <div class="col-sm-9 ">
+        
+        <div class="row">
+          <div class="col-sm-3 ">
+            评审年度
+           </div>
+            <div class="col-sm-3" style="background-color: #FFFFFF;">
+              2020
+             </div>
+             <div class="col-sm-3">
+              参加评审会
+             </div>
+             <div class="col-sm-3" style="background-color: #FFFFFF;">
+              桂林电子科技大学引进高层次急需紧缺人才直接评审高级职称委员会
+             </div>
+
+
+             <div class="col-sm-3 ">
+              曾用名
+             </div>
+              <div class="col-sm-3" style="background-color: #FFFFFF;">
+                唐小率
+               </div>
+               <div class="col-sm-3">
+                填表时间
+               </div>
+               <div class="col-sm-3" style="background-color: #FFFFFF;">
+                2035/1/1
+               </div>
+
+               <div class="col-sm-3 ">
+                性别
+               </div>
+                <div class="col-sm-3" style="background-color: #FFFFFF;">
+                  女
+                 </div>
+                 <div class="col-sm-3">
+                  个人身份性质
+                 </div>
+                 <div class="col-sm-3" style="background-color: #FFFFFF;">
+                  事业单位人员
+                 </div>
+
+                 <div class="col-sm-3 ">
+                  证件号码
+                 </div>
+                  <div class="col-sm-3" style="background-color: #FFFFFF;">
+                    1234567890
+                   </div>
+                   <div class="col-sm-3">
+                    出生年月
+                   </div>
+                   <div class="col-sm-3" style="background-color: #FFFFFF;">
+                    1999-1-1
+                   </div>
+  
+                   <div class="col-sm-3 ">
+                    民族
+                   </div>
+                    <div class="col-sm-3" style="background-color: #FFFFFF;">
+                      壮族
+                     </div>
+                     <div class="col-sm-3">
+                      参加工作时间
+                     </div>
+                     <div class="col-sm-3" style="background-color:#FFFFFF;">
+                      1999-1-1
+                     </div>
+
+                     
+                   <div class="col-sm-3 ">
+                    籍贯
+                   </div>
+                    <div class="col-sm-3" style="background-color: #FFFFFF;">
+                      河南
+                     </div>
+                     <div class="col-sm-3">
+                      专业技术工作年限
+                     </div>
+                     <div class="col-sm-3" style="background-color: #FFFFFF;">
+                      100
+                     </div>
+                     
+                     <div class="col-sm-3 ">
+                      联系电话
+                     </div>
+                      <div class="col-sm-3" style="background-color: #FFFFFF;">
+                        10086
+                       </div>
+                       <div class="col-sm-3">
+                        电子邮箱
+                       </div>
+                       <div class="col-sm-3" style="background-color: #FFFFFF;">
+                        2222222@qq.com
+                       </div>
+                       <div class="col-sm-3 ">
+                        拟评级别
+                       </div>
+                        <div class="col-sm-3" style="background-color:#FFFFFF;">
+                          副高级
+                         </div>
+                         <div class="col-sm-3">
+                          单位级别
+                         </div>
+                         <div class="col-sm-3" style="background-color:#FFFFFF;">
+                          区属
+                         </div>
+                         <div class="col-sm-3 ">
+                          拟评专业系列
+                         </div>
+                          <div class="col-sm-3" style="background-color: #FFFFFF;">
+                            艺术系列
+                           </div>
+                           <div class="col-sm-3">
+                            拟评专业技术资格
+                           </div>
+                           <div class="col-sm-3" style="background-color:#FFFFFF;">
+                            二级作曲
+                           </div>
+
+                           <div class="col-sm-3 ">
+                            拟评专业
+                           </div>
+                            <div class="col-sm-3" style="background-color:#FFFFFF;">
+                              画画
+                             </div>
+                             <div class="col-sm-3">
+                              行政职务
+                             </div>
+                             <div class="col-sm-3" style="background-color:#FFFFFF;">
+                              书记
+                             </div>
+                             <div class="col-sm-3 ">
+                              政治面貌
+                             </div>
+                              <div class="col-sm-3" style="background-color:#FFFFFF;">
+                                党员
+                               </div>
+                               <div class="col-sm-3">
+                                行政职务任命时间
+                               </div>
+                               <div class="col-sm-3" style="background-color: #FFFFFF;">
+                                2020-3
+                               </div>
+
+                               <div class="col-sm-3">
+                                行政职务说明
+                               </div>
+                               <div class="col-sm-9" style="background-color:#FFFFFF;">
+                                1巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉
+                               </div>
+                               <div class="col-sm-3">
+                                档案所在地名称
+                               </div>
+                               <div class="col-sm-9" style="background-color: #FFFFFF;">
+                                2巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉
+                               </div>
+                               <div class="col-sm-3">
+                                联系地址
+                               </div>
+                               <div class="col-sm-9" style="background-color: #FFFFFF;">
+                                广西壮族自治区
+                               </div>
+                               <div class="col-sm-3">
+                                身份证正
+                               </div>
+                               <div class="col-sm-3" style="background-color:#FFFFFF;">
+                                <img src="./img/smile.png">
+                               </div> <div class="col-sm-3">
+                                身份证反
+                               </div>
+                               <div class="col-sm-3" style="background-color: #FFFFFF;">
+                                <img src="./img/smile.png">
+                               </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--以上是基本信息-->
+
+
+
+<!--以下是学历情况-->
+<div class="row">
+  <div class="col-sm-9 col-md-offset-3" style="background-color: rgb(254, 254, 255);">
+    <div class="row" style=" background-color :#e4f0ff" >
+    
+    
+        <h4><font color="#1a56a8"> <strong>学历情况</strong></font></h4>
+                  
+    </div>
+  
+
+
+         <div class="row">
+          <div class="col-sm-2" >
+            毕业时间
+           </div> <div class="col-sm-2">
+            学历项目
+           </div>
+           <div class="col-sm-2" >
+            学历
+           </div>
+           <div class="col-sm-2" >
+            毕业学校
+           </div>
+           <div class="col-sm-2" >
+            专业
+           </div>
+           <div class="col-sm-2" >
+            操作
+           </div>
+            <!--以下是具体学历信息：for循环这里-->
+            <div class="col-sm-2" style="background-color: #FFFFFF;">
+              2020-1-1
+             </div> <div class="col-sm-2" style="background-color: #FFFFFF;"> 
+              第一学历
+             </div>
+             <div class="col-sm-2" style="background-color: #FFFFFF;">
+              本科
+             </div>
+             <div class="col-sm-2" style="background-color: #FFFFFF;">
+              桂林电子科技大学
+             </div>
+             <div class="col-sm-2" style="background-color:#FFFFFF;">
+              软件工程
+             </div>
+             <div class="col-sm-2" style="background-color:#FFFFFF;">
+              <button type="button" class="btn btn-primary" >＋详情</button>  
+             </div>
+            <!--以上是具体学历信息：for循环这里-->
+          </div>
+                  
+          </div>
+  </div>
+<!--以上是学历情况-->
+
+
+<!--以下是主要经历-->
+<div class="row">
+  <div class="col-sm-9 col-md-offset-3" style="background-color: rgb(254, 254, 255);">
+    <div class="row" style=" background-color :#e4f0ff" >
+    
+        <h4><font color="#1a56a8"> <strong>主要经历</strong></font></h4>
+                  
+    </div>
+  
+
+
+         <div class="row">
+          <div class="col-sm-2" >
+            开始时间
+           </div> <div class="col-sm-2">
+            截至时间
+           </div>
+           <div class="col-sm-6" >
+            工作单位(学校)
+           </div>
+         
+           <div class="col-sm-2" >
+            操作
+           </div>
+            <!--以下是具体主要经历：for循环这里-->
+            <div class="col-sm-2" style="background-color:#FFFFFF;">
+              2020-1-1
+             </div> <div class="col-sm-2" style="background-color:#FFFFFF;"> 
+              2035-1-1
+             </div>
+             <div class="col-sm-6" style="background-color:#FFFFFF;">
+              清华大学
+             </div>
+             
+             <div class="col-sm-2" style="background-color:#FFFFFF;">
+              <button type="button" class="btn btn-primary" >＋详情</button>  
+             </div>
+            <!--以上是具体主要经历：for循环这里-->
+          </div>
+                  
+          </div>
+  </div>
+<!--以上是主要经历-->
+
+
+<!--以下是论文/著作-->
+<div class="row">
+  <div class="col-sm-9 col-md-offset-3" style="background-color: rgb(254, 254, 255);">
+    <div class="row" style=" background-color :#e4f0ff" >
+    
+        <h4><font color="#1a56a8"> <strong>论文、著作</strong></font></h4>
+                  
+    </div>
+  
+
+
+         <div class="row">
+          <div class="col-sm-1" >
+            序号
+           </div> <div class="col-sm-1">
+            发表时间
+           </div>
+           <div class="col-sm-2" >
+            论文类别
+           </div>
+         
+           <div class="col-sm-2" >
+            论文著作名称
+           </div>
+           <div class="col-sm-2" >
+            登载刊物名称、刊号
+           </div>
+           <div class="col-sm-2" >
+            角色
+           </div>
+           <div class="col-sm-2" >
+            操作
+           </div>
+            <!--以下是论文/著作：for循环这里-->
+            <div class="col-sm-1" style="background-color:#FFFFFF;">
+              2020-1-1
+             </div> <div class="col-sm-1" style="background-color:#FFFFFF;"> 
+              2035-1-1
+             </div>
+             <div class="col-sm-2" style="background-color:#FFFFFF;">
+              清华大学
+             </div>
+             <div class="col-sm-2" style="background-color:#FFFFFF;">
+              清华大学
+             </div>
+             <div class="col-sm-2" style="background-color:#FFFFFF;">
+              清华大学
+             </div>
+             <div class="col-sm-2" style="background-color:#FFFFFF;">
+              清华大学
+             </div>
+             <div class="col-sm-2" style="background-color:#FFFFFF;">
+              <button type="button" class="btn btn-primary" >＋详情</button>  
+             </div>
+            <!--以上是论文/著作：for循环这里-->
+          </div>
+                  
+          </div>
+  </div>
+<!--以上是论文/著作-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="text-align:center">
+        
+</div>
+<div style="text-align:center">
+    <button type="submit" class="btn btn-success" style="text-align: center" 
+     onclick="window.location.href = './company_totop.html'">同意并报送职改部门</button>
+
+    <lable>&nbsp&nbsp&nbsp</lable>  
+    <button type="submit" class="btn btn-danger" style="text-align: center"
+    onclick="window.location.href = './company_todeep.html'">驳回修改</button>  
+    </div> 
+    <div style="text-align:center">
+        
+    </div>
+    <div style="text-align:center">
+        
+    </div>
+ <!-- jquery 3.3.1 -->
+ <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+ <!-- bootstap bundle js -->
+ <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+ <!-- slimscroll js -->
+ <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+ <!-- main js -->
+ <script src="assets/libs/js/main-js.js"></script>
+ <!-- chart chartist js -->
+ <script src="assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+ <!-- sparkline js -->
+ <script src="assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
+ <!-- morris js -->
+ <script src="assets/vendor/charts/morris-bundle/raphael.min.js"></script>
+ <script src="assets/vendor/charts/morris-bundle/morris.js"></script>
+ <!-- chart c3 js -->
+ <script src="assets/vendor/charts/c3charts/c3.min.js"></script>
+ <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+ <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
+ <script src="assets/libs/js/dashboard-ecommerce.js"></script>
+</body>
+</html>
