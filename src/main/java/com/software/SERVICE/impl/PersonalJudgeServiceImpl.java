@@ -6,9 +6,11 @@ import com.software.MODULE.User;
 import com.software.MODULE.title_judge;
 import com.software.SERVICE.PersonalJudgeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class PersonalJudgeServiceImpl implements PersonalJudgeService {
 
 
