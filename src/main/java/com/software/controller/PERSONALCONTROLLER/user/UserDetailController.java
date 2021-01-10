@@ -1,12 +1,10 @@
 package com.software.controller.PERSONALCONTROLLER.user;
 
-import com.software.DAO.userDao;
 import com.software.MODULE.*;
 import com.software.SERVICE.EducationService;
 import com.software.SERVICE.ExperienceService;
 import com.software.SERVICE.PaperService;
-import com.software.SERVICE.PersonalUserService;
-import com.software.SERVICE.impl.PersonalUserServiceImpl;
+import com.software.SERVICE.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,7 +23,7 @@ public class UserDetailController {
 
     //@Autowired各种类
     @Autowired
-    PersonalUserService userService;
+    UserService userService;
     @Autowired
     EducationService educationService;
     @Autowired

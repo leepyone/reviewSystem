@@ -16,4 +16,6 @@ public interface ExperienceService {
     public void deleteExperience(Experience experience);//根据经历ID删除单个经历
 
     public void setExperience(Experience experience);//根据经历ID更新单个经历
+
+    public List<Experience> getExpList(int userID);
 }

@@ -47,4 +47,7 @@ public class PaperServiceImpl implements PaperService {
     public void setPaper(Paper paper){
         paperDao.setPaper(paper);
     }
+
+    @Override
+    public List<Paper> getPaperList(int userID){ return paperDao.getPaperByUserID(userID); }
 }
