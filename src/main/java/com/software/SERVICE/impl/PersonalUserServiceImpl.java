@@ -31,7 +31,8 @@ public class PersonalUserServiceImpl implements PersonalUserService {
         if(u==null){
             return "电话号码已经存在已存在";
         }
-        int user_id=userDao.insertUser(user);
+        userDao.insertUser(user);
+        int user_id=user.getUserID();
         UserDetails userDetails=new UserDetails();
         userDetails.setUserID(user_id);
         userDao.insertUserDetail(userDetails);

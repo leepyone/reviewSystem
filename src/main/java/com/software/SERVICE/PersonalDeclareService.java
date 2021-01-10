@@ -1,6 +1,7 @@
 package com.software.SERVICE;
 
 import com.software.MODULE.Declare;
+import com.software.MODULE.User;
 
 import java.util.List;
 
@@ -19,7 +20,10 @@ public interface PersonalDeclareService {
     //根据评审表id返回相应评审表
     public Declare getDeclareByDeclareID(int declareID);
 
-    //新建评审表
-    public void CreateDeclare(Declare declare);
+    //根据评审表id返回相应评审状态表
+
+
+    //新建评审表,user作为获取id的东西
+    public void CreateDeclare(Declare declare, User user);
 
 }
