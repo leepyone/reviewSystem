@@ -16,4 +16,6 @@ public interface EducationService {
     public void deleteEducation(Education education);//根据学历ID删除单个学历
 
     public void setEducation(Education education);//根据学历ID更新单个学历
+
+    public List<Education> getEduList(int userID);
 }
