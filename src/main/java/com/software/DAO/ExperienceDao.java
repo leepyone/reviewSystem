@@ -13,10 +13,10 @@ import java.util.List;
 public interface ExperienceDao {
 
     @Insert("INSERT INTO experience (`user_ID`,`experience_ID`,`experience_starttime`,`experience_endtime`,`experience_institution`,`experience_type`,`experience_status`)VALUES(#{userID},#{experienceID},#{experienceStarttime},#{experienceEndtime},#{experienceInstitution},#{experienceType},#{experienceStatus})")
-    public void insertExperience(Experience experience);//创建一条学历
+    public void insertExperience(Experience experience);//创建一条经历
 
     @Select("SELECT experience.* FROM experience where experience.user_ID=#{userID}")
-    public List<Experience> getExperienceByUserID(int userID);//通过用户ID返回学历集合List
+    public List<Experience> getExperienceByUserID(int userID);//通过用户ID返回经历集合List
 
     @Select("SELECT experience.* FROM experience where experience.experience_ID=#{experienceID}")
     public Experience getExperienceByEducationID(int experienceID);//通过经历ID返回单个经历

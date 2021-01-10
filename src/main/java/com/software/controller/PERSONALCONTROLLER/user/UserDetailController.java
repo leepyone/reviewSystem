@@ -5,6 +5,7 @@ import com.software.MODULE.Education;
 import com.software.MODULE.Experience;
 import com.software.MODULE.User;
 import com.software.MODULE.UserDetails;
+import com.software.SERVICE.impl.PersonalUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,12 +15,12 @@ import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/UserInfo")
+@RequestMapping("/PersonalUserInfo")
 public class UserDetailController {
 
     //@Autowired各种类
     @Autowired
-    userDao userDao;
+    PersonalUserServiceImpl userService;
 
     //修改个人基本信息信息，user_detail
     @PostMapping("/UpdatePersonalUserDetail")
@@ -29,26 +30,27 @@ public class UserDetailController {
             return "redirect:/PersonalUser/Login";//返回登录界面
         }
         //插入用户基本信息
-        userDao.changeUserDetail(userDetails);
+        userService.changeUserDetail(userDetails);
 
         return "个人资料页面(主界面)";
     }
 
     //添加学历信息记录
-    @PostMapping("AddEducation")
+    @PostMapping("/AddEducation")
     public String AddEducation(Education education, Map<String, Object> map, HttpSession session){
 
-        if(!isLogin(session)){
-            //如果没有登录
-            return "redirect:/PersonalUser/Login";//返回登录界面
-        }
+        System.out.println(education);
+//        if(!isLogin(session)){
+//            //如果没有登录
+//            return "redirect:/PersonalUser/Login";//返回登录界面
+//        }
         //添加学历基本信息
 
         return "个人资料页面(主界面)";
     }
 
     //添加工作经历记录
-    @PostMapping("AddExperience")
+    @PostMapping("/AddExperience")
     public String AddExperience(Experience experience,Map<String, Object> map, HttpSession session){
 
         if(!isLogin(session)){
