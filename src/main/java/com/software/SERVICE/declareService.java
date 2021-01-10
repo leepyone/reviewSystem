@@ -20,6 +20,6 @@ public interface declareService {
 
     public Declare findDeclare(int declareID);
 
-    public void deleteDeclare(int declareID);
+    //public void deleteDeclare(int declareID);
 
 }

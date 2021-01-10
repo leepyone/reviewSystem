@@ -28,7 +28,7 @@ public class PersonalDeclareServiceImpl implements PersonalDeclareService {
         return declareDao.getDeclareByUserID(userID);
     }
 
-    //根据用户id返回职称评状态表list
+    //根据用户id返回职称评状态表list，个人端无用
     @Override
     public List<Declare_check> getDeclareCheckListByUserId(User user){
         int userID=user.getUserID();
@@ -42,24 +42,19 @@ public class PersonalDeclareServiceImpl implements PersonalDeclareService {
         return declareDao.getDeclareByDeclareID(declareID);
     }
 
-    //根据评审表id返回相应评审状态表
+    //根据评审表id返回相应评审表list
     @Override
-    public Declare_check getDeclareCheckByDeclareId(Declare declare){
+    public List<Declare_check> getDeclareCheckListByDeclareId(Declare declare){
         int declareID=declare.getDeclareID();
-        return declareDao.getDeclareCheckByDeclareId(declareID);
+        return declareDao.getDeclareCheckListByDeclareId(declareID);
     }
 
     //新建评审表
     @Override
-    public void CreateDeclare(Declare declare, User user){
+    public void CreateDeclare(Declare declare,User user){
+        int userID=user.getUserID();
+        declare.setDeclareStatus(0);//未审核
+        declare.setUserID(userID);
         declareDao.InsertDeclare(declare);
-        int declareId=declare.getDeclareID();
-
-        //初始化对应Declare_check对象
-        Declare_check declareCheck=new Declare_check();
-        declareCheck.setDeclareId(declareId);
-        declareCheck.setUserId(user.getUserID());
-
-        declareDao.InsertDeclareCheck(declareCheck);
     }
 }

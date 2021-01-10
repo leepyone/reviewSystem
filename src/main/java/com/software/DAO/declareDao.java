@@ -75,7 +75,12 @@ public interface declareDao {
     @Select("select * from declare_check where user_id=#{user_id}")
     public List<Declare_check> getDeclareCheckListByUserId(int user_id);//通过用户id获取declare_check的list
 
-    @Select("select * from declare_check where declare_id=#{declare_id}")
-    public Declare_check getDeclareCheckByDeclareId(int declare_id);//通过评审表id获取相应declare_check对象
 
+
+
+
+
+
+    @Select("select * from declare_check where declare_id=#{declare_id}")
+    public List<Declare_check> getDeclareCheckListByDeclareId(int declare_id);//通过评审表id获取相应declare_check对象
 }
