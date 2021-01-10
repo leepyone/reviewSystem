@@ -38,6 +38,22 @@ public class DeclareController {
     //简单日期格式转换
     private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
+    //跳转首页
+    @RequestMapping("/Main")
+    public String toMain(HttpSession session,Map<String, Object> map){
+        if(!isLogin(session)){
+            return "redirect:/PersonalUser/Login";//返回登录界面
+        }
+        //查询出职称评审list
+        User user=(User)session.getAttribute("PersonalLoginUser");
+        List<Declare> declareList=personalDeclareService.getDeclareByUserID(user);
+
+        //put上去
+        map.put("declareList",declareList);
+
+        return "首页";
+    }
+
     //跳转至职称评审界面
     @RequestMapping("/Declare")
     public String toDeclare(HttpSession session,Map<String, Object> map){
@@ -49,12 +65,11 @@ public class DeclareController {
         //查询出职称评审list
         User user=(User)session.getAttribute("PersonalLoginUser");
         List<Declare> declareList=personalDeclareService.getDeclareByUserID(user);
-        //查询出职称评审状态list
-        List<Declare_check> declareCheckList=personalDeclareService.getDeclareCheckListByUserId(user);
+
 
         //put上去
         map.put("declareList",declareList);
-        map.put("declareCheckList",declareCheckList);
+
         return "redirect:职称评审界面";
     }
 
@@ -92,7 +107,7 @@ public class DeclareController {
         Declare declareTemp=new Declare();
         declareTemp.setDeclareID(declareId);
         Declare declare=personalDeclareService.getDeclareByDeclareID(declareTemp);
-        Declare_check declareCheck=personalDeclareService.getDeclareCheckByDeclareId(declareTemp);
+        List<Declare_check> declareCheckList=personalDeclareService.getDeclareCheckListByDeclareId(declareTemp);
 
         //学历信息，主要经历，论文
         List<Education> educationList=educationService.getEducationByUserID(user);
@@ -101,7 +116,7 @@ public class DeclareController {
 
         //map.put上去
         map.put("declare",declare);
-        map.put("declareCheck",declareCheck);
+        map.put("declareCheckList",declareCheckList);
         map.put("educationList",educationList);
         map.put("experienceList",experienceList);
         map.put("paperList",paperList);
@@ -119,7 +134,7 @@ public class DeclareController {
         Declare declareTemp=new Declare();
         declareTemp.setDeclareID(declareId);
         Declare declare=personalDeclareService.getDeclareByDeclareID(declareTemp);
-        Declare_check declareCheck=personalDeclareService.getDeclareCheckByDeclareId(declareTemp);
+        List<Declare_check> declareCheckList=personalDeclareService.getDeclareCheckListByDeclareId(declareTemp);
         //学历信息，主要经历，论文
         List<Education> educationList=educationService.getEducationByUserID(user);
         List<Experience> experienceList=experienceService.getExperienceByUserID(user);
@@ -127,7 +142,7 @@ public class DeclareController {
 
         //map.put上去
         map.put("declare",declare);
-        map.put("declareCheck",declareCheck);
+        map.put("declareCheckList",declareCheckList);
         map.put("educationList",educationList);
         map.put("experienceList",experienceList);
         map.put("paperList",paperList);
@@ -145,14 +160,14 @@ public class DeclareController {
         Declare declareTemp=new Declare();
         declareTemp.setDeclareID(declareId);
         Declare declare=personalDeclareService.getDeclareByDeclareID(declareTemp);
-        Declare_check declareCheck=personalDeclareService.getDeclareCheckByDeclareId(declareTemp);
+        List<Declare_check> declareCheckList=personalDeclareService.getDeclareCheckListByDeclareId(declareTemp);
         //学历信息，主要经历，论文
         List<Education> educationList=educationService.getEducationByUserID(user);
         List<Experience> experienceList=experienceService.getExperienceByUserID(user);
         List<Paper> paperList=paperService.getPaperByUserID(user);
         //map.put上去
         map.put("declare",declare);
-        map.put("declareCheck",declareCheck);
+        map.put("declareCheckList",declareCheckList);
         map.put("educationList",educationList);
         map.put("experienceList",experienceList);
         map.put("paperList",paperList);
@@ -172,7 +187,7 @@ public class DeclareController {
         return "redirect:/PersonalDeclare/Declare";
     }
 
-    //添加学历信息记录
+    //添加学历信息记录，education_graduation_time为前端传回来的信息，需要格式化
     @PostMapping("/AddEducation")
     public String AddEducation(Education education, String education_graduation_time,
                                Map<String, Object> map, HttpSession session){
@@ -189,7 +204,7 @@ public class DeclareController {
         map.put("educationList",educationList);
 
         return "新建评审界面,不刷新";
-    }//
+    }
 
     //添加工作经历记录
     @PostMapping("/AddExperience")

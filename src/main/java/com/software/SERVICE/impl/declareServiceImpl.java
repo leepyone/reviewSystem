@@ -45,6 +45,6 @@ public class declareServiceImpl implements declareService {
     @Override
     public Declare findDeclare(int declareID) { return declareDao.getDeclareByDeclareID(declareID); }
 
-    @Override
-    public void deleteDeclare(int declareID){ declareDao.deleteDeclare(declareID); }
+    //@Override
+    //public void deleteDeclare(int declareID){ declareDao.delete(declareID); }
 }
