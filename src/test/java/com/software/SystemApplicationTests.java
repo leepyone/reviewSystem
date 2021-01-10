@@ -3,6 +3,7 @@ package com.software;
 import com.software.DAO.declareDao;
 import com.software.DAO.userDao;
 import com.software.MODULE.Declare;
+import com.software.MODULE.Declare_check;
 import com.software.MODULE.User;
 import com.software.MODULE.UserDetails;
 import org.junit.jupiter.api.Test;

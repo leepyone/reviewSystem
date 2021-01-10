@@ -28,7 +28,10 @@ public class PersonalDeclareServiceImpl implements PersonalDeclareService {
     }
 
     //根据用户id返回职称评状态表list
-
+    @Override
+    public List<Declare_check> getDeclareCheckListByUserId(int user_id){
+        return declareDao.getDeclareCheckListByUserId(user_id);
+    }
 
     //根据评审表id返回相应评审表
     @Override
