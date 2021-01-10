@@ -10,6 +10,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
+    /**
+     个人的UserServiceImpl
+     */
+
     @Autowired
     userDao userDao;
 
@@ -31,9 +35,13 @@ public class UserServiceImpl implements UserService {
         if(u==null){
             return "电话号码已经存在已存在";
         }
-        int user_id=userDao.insertUser(user);
+        userDao.insertUser(user);
+        int user_id=user.getUserID();
+
+        //初始化user_detail
         UserDetails userDetails=new UserDetails();
         userDetails.setUserID(user_id);
+        userDetails.setUserPhone(user.getUserPhone());
         userDao.insertUserDetail(userDetails);
         return "success";
     }
