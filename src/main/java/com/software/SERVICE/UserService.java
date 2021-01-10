@@ -3,7 +3,7 @@ package com.software.SERVICE;
 import com.software.MODULE.User;
 import com.software.MODULE.UserDetails;
 
-public interface PersonalUserService {
+public interface UserService {
 
     /**
      个人的UserService

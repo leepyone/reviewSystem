@@ -3,12 +3,12 @@ package com.software.SERVICE.impl;
 import com.software.DAO.userDao;
 import com.software.MODULE.User;
 import com.software.MODULE.UserDetails;
-import com.software.SERVICE.PersonalUserService;
+import com.software.SERVICE.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PersonalUserServiceImpl implements PersonalUserService {
+public class UserServiceImpl implements UserService {
 
     /**
      个人的UserServiceImpl
