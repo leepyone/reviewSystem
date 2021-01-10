@@ -31,12 +31,12 @@ public class DeclareController {
         }
         //查询出职称评审list
         User user=(User) session.getAttribute("PersonalLoginUser");
-        List<Declare> declareList=declareService.getDeclareByUserID(user.getUserID());
+
         //查询出职称评审状态list
 
 
         //put上去
-        map.put("declareList",declareList);
+
         return "redirect:职称评审界面";
     }
 
@@ -60,11 +60,11 @@ public class DeclareController {
             return "redirect:/PersonalUser/Login";//返回登录界面
         }
         //查询相应的评审表
-        Declare declare=declareService.getDeclareByDeclareID(DeclareId);
+
         //学历信息，主要经历，论文
 
         //map.put上去
-        map.put("declare",declare);
+
         return "评审表详细内容界面";
     }
 
@@ -75,11 +75,11 @@ public class DeclareController {
             return "redirect:/PersonalUser/Login";//返回登录界面
         }
         //查询相应的评审表
-        Declare declare=declareService.getDeclareByDeclareID(DeclareId);
+
         //学历信息，主要经历，论文
 
         //map.put上去
-        map.put("declare",declare);
+
         return "评审推荐表界面";
     }
 
@@ -90,11 +90,11 @@ public class DeclareController {
             return "redirect:/PersonalUser/Login";//返回登录界面
         }
         //查询相应的评审表
-        Declare declare=declareService.getDeclareByDeclareID(DeclareId);
+
         //学历信息，主要经历，论文
 
         //map.put上去
-        map.put("declare",declare);
+
         return "评审表界面";
     }
 

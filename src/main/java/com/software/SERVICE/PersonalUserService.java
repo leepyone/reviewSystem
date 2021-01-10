@@ -3,8 +3,11 @@ package com.software.SERVICE;
 import com.software.MODULE.User;
 import com.software.MODULE.UserDetails;
 
-public interface UserService {
+public interface PersonalUserService {
 
+    /**
+     个人的UserService
+     */
     //登录
     public User Login(String user_number, String user_password);
 

@@ -3,12 +3,12 @@ package com.software.SERVICE.impl;
 import com.software.DAO.userDao;
 import com.software.MODULE.User;
 import com.software.MODULE.UserDetails;
-import com.software.SERVICE.UserService;
+import com.software.SERVICE.PersonalUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class PersonalUserServiceImpl implements PersonalUserService {
 
     @Autowired
     userDao userDao;
