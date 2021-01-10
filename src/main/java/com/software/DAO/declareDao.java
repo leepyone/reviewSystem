@@ -37,7 +37,7 @@ public interface declareDao {
     public List<Declare> getDeclareByStatus(int status);//根据评审状态查询评审单列表List
 
     @Select("select * FROM  `declare` WHERE `declare`.declare_user_identifynumber=#{identifynumber}")
-    public List<Declare> getDeclareByIdentifyNumber(String identifynumber);//根据身份证号查询评审表单List
+    public Declare getDeclareByIdentifyNumber(String identifynumber);//根据身份证号查询评审表单List
 
     @Select("select * FROM  `declare` WHERE `declare`.declare_qualification=#{qualification}")
     public List<Declare> getDeclareByQualification(String qualification);//根据申报资格名称查询评审表单List
@@ -70,5 +70,8 @@ public interface declareDao {
     @Insert("insert into declare_check (`check_id`,`check_date`,`declare_id`,`user_id`,`check_oppoins`,`check_status`)values(#{checkId},#{checkDate},#{declareId},#{userId},#{checkOppoins},#{checkStatus})")
     @Options(useGeneratedKeys = true, keyProperty = "declareId", keyColumn = "declareId")
     public int InsertDeclareCheck(Declare_check declareCheck);//插入declare_check表
+
+    @Delete("")
+    public void deleteDeclare(int declareID);
 
 }
