@@ -40,5 +40,7 @@ public interface CorporationDao {
     @Delete("delete from corporation_worker where corporation_worker.corporation_id= #{corporationId} and corporation_worker.user_ID= #{userId}")
     boolean deleteCorporationWorkers(int corporationId,int userId);
 
+    //
+
 
 }
