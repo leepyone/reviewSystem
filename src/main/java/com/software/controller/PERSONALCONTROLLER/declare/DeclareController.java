@@ -190,7 +190,7 @@ public class DeclareController {
         map.put("educationList",educationList);
 
         return "新建评审界面,不刷新";
-    }
+    }//
 
     //添加工作经历记录
     @PostMapping("/AddExperience")
