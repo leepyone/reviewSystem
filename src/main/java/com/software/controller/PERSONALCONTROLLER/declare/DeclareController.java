@@ -20,7 +20,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-//职称评审
+//职称评审/PersonalDeclare/Declare
 @Controller
 @RequestMapping("/PersonalDeclare")
 public class DeclareController {
