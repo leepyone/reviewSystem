@@ -21,6 +21,11 @@ public interface userDao {
     @Select("select * from user where `user`.user_number=#{user_number} and `user`.user_password=#{user_password}")
     User Login(String user_number,String user_password);
 
+
+    //根据账号查询用户信息
+    @Select("select * from `user` where `user`.user_number=#{userNumber}")
+    User getUserByAccount(String userNumber);
+
     //根据身份证查询用户
     @Select("select * from user where `user`.user_identifyID=#{userIdentifyID}")
     User getUserByIDCard(String userIdentifyID);

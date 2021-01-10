@@ -44,4 +44,21 @@ public class Corporation {
         }
         return corporationLevel_str;
     }
+
+    public Corporation(int corporationId, String account, String password, String corporationName, String corporationPerson, int corporationLevel, int corporationType, String corporationMandator, String corporationLocation, String corporationAddress, String pic1, String pic2, String pic3) {
+        this.corporationId = corporationId;
+        this.account = account;
+        this.password = password;
+        this.corporationName = corporationName;
+        this.corporationPerson = corporationPerson;
+        this.corporationLevel = corporationLevel;
+        this.corporationType = corporationType;
+        this.corporationMandator = corporationMandator;
+        this.corporationLocation = corporationLocation;
+        this.corporationAddress = corporationAddress;
+        this.pic1 = pic1;
+        this.pic2 = pic2;
+        this.pic3 = pic3;
+
+    }
 }
