@@ -48,4 +48,7 @@ public class ExperienceServiceImpl implements ExperienceService {
     public void setExperience(Experience experience){
         experienceDao.setExperience(experience);
     }
+
+    @Override
+    public List<Experience> getExpList(int userID){ return experienceDao.getExperienceByUserID(userID); }
 }
