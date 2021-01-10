@@ -24,7 +24,7 @@ public interface PaperDao {
     @Delete("DELETE FROM paper where paper.paper_ID=#{paperID}")
     public void deletePaper(int paperID);//根据论文ID删除单个论文
 
-    @Update("UPDATE paper SET `user_ID`=#{userID},`paper_date`=#{paperDate},`paper_type`=#{paperType},`paper_name`=#{paperName},`paper_publication`=#{paperPublication},`paper_part`=#{paperPart} WHERE paper_ID=#{paperID}")
+    @Update("UPDATE paper SET `paper_date`=#{paperDate},`paper_type`=#{paperType},`paper_name`=#{paperName},`paper_publication`=#{paperPublication},`paper_part`=#{paperPart} WHERE paper_ID=#{paperID}")
     public void setPaper(Paper paper);//更新一条论文记录
 
 }

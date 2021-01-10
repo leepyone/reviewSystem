@@ -24,6 +24,6 @@ public interface ExperienceDao {
     @Delete("DELETE FROM experience where experience.experience_ID=#{experienceID}")
     public void deleteExperience(int experienceID);//根据经历ID删除单个经历
 
-    @Update("UPDATE experience SET `user_ID`=#{userID},`experience_starttime`=#{experienceStarttime},`experience_endtime`=#{experienceEndtime},`experience_institution`=#{experienceInstitution},`experience_type`=#{experienceType},`experience_status`=#{experienceStatus} WHERE experience_ID=#{experienceID}")
+    @Update("UPDATE experience SET `experience_starttime`=#{experienceStarttime},`experience_endtime`=#{experienceEndtime},`experience_institution`=#{experienceInstitution},`experience_type`=#{experienceType},`experience_status`=#{experienceStatus} WHERE experience_ID=#{experienceID}")
     public void setExperience(Experience experience);//根据经历ID更新单个经历
 }

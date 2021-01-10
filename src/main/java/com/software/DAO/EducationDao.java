@@ -23,6 +23,6 @@ public interface EducationDao {
     @Delete("DELETE FROM education where education.education_ID=#{educationID}")
     public void deleteEducation(int educationID);//根据学历ID删除单个学历
 
-    @Update("UPDATE education SET `user_ID`=#{userID},`education_graduation_project`=#{educationGraduationProject},`education_level`=#{educationLevel},`education_school`=#{educationSchool},`education_major`=#{educationMajor},`education_graduation_time`=#{educationGraduationTime} WHERE education_ID=#{educationID}")
+    @Update("UPDATE education SET `education_graduation_project`=#{educationGraduationProject},`education_level`=#{educationLevel},`education_school`=#{educationSchool},`education_major`=#{educationMajor},`education_graduation_time`=#{educationGraduationTime} WHERE education_ID=#{educationID}")
     public void setEducation(Education education);//根据学历ID更新单个学历
 }
