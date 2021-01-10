@@ -10,6 +10,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class PersonalUserServiceImpl implements PersonalUserService {
 
+    /**
+     个人的UserServiceImpl
+     */
+
     @Autowired
     userDao userDao;
 

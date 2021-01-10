@@ -14,6 +14,10 @@ import java.util.List;
 @Service
 public class PersonalDeclareServiceImpl implements PersonalDeclareService {
 
+    /**
+     个人的DeclareServiceImpl
+     */
+
     @Autowired
     declareDao declareDao;
 
