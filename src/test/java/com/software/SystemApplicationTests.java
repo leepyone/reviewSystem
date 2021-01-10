@@ -1,10 +1,9 @@
 package com.software;
 
+import com.software.DAO.EducationDao;
 import com.software.DAO.declareDao;
 import com.software.DAO.userDao;
-import com.software.MODULE.Declare;
-import com.software.MODULE.User;
-import com.software.MODULE.UserDetails;
+import com.software.MODULE.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,6 +16,8 @@ class SystemApplicationTests {
 
     @Autowired
     userDao dao;
+    @Autowired
+    EducationDao educationDao;
     @Test
     void contextLoads() {
 
@@ -38,4 +39,15 @@ class SystemApplicationTests {
 
     }
 
+    @Test
+    void EducationTest(){
+//        Education education=new Education();
+//        education.setEducationGraduationProject("阿巴阿巴");
+//        education.setEducationGraduationTime(new Date());
+//        education.setEducationLevel("111");
+//        education.setEducationMajor("111");
+//        education.setEducationSchool("不会吧");
+//        education.setEducationID(8);
+//        educationDao.setEducation(education);
+    }
 }
