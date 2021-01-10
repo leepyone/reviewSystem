@@ -23,26 +23,30 @@ public class PersonalDeclareServiceImpl implements PersonalDeclareService {
 
     //根据用户id返回职称评审表list
     @Override
-    public List<Declare> getDeclareByUserID(int userID){
+    public List<Declare> getDeclareByUserID(User user){
+        int userID=user.getUserID();
         return declareDao.getDeclareByUserID(userID);
     }
 
     //根据用户id返回职称评状态表list
     @Override
-    public List<Declare_check> getDeclareCheckListByUserId(int user_id){
-        return declareDao.getDeclareCheckListByUserId(user_id);
+    public List<Declare_check> getDeclareCheckListByUserId(User user){
+        int userID=user.getUserID();
+        return declareDao.getDeclareCheckListByUserId(userID);
     }
 
     //根据评审表id返回相应评审表
     @Override
-    public Declare getDeclareByDeclareID(int declareID){
+    public Declare getDeclareByDeclareID(Declare declare){
+        int declareID=declare.getDeclareID();
         return declareDao.getDeclareByDeclareID(declareID);
     }
 
     //根据评审表id返回相应评审状态表
     @Override
-    public Declare_check getDeclareCheckByDeclareId(int declare_id){
-        return declareDao.getDeclareCheckByDeclareId(declare_id);
+    public Declare_check getDeclareCheckByDeclareId(Declare declare){
+        int declareID=declare.getDeclareID();
+        return declareDao.getDeclareCheckByDeclareId(declareID);
     }
 
     //新建评审表

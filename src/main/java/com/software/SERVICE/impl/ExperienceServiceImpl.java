@@ -3,7 +3,6 @@ package com.software.SERVICE.impl;
 import com.software.DAO.ExperienceDao;
 import com.software.MODULE.Experience;
 import com.software.MODULE.User;
-import com.software.SERVICE.EducationService;
 import com.software.SERVICE.ExperienceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,7 +46,6 @@ public class ExperienceServiceImpl implements ExperienceService {
     //根据经历ID更新单个经历
     @Override
     public void setExperience(Experience experience){
-        int experienceId=experience.getExperienceID();
         experienceDao.setExperience(experience);
     }
 }

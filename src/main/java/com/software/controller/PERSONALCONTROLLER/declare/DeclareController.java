@@ -32,9 +32,9 @@ public class DeclareController {
         }
         //查询出职称评审list
         User user=(User) session.getAttribute("PersonalLoginUser");
-        List<Declare> declareList=personalDeclareService.getDeclareByUserID(user.getUserID());
+        List<Declare> declareList=personalDeclareService.getDeclareByUserID(user);
         //查询出职称评审状态list
-        List<Declare_check> declareCheckList=personalDeclareService.getDeclareCheckListByUserId(user.getUserID());
+        List<Declare_check> declareCheckList=personalDeclareService.getDeclareCheckListByUserId(user);
 
         //put上去
         map.put("declareList",declareList);

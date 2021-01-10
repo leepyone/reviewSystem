@@ -41,13 +41,13 @@ class SystemApplicationTests {
 
     @Test
     void EducationTest(){
-        Education education=new Education();
-        education.setEducationGraduationProject("阿巴阿巴");
-        education.setEducationGraduationTime(new Date());
-        education.setEducationLevel("111");
-        education.setEducationMajor("111");
-        education.setEducationSchool("qwerty");
-        education.setEducationID(8);
-        educationDao.setEducation(education);
+//        Education education=new Education();
+//        education.setEducationGraduationProject("阿巴阿巴");
+//        education.setEducationGraduationTime(new Date());
+//        education.setEducationLevel("111");
+//        education.setEducationMajor("111");
+//        education.setEducationSchool("不会吧");
+//        education.setEducationID(8);
+//        educationDao.setEducation(education);
     }
 }
