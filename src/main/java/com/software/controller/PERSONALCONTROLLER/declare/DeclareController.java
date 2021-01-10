@@ -36,6 +36,7 @@ public class DeclareController {
     @Autowired
     PaperService paperService;
 
+    //简单日期格式转换
     private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     //跳转至职称评审界面
@@ -174,8 +175,8 @@ public class DeclareController {
 
     //添加学历信息记录
     @PostMapping("/AddEducation")
-    public String AddEducation(Education education, String education_graduation_time,Map<String, Object> map, HttpSession session){
-
+    public String AddEducation(Education education, String education_graduation_time,
+                               Map<String, Object> map, HttpSession session){
 
         User user=(User) session.getAttribute("PersonalLoginUser");
         //日期格式转换
@@ -187,28 +188,34 @@ public class DeclareController {
         List<Education> educationList=educationService.getEducationByUserID(user);
         //map.put上去
         map.put("educationList",educationList);
+
         return "新建评审界面,不刷新";
     }
 
     //添加工作经历记录
     @PostMapping("/AddExperience")
-    public String AddExperience(Experience experience, Map<String, Object> map, HttpSession session){
-
+    public String AddExperience(Experience experience,String experience_starttime,String
+            experience_endtime, Map<String, Object> map, HttpSession session){
 
         User user=(User) session.getAttribute("PersonalLoginUser");
+        //日期格式转换
+        Date experienceStarttime=StringToDate(experience_starttime);
+        Date experienceEndtime=StringToDate(experience_endtime);
+        experience.setExperienceStarttime(experienceStarttime);
+        experience.setExperienceEndtime(experienceEndtime);
         //添加工作经历基本信息
         experienceService.addExperience(experience);
         //返回工作经历的list
         List<Experience> experienceList=experienceService.getExperienceByUserID(user);
         //map.put上去
         map.put("experienceList",experienceList);
+
         return "新建评审界面,不刷新";
     }
 
     //添加论文记录
     @PostMapping("/AddPaper")
-    public String AddExperience(Paper paper, Map<String, Object> map, HttpSession session){
-
+    public String AddPaper(Paper paper, Map<String, Object> map, HttpSession session){
 
         User user=(User) session.getAttribute("PersonalLoginUser");
         //添加论文记录
@@ -217,8 +224,114 @@ public class DeclareController {
         List<Paper> paperList=paperService.getPaperByUserID(user);
         //map.put上去
         map.put("paperList",paperList);
+
         return "新建评审界面,不刷新";
     }
+
+    //修改学历信息
+    @PostMapping("/UpdateEducation")
+    public String UpdateEducation(Education education, String education_graduation_time,
+                                  Map<String, Object> map, HttpSession session){
+        User user=(User) session.getAttribute("PersonalLoginUser");
+        //日期格式转换
+        Date educationGraduationTime=StringToDate(education_graduation_time);
+        education.setEducationGraduationTime(educationGraduationTime);
+        //修改学历信息
+        educationService.setEducation(education);
+        //返回学历的list
+        List<Education> educationList=educationService.getEducationByUserID(user);
+        //map.put上去
+        map.put("educationList",educationList);
+
+        return "新建评审界面,不刷新";
+    }
+
+    //修改工作经历
+    @PostMapping("/UpdateExperience")
+    public String UpdateExperience(Experience experience,String experience_starttime,String
+            experience_endtime, Map<String, Object> map, HttpSession session){
+        User user=(User) session.getAttribute("PersonalLoginUser");
+        //日期格式转换
+        Date experienceStarttime=StringToDate(experience_starttime);
+        Date experienceEndtime=StringToDate(experience_endtime);
+        experience.setExperienceStarttime(experienceStarttime);
+        experience.setExperienceEndtime(experienceEndtime);
+        //修改工作经历
+        experienceService.setExperience(experience);
+        //返回工作经历的list
+        List<Experience> experienceList=experienceService.getExperienceByUserID(user);
+        //map.put上去
+        map.put("experienceList",experienceList);
+
+        return "新建评审界面,不刷新";
+    }
+
+    //修改论文信息
+    @PostMapping("/UpdatePaper")
+    public String UpdatePaper(Paper paper, Map<String, Object> map, HttpSession session){
+
+        User user=(User) session.getAttribute("PersonalLoginUser");
+        //修改论文记录
+        paperService.setPaper(paper);
+        //返回论文的list
+        List<Paper> paperList=paperService.getPaperByUserID(user);
+        //map.put上去
+        map.put("paperList",paperList);
+
+        return "新建评审界面,不刷新";
+    }
+
+    //删除某条学历信息记录
+    @PostMapping("/DeleteEducation")
+    public String DeleteEducation(int educationId,Map<String, Object> map, HttpSession session){
+        User user=(User) session.getAttribute("PersonalLoginUser");
+
+        Education education=new Education();
+        education.setEducationID(educationId);
+        educationService.deleteEducation(education);
+
+        //返回学历的list
+        List<Education> educationList=educationService.getEducationByUserID(user);
+        //map.put上去
+        map.put("educationList",educationList);
+
+        return "新建评审界面,不刷新";
+    }
+
+    //删除某条工作经历记录
+    @PostMapping("/DeleteExperience")
+    public String DeleteExperience(int experienceId,Map<String, Object> map, HttpSession session){
+        User user=(User) session.getAttribute("PersonalLoginUser");
+
+        Experience experience=new Experience();
+        experience.setExperienceID(experienceId);
+        //删除工作经历记录
+        experienceService.deleteExperience(experience);
+        //返回工作经历的list
+        List<Experience> experienceList=experienceService.getExperienceByUserID(user);
+        //map.put上去
+        map.put("experienceList",experienceList);
+
+        return "新建评审界面,不刷新";
+    }
+
+    //删除某条论文记录
+    @PostMapping("/DeletePaper")
+    public String DeletePaper(int paperId,Map<String, Object> map, HttpSession session){
+        User user=(User) session.getAttribute("PersonalLoginUser");
+
+        Paper paper=new Paper();
+        paper.setPaperID(paperId);
+        //删除论文记录
+        paperService.deletePaper(paper);
+        //返回论文的list
+        List<Paper> paperList=paperService.getPaperByUserID(user);
+        //map.put上去
+        map.put("paperList",paperList);
+
+        return "新建评审界面,不刷新";
+    }
+
 
     //判断登录
     public boolean isLogin(HttpSession session){
@@ -235,9 +348,7 @@ public class DeclareController {
             Date date=simpleDateFormat.parse(dateStr);
             return date;
         }
-        catch (ParseException e){
-
-        }
+        catch (ParseException e){ }
         return null;
     }
 }
