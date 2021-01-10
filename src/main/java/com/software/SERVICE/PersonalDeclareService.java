@@ -22,7 +22,7 @@ public interface PersonalDeclareService {
     public Declare getDeclareByDeclareID(int declareID);
 
     //根据评审表id返回相应评审状态表
-
+    public Declare_check getDeclareCheckByDeclareId(int declare_id);
 
     //新建评审表,user作为获取id的东西
     public void CreateDeclare(Declare declare, User user);

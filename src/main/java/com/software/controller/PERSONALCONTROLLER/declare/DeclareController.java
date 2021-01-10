@@ -1,6 +1,7 @@
 package com.software.controller.PERSONALCONTROLLER.declare;
 
 import com.software.MODULE.*;
+import com.software.SERVICE.PersonalDeclareService;
 import com.software.SERVICE.impl.declareServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,7 @@ public class DeclareController {
 
     //@Autowired各种类
     @Autowired
-    declareServiceImpl declareService;
+    PersonalDeclareService personalDeclareService;
 
     //跳转至职称评审界面
     @RequestMapping("/Declare")
@@ -31,12 +32,13 @@ public class DeclareController {
         }
         //查询出职称评审list
         User user=(User) session.getAttribute("PersonalLoginUser");
-
+        List<Declare> declareList=personalDeclareService.getDeclareByUserID(user.getUserID());
         //查询出职称评审状态list
-
+        List<Declare_check> declareCheckList=personalDeclareService.getDeclareCheckListByUserId(user.getUserID());
 
         //put上去
-
+        map.put("declareList",declareList);
+        map.put("declareCheckList",declareCheckList);
         return "redirect:职称评审界面";
     }
 
@@ -47,6 +49,8 @@ public class DeclareController {
         if(!isLogin(session)){
             return "redirect:/PersonalUser/Login";//返回登录界面
         }
+
+        //学历信息，主要经历，论文
 
         return "新建评审表界面";
     }

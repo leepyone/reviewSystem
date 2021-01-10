@@ -40,6 +40,10 @@ public class PersonalDeclareServiceImpl implements PersonalDeclareService {
     }
 
     //根据评审表id返回相应评审状态表
+    @Override
+    public Declare_check getDeclareCheckByDeclareId(int declare_id){
+        return declareDao.getDeclareCheckByDeclareId(declare_id);
+    }
 
     //新建评审表
     @Override

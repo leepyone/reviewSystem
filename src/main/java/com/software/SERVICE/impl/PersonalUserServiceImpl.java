@@ -37,8 +37,11 @@ public class PersonalUserServiceImpl implements PersonalUserService {
         }
         userDao.insertUser(user);
         int user_id=user.getUserID();
+
+        //初始化user_detail
         UserDetails userDetails=new UserDetails();
         userDetails.setUserID(user_id);
+        userDetails.setUserPhone(user.getUserPhone());
         userDao.insertUserDetail(userDetails);
         return "success";
     }
