@@ -68,39 +68,60 @@ public class company {
 
     @RequestMapping("toselect")
     public String Toselect(HttpServletRequest request){
+        LOGGER.info("查询申报表！");
         List<Declare> declareList = declareService.getAllDeclare();
         request.setAttribute("userList",declareList);
-        return "selectuser";
+        return "company";
     }
-    @RequestMapping("selectuser")
-    public String SelectUser(String userName,String identifyNum,int status,
-                             int level,String year,HttpServletRequest request){
-        LOGGER.info("查询用户！");
+    @RequestMapping("company")
+    public String SelectUser(String userName,String identifyNum,String status,
+                             String level,String year,HttpServletRequest request){
+        LOGGER.info("查询申报表！");
         List<Declare> declareUsernameList = new ArrayList<Declare>();
-        List<Declare> declareIdentifynumList = new ArrayList<Declare>();
+        Declare declareIdentifynumList = new Declare();
         List<Declare> declareStatusList = new ArrayList<Declare>();
         List<Declare> declareLevelList = new ArrayList<Declare>();
         List<Declare> declareYearList = new ArrayList<Declare>();
         List<Declare> declareList = new ArrayList<Declare>();
         if(!userName.equals(""))
             declareUsernameList=declareService.getDeclareByUserName(userName);
-        if(!userName.equals(""))
-            declareUsernameList=declareService.getDeclareByIdentifyNum(identifyNum);
-        if(!userName.equals(""))
-            declareUsernameList=declareService.getDeclareByStatus(status);
-        if(!userName.equals(""))
-            declareUsernameList=declareService.getDeclareByLevel(level);
-        if(!userName.equals(""))
-            declareUsernameList=declareService.getDeclareByYear(year);
+        if(!identifyNum.equals(""))
+            declareIdentifynumList=declareService.getDeclareByIdentifyNum(identifyNum);
+        if(!status.equals("")){
+            int s=Integer.parseInt(status);
+            declareStatusList=declareService.getDeclareByStatus(s);
+        }
+        if(!level.equals("")){
+            int l=Integer.parseInt(level);
+            declareLevelList=declareService.getDeclareByLevel(l);
+        }
+        if(!year.equals(""))
+            declareYearList=declareService.getDeclareByYear(year);
         declareList.addAll(declareUsernameList);
-        declareList.addAll(declareIdentifynumList);
+        declareList.add(declareIdentifynumList);
         declareList.addAll(declareStatusList);
         declareList.addAll(declareLevelList);
         declareList.addAll(declareYearList);
         declareList = new ArrayList<Declare>(new LinkedHashSet<>(declareList));
         request.setAttribute("userList",declareList);
         LOGGER.info("查询成功！");
-        return "selectuser";
+        return "company";
+    }
+
+    @RequestMapping("todetails")
+    public String ToEditUser(@RequestParam String declareID,HttpServletRequest request){
+        int dID = Integer.parseInt(declareID);
+        Declare declare = declareService.findDeclare(dID);
+        request.setAttribute("thisDeclare",declare);
+        return "company_shenhe";
+    }
+
+    @RequestMapping("deleteuser")
+    public String DeleteUser(@RequestParam String declareID,HttpServletRequest request){
+        int dID = Integer.parseInt(declareID);
+        declareService.deleteDeclare(dID);
+        request.setAttribute("message","删除成功！");
+        return "forward:toselect";
     }
 
 }
