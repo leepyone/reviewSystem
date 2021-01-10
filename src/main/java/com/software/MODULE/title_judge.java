@@ -9,6 +9,10 @@ public class title_judge {
     int userId;
     int corporationId;
     String judgeZgb;
+    int judgeStatus;
+    String judgeYear;
+    String userName;
+    String userIdentifyNumber;
     int judgeLevel;
     int userLevel;
     String judgeTitle;
@@ -18,7 +22,6 @@ public class title_judge {
     String picIdc2;
     String workSum;
     String laborContract;
-    int judgeStatus;
 
 
     String judgeLevel_str;
@@ -69,4 +72,28 @@ public class title_judge {
         return judgeStatus_str;
     }
 
+    public title_judge(){}
+
+    public title_judge(int judgeId, int userId, int corporationId, String judgeZgb, int judgeStatus, String judgeYear, String userName, String userIdentifyNumber, int judgeLevel, int userLevel, String judgeTitle, String judgeMajor, String picPerson, String picIdc1, String picIdc2, String workSum, String laborContract, String judgeLevel_str, String userLevel_str, String judgeStatus_str) {
+        this.judgeId = judgeId;
+        this.userId = userId;
+        this.corporationId = corporationId;
+        this.judgeZgb = judgeZgb;
+        this.judgeStatus = judgeStatus;
+        this.judgeYear = judgeYear;
+        this.userName = userName;
+        this.userIdentifyNumber = userIdentifyNumber;
+        this.judgeLevel = judgeLevel;
+        this.userLevel = userLevel;
+        this.judgeTitle = judgeTitle;
+        this.judgeMajor = judgeMajor;
+        this.picPerson = picPerson;
+        this.picIdc1 = picIdc1;
+        this.picIdc2 = picIdc2;
+        this.workSum = workSum;
+        this.laborContract = laborContract;
+        this.judgeLevel_str = judgeLevel_str;
+        this.userLevel_str = userLevel_str;
+        this.judgeStatus_str = judgeStatus_str;
+    }
 }

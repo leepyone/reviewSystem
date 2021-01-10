@@ -5,6 +5,12 @@ import com.software.MODULE.UserDetails;
 
 public interface UserService {
 
+<<<<<<< HEAD
+=======
+    /**
+     个人的UserService
+     */
+>>>>>>> master
     //登录
     public User Login(String user_number, String user_password);
 

@@ -32,4 +32,16 @@ public class Judge_check {
         }
         return checkStatus_str;
     }
+
+    public Judge_check(){}
+
+    public Judge_check(int checkId, Date checkDate, int judgeId, int userId, String checkOppions, int checkStatus, String checkStatus_str) {
+        this.checkId = checkId;
+        this.checkDate = checkDate;
+        this.judgeId = judgeId;
+        this.userId = userId;
+        this.checkOppions = checkOppions;
+        this.checkStatus = checkStatus;
+        this.checkStatus_str = checkStatus_str;
+    }
 }
