@@ -48,4 +48,7 @@ public class EducationServiceImpl implements EducationService {
     public void setEducation(Education education){
         educationDao.setEducation(education);
     }
+
+    @Override
+    public List<Education> getEduList(int userID){ return educationDao.getEducationByUserID(userID); }
 }

@@ -16,4 +16,6 @@ public interface PaperService {
     public void deletePaper(Paper paper);//根据论文ID删除单个论文
 
     public void setPaper(Paper paper);//更新一条论文记录
+
+    public List<Paper> getPaperList(int userID);
 }

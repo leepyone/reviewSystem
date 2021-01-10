@@ -78,4 +78,7 @@ public interface declareDao {
     @Select("select * from declare_check where declare_id=#{declare_id}")
     public Declare_check getDeclareCheckByDeclareId(int declare_id);//通过评审表id获取相应declare_check对象
 
+    @Delete("DELETE FROM `declare` WHERE `declare`.declare_ID=#{declareID}")
+    public void deleteDeclare(int declareID);
+
 }
