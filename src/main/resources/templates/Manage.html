@@ -223,16 +223,33 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <tr th:each="list:${workerList}">
+                                        <tr th:each="list,listStat :${workerList}">
                                             <th scope="row" th:text=${listStat.count}></th>
                                             <td th:text=${list.workerName}></td>
-                                            <td th:text=${list.workerPhone}></td>
                                             <td th:text=${list.workerStatus}></td>
-                                            <td th:text=${list.declareStatus}></td>
-                                            <td>
-                                                111
+                                            <td >
+<!--                                                <a th:href="" class="btn btn-rounded btn-danger btn-xs">-->
+<!--                                                    启用-->
+<!--                                                </a>-->
+                                                <a th:href="" class="btn btn-rounded btn-danger btn-xs" th:if="${list.workerStatus}">
+                                                    禁止
+                                                </a>
                                             </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <a href="#" class="btn btn-rounded btn-danger btn-xs">删除</a>
+                                                    </div>
+
+                                                </div>
+                                            </td>
+
+
+<!--                                            <td>-->
+<!--                                                111-->
+<!--                                            </td>-->
                                         </tr>
+
                                         </tbody>
                                     </table>
                                 </div>
