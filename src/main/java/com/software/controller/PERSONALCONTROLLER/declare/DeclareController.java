@@ -120,7 +120,7 @@ public class DeclareController {
         map.put("educationList",educationList);
         map.put("experienceList",experienceList);
         map.put("paperList",paperList);
-        return "评审表详细内容界面";
+        return "detail";
     }
 
     //查看评审表的推荐表
@@ -177,11 +177,13 @@ public class DeclareController {
 
     //新建评审表
     @PostMapping("/CreateDeclareTable")
-    public String CreateDeclareTable(Declare declare,HttpSession session,Map<String, Object> map){
+    public String CreateDeclareTable(Declare declare,String declare_worktime,HttpSession session,Map<String, Object> map){
         if(!isLogin(session)){
             return "redirect:/PersonalUser/Login";//返回登录界面
         }
         User user=(User) session.getAttribute("PersonalLoginUser");
+        Date declareWorkTime=StringToDate(declare_worktime);
+        declare.setDeclareWorktime(declareWorkTime);
         //提交相应的信息
         personalDeclareService.CreateDeclare(declare,user);
         return "pingshen_input";

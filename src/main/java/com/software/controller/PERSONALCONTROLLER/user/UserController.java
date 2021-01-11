@@ -24,9 +24,9 @@ public class UserController {
     public String toLogin(HttpSession session){
         if(isLogin(session)){
             //如果登录了
-            return "redirect:首页(有评审表list的)";
+//            return "redirect:个人资料界面";
         }
-        return "登录界面";
+        return "personal_login";
     }
 
     //跳转个人版注册界面
@@ -45,12 +45,12 @@ public class UserController {
         if(user!=null){
             //登录成功
             session.setAttribute("PersonalLoginUser",user);
-            return "redirect:个人资料页面(主界面)";
+            return "redirect:/PersonalDeclare/Declare";
 
         }
         else{
             map.put("LoginFailMsg","用户名或密码错误");
-            return "登录界面";//返回登录界面
+            return "personal_login";//返回登录界面
         }
     }
 
