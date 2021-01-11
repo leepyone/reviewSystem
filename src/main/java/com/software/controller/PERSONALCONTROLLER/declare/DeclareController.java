@@ -38,7 +38,7 @@ public class DeclareController {
     //简单日期格式转换
     private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-    //跳转首页
+    //跳转申报职称页面
     @RequestMapping("/Main")
     public String toMain(HttpSession session,Map<String, Object> map){
         if(!isLogin(session)){
@@ -51,7 +51,7 @@ public class DeclareController {
         //put上去
         map.put("declareList",declareList);
 
-        return "首页";
+        return "shenbaozhicheng";
     }
 
     //跳转至职称评审界面
@@ -70,7 +70,7 @@ public class DeclareController {
         //put上去
         map.put("declareList",declareList);
 
-        return "redirect:职称评审界面";
+        return "index";
     }
 
     //跳转至新建审评表界面
