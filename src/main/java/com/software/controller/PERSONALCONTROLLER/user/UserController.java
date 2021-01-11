@@ -24,15 +24,15 @@ public class UserController {
     public String toLogin(HttpSession session){
         if(isLogin(session)){
             //如果登录了
-            return "redirect:首页(有评审表list的)";
+//            return "redirect:个人资料界面";
         }
-        return "登录界面";
+        return "personal_login";
     }
 
     //跳转个人版注册界面
     @RequestMapping("/Register")
     public String toRegister(){
-        return "注册界面";//跳转页面
+        return "personal_register";//跳转页面
     }
 
     //个人版登录
@@ -45,12 +45,12 @@ public class UserController {
         if(user!=null){
             //登录成功
             session.setAttribute("PersonalLoginUser",user);
-            return "redirect:个人资料页面(主界面)";
+            return "redirect:/PersonalDeclare/Declare";
 
         }
         else{
             map.put("LoginFailMsg","用户名或密码错误");
-            return "登录界面";//返回登录界面
+            return "personal_login";//返回登录界面
         }
     }
 
@@ -64,21 +64,29 @@ public class UserController {
 
     //个人版注册
     @PostMapping("/doRegister")
-    public String doRegister(User user, Map<String, Object> map, HttpSession session){
+    public String doRegister(User user, String CheckUserPassword,Map<String, Object> map, HttpSession session){
         String feature=userService.PersonalRegister(user);
+        System.out.println(feature);
+        if(!user.getUserPassword().equals(CheckUserPassword)){
+            map.put("CheckUserPasswordErroMsg","确认密码与原密码不符");
+        }
         if(feature.equals("success")){
             //注册成功
             return "redirect:/PersonalUser/Login";//返回登录界面
         }
         else if(feature.equals("身份证已存在")){
             //身份证重复
-            map.put("IdentifyIdRepeatMsg","身份证号码重复");
-            return "注册界面";
+            map.put("IdentifyIdRepeatMsg","身份证已被注册");
+            return "personal_register";
         }
-        else{
+        else if(feature.equals("电话号码已存在")){
             //电话号码重复
-            map.put("PhoneRepeatMsg","电话号码重复");
-            return "注册界面";
+            map.put("PhoneRepeatMsg","电话号码已被注册");
+            return "personal_register";
+        }
+        else {
+            map.put("UserNameRepeatMsg","账号已被注册");
+            return "personal_register";
         }
     }
 

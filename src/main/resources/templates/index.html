@@ -108,13 +108,12 @@
 
 
  <!--以下是职称评审item-->
-    <div th:each="declareItem,declare:${declareList}">
+    <div th:each="declareItem,declareStat:${declareList}">
       <div class="row">
         <div class="col-sm-9 col-md-offset-1">
-            <label th:text="${declare.count}+'#职称评审'">#1职称评审</label>
+            <label th:text="${declareStat.count}+'#职称评审'">#1职称评审</label>
 <!--            目前没有跳转-->
-          <button type="button" class="btn btn-primary"
-           onclick="window.location.href = './detail.html'">详情 </button>
+            <a type="button" class="btn btn-primary" th:href="@{'/PersonalDeclare/Detail/'+${declareItem.getDeclareID()}}">详情</a>
           <button type="button" class="btn btn-danger" >推荐表</button>  
           <button type="button" class="btn btn-danger" >评审表</button>
           <lable>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</lable> 

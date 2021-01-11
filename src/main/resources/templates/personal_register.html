@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <base th:href="@{/}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="plugins/css/bootstrap.min.css">
+    <style>
+     
+      body{
+        padding-top: 70px;
+
+      }
+      .col-sm-9{border-radius: 10px;}
+      .div{border-radius: 10px;}
+      .starter{
+        padding: 40px 15px;
+        text-align:center;
+      }
+      
+      .row{
+        border-radius: 10px;
+        margin-bottom: 25px;
+        display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+      }
+
+      .row .row{
+        margin-top:0px;
+        margin-bottom: 20px;
+      }
+      [class*="col-"]{
+        padding-top: 15px;
+        padding-bottom: 15px;
+        background-color: #eee;
+        background-color:#eef1f6;
+        border:1px solid #ddd;
+        border:1px solid rgba(75, 74, 74, 0.2);
+      }
+    </style>
+</head>
+<body>
+
+     <!--1.以下是用户注册须知-->
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2" style="background-color: rgb(254, 254, 255);">
+  
+     
+  
+      <div class="row" style=" background-color :#e4f0ff" >
+      
+          <h4><font color="#1a56a8"> <strong>用户注册</strong></font></h4>
+                    
+      </div>
+    
+  
+  
+           <div class="row">
+                   <div class="col-sm-12" style="border-color:#eef1f6 ;">
+                    <h3 align="center"><font color="#d9524e"> 注册须知</font></h3>
+                    <h4><font color="#d9524e">1 进行证书审验的专业技术人员，必须先进行注册，注册后才能进行证书审验。
+                    </font></h4>
+                    <h4><font color="#d9524e">2 请专业技术人员认真、如实填写有关个人信息。其中姓名、身份证号作为证书审验基本资料，手机号码和邮箱作为专业技术人员登录系统和找回密码工具，一旦确认即不可随意更改。
+                    </font></h4>
+                    <h4><font color="#d9524e">3 相同身份证号，姓名，手机号码和邮箱只允许注册一次。
+                    </font></h4>
+                    <h4><font color="#d9524e">4 账号、密码、邮箱、安全问题和安全答案要妥善保管，如密码丢失，可通过注册时预留邮箱、安全问题和安全答案找回密码。账号和密码如被他人盗用责任自负。
+                    </font></h4>
+                    <h4><font color="#d9524e">5 注册时身份证号错误需要更改的，请致电 0771-5505013 联系客服处理。
+                    </font></h4>
+                   </div>
+                   
+            </div>
+            <div class="row">
+                <div div class="col-sm-12" style="border-style: hidden; background-color: rgb(254, 254, 255);">
+            <p style="float:right" > <input type="checkbox" name="vehicle" 
+             id="checkbox1" /> 我已经阅读并同意上述条款</p>
+         </div>
+     </div>
+    </div>
+  </div>
+  
+  <!--1.以上是用户注册须知-->
+
+<form method="post" th:action="@{'/PersonalUser/doRegister'}">
+  <div class="row">
+    <div class="col-sm-8 col-md-offset-2">
+         <div class="col-sm-12"  > 
+             <!--以下是弹窗内容-->
+            <div class="row">
+                <h5><font color="#FF0033"> * </font>&nbsp注册账号</h5>
+            </div>
+             <p style="color: red" th:text="${UserNameRepeatMsg}" th:if="${not #strings.isEmpty(UserNameRepeatMsg)}"></p>
+            <div class="row" style="background-color: #FFFFFF;">
+                <input style="width: 1000px; height:40px" type="text" name="userNumber">
+            </div>
+            <div class="row">
+                <h5><font color="#FF0033"> * </font>&nbsp注册密码</h5>
+            </div>             
+            <div class="row" style="background-color: #FFFFFF;">
+                <input style="width: 1000px; height:40px" type="text" name="userPassword">
+            </div>
+            <div class="row">
+                <h5><font color="#FF0033"> * </font>&nbsp确认密码</h5>
+            </div>
+             <p style="color: red" th:text="${CheckUserPasswordErroMsg}" th:if="${not #strings.isEmpty(CheckUserPasswordErroMsg)}"></p>
+            <div class="row" style="background-color: #FFFFFF;">
+                <input style="width: 1000px; height:40px" type="text" name="CheckUserPassword">
+            </div>
+            <div class="row">
+                <h5><font color="#FF0033"> * </font>&nbsp姓名</h5>
+            </div>             
+            <div class="row" style="background-color: #FFFFFF;">
+                <input style="width: 1000px; height:40px" type="text" name="userName">
+            </div>
+            <div class="row">
+                <h5><font color="#FF0033"> * </font>&nbsp身份证号</h5>
+            </div>             
+            <div class="row" style="background-color: #FFFFFF;" >
+                <input style="width: 1000px; height:40px" type="text" name="userIdentifyID">
+            </div>
+             <p style="color: red" th:text="${IdentifyIdRepeatMsg}" th:if="${not #strings.isEmpty(IdentifyIdRepeatMsg)}"></p>
+            <div class="row">
+                <h5><font color="#FF0033"> * </font>&nbsp手机号</h5>
+            </div>             
+            <div class="row" style="background-color: #FFFFFF;">
+                <input style="width: 1000px; height:40px" type="text" name="userPhone">
+            </div>
+             <p style="color: red" th:text="${PhoneRepeatMsg}" th:if="${not #strings.isEmpty(PhoneRepeatMsg)}"></p>
+         </div>
+         
+            <div class="modal-footer">
+                <a  style="float:left" type="button" class="btn btn-success" th:href="@{'/PersonalUser/Login'}">返回登陆</a>
+                <button type="submit" class="btn btn-primary">创建用户</button>
+            </div>
+    </div>
+</div>
+</form>
+
+</body>
+</html>
