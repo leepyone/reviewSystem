@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <base th:href="@{/}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="plugins/css/bootstrap.min.css">
+    <style>
+     
+      body{
+        padding-top: 70px;
+
+      }
+      .col-sm-9{border-radius: 10px;}
+      .div{border-radius: 10px;}
+      .starter{
+        padding: 40px 15px;
+        text-align:center;
+      }
+      
+      .row{
+        border-radius: 10px;
+        margin-bottom: 25px;
+        display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+      }
+
+      .row .row{
+        margin-top:-13px;
+        margin-bottom: 20px;
+      }
+      [class*="col-"]{
+        padding-top: 15px;
+        padding-bottom: 15px;
+        background-color: #eee;
+        background-color:#eef1f6;
+        border:1px solid #ddd;
+        border:1px solid rgba(75, 74, 74, 0.2);
+      }
+    </style>
+</head>
+<body>
+
+  <!--1.以下是导航栏-->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+       
+          <div calss="row">
+            <ul class="nav navbar-nav" ><li ><a href="#">广西专业技术人员（职称）管理服务平台<small>（广西人才市场）</small></a></li></ul>
+
+
+       </div>
+          <div id="navbar" class="collapse-default navbar-collapse" >
+              <ul class="nav navbar-nav" >
+                  <li  ><a th="#">首页</a></li>
+                  <li  ><a th:href="@{'/PersonalUserInfo/toPersonalInfo'}">个人资料</a></li>
+                  <li  ><a th:href="@{'/PersonalDeclare/Main'}">申报职称</a></li>
+                  <li class="active"><a th:href="@{'/PersonalDeclare/Declare'}">职称评审</a></li>
+                  <li  ><a th:href="@{'/PersonalJudge/Judge'}">职称认定</a></li>
+                  <li><a href="#">帮助中心</a></li>
+              </ul>
+          </div>
+      </nav>
+    <!--1.以上是导航栏-->
+
+
+      
+        
+ 
+ <!--以下是个人承诺-->
+      <div class="row">
+        <div class="col-sm-9 col-md-offset-1" style="background-color: rgb(254, 254, 255);">
+
+         
+
+          <div class="row" style=" background-color :#e4f0ff" >
+          
+              <h4><font color="#1a56a8"> <strong>个人承诺</strong></font></h4>
+                        
+          </div>
+        
+
+
+               <div class="row">
+                       <div class="col-sm-10  col-md-offset-1" style="border-color:#eef1f6 ;">
+                        <h3 align="center"><font color="#d9524e"> 职称申报个人承诺书</font></h3>
+                        <h5><font color="#d9524e">&nbsp&nbsp&nbsp&nbsp本人承诺对所递交的申报材料完整性和真实性负责。如因申报材料缺失不全造成的后果由本人自行承担；
+                          如申报过程中被发现申报材料弄虚作假，
+                          同意按照自治区有关文件及评审条件规定，自申报当年起，5年内不得申报。累计造假两次的，终身不得申报。
+                        </font></h5>
+                        <h5 align="right"><font color="#d9524e">
+                            <label th:text="'本人已承诺：'+${session.PersonalLoginUser.getUserName()}">本人已承诺：魏腾飞</label>
+                        </font></h5>
+                        <h5 align="right"><font color="#d9524e">
+                          承诺日期：2020/1/12
+                        </font></h5>
+                       </div>
+                    
+                     
+                </div>
+                        
+                </div>
+        </div>
+     
+    
+<!--以上是个人承诺-->
+
+
+
+<!--以下是基本信息-->
+
+<div class="row">
+  <div class="col-sm-9 col-md-offset-1" style="background-color: rgb(254, 254, 255);">
+    <div class="row" style=" background-color :#e4f0ff" >
+    
+      <h4><font color="#1a56a8"> <strong>基本信息</strong></font></h4>
+                
+  </div>
+    <div class="row">
+      <div class="col-sm-2 ">
+        <img src="./img/smile.png">
+      </div>
+      <div class="col-sm-9 ">
+        
+        <div class="row">
+          <div class="col-sm-3 ">
+            评审年度
+           </div>
+            <div class="col-sm-3" style="background-color: #FFFFFF;">
+              <label th:text="${declare.getDeclareYear()}"></label>
+             </div>
+             <div class="col-sm-3">
+              参加评审会
+             </div>
+             <div class="col-sm-3" style="background-color: #FFFFFF;">
+              桂林电子科技大学引进高层次急需紧缺人才直接评审高级职称委员会
+             </div>
+
+
+             <div class="col-sm-3 ">
+              曾用名
+             </div>
+              <div class="col-sm-3" style="background-color: #FFFFFF;">
+                  <label th:text="${session.PersonalLoginUser.getUserName()}"></label>
+               </div>
+               <div class="col-sm-3">
+                填表时间
+               </div>
+               <div class="col-sm-3" style="background-color: #FFFFFF;">
+                2020/07/01
+               </div>
+
+               <div class="col-sm-3 ">
+                性别
+               </div>
+                <div class="col-sm-3" style="background-color: #FFFFFF;">
+                  男
+                 </div>
+                 <div class="col-sm-3">
+                  个人身份性质
+                 </div>
+                 <div class="col-sm-3" style="background-color: #FFFFFF;">
+                     <label th:text="${declare.getDeclarePersoncharacter()}"></label>
+                 </div>
+
+                 <div class="col-sm-3 ">
+                  证件号码
+                 </div>
+                  <div class="col-sm-3" style="background-color: #FFFFFF;">
+                      <label th:text="+${session.PersonalLoginUser.getUserIdentifyID()}"></label>
+                   </div>
+                   <div class="col-sm-3">
+                    出生年月
+                   </div>
+                   <div class="col-sm-3" style="background-color: #FFFFFF;">
+                       <label th:text="${declare.getDeclareUserBirthday()}"></label>
+                   </div>
+  
+                   <div class="col-sm-3 ">
+                    民族
+                   </div>
+                    <div class="col-sm-3" style="background-color: #FFFFFF;">
+                        <label th:text="${declare.getDeclareUserNation()}"></label>
+                     </div>
+                     <div class="col-sm-3">
+                      参加工作时间
+                     </div>
+                     <div class="col-sm-3" style="background-color:#FFFFFF;">
+                         <label th:text="${#dates.format(declare.getDeclareWorktime(), 'yyyy-MM-dd')}"></label>
+                     </div>
+
+                     
+                   <div class="col-sm-3 ">
+                    籍贯
+                   </div>
+                    <div class="col-sm-3" style="background-color: #FFFFFF;">
+                        <label th:text="${declare.getDeclareUserHometown()}"></label>
+                     </div>
+                     <div class="col-sm-3">
+                      专业技术工作年限
+                     </div>
+                     <div class="col-sm-3" style="background-color: #FFFFFF;">
+                         <label th:text="${declare.getDeclareTimelimit()}"></label>
+                     </div>
+                     
+                     <div class="col-sm-3 ">
+                      联系电话
+                     </div>
+                      <div class="col-sm-3" style="background-color: #FFFFFF;">
+                          <label th:text="${session.PersonalLoginUser.getUserPhone()}"></label>
+                       </div>
+                       <div class="col-sm-3">
+                        电子邮箱
+                       </div>
+                       <div class="col-sm-3" style="background-color: #FFFFFF;">
+                           <label th:text="${declare.getDeclareUserEmail()}"></label>
+                       </div>
+                       <div class="col-sm-3 ">
+                        拟评级别
+                       </div>
+                        <div class="col-sm-3" style="background-color:#FFFFFF;">
+                            <label th:text="${declare.getdeclareLevel_str()}"></label>
+                         </div>
+                         <div class="col-sm-3">
+                          单位级别
+                         </div>
+                         <div class="col-sm-3" style="background-color:#FFFFFF;">
+                             <label th:text="${declare.getDeclareCorperationLevel()}"></label>
+                         </div>
+                         <div class="col-sm-3 ">
+                          拟评专业系列
+                         </div>
+                          <div class="col-sm-3" style="background-color: #FFFFFF;">
+                              <label th:text="${declare.getDeclareProfessionalSeries()}"></label>
+                           </div>
+                           <div class="col-sm-3">
+                            拟评专业技术资格
+                           </div>
+                           <div class="col-sm-3" style="background-color:#FFFFFF;">
+                               <label th:text="${declare.getDeclareQualification()}"></label>
+                           </div>
+                           <div class="col-sm-3 ">
+                            拟评专业
+                           </div>
+                            <div class="col-sm-3" style="background-color:#FFFFFF;">
+                                <label th:text="${declare.getDeclareSeries()}"></label>
+                             </div>
+                             <div class="col-sm-3">
+                              行政职务
+                             </div>
+                             <div class="col-sm-3" style="background-color:#FFFFFF;">
+                                 <label th:text="${declare.getDeclarePoliticsPost()}"></label>
+                             </div>
+                             <div class="col-sm-3 ">
+                              政治面貌
+                             </div>
+                              <div class="col-sm-3" style="background-color:#FFFFFF;">
+                                  <label th:text="${declare.getDeclarePolitics()}"></label>
+                               </div>
+                               <div class="col-sm-3">
+                                行政职务任命时间
+                               </div>
+                               <div class="col-sm-3" style="background-color: #FFFFFF;">
+                                   <label th:text="${#dates.format(declare.getDeclareTime(), 'yyyy-MM-dd')}"></label>
+                               </div>
+
+                               <div class="col-sm-3">
+                                行政职务说明
+                               </div>
+                               <div class="col-sm-9" style="background-color:#FFFFFF;">
+                                   <label th:text="${declare.getDeclareExplain()}"></label>
+                               </div>
+                               <div class="col-sm-3">
+                                档案所在地名称
+                               </div>
+                               <div class="col-sm-9" style="background-color: #FFFFFF;">
+                                   <label th:text="${declare.getDeclareInstitution()}"></label>
+                               </div>
+                               <div class="col-sm-3">
+                                联系地址
+                               </div>
+                               <div class="col-sm-9" style="background-color: #FFFFFF;">
+                                   <label th:text="${declare.getDeclareCommunicate()}"></label>
+                               </div>
+                               <div class="col-sm-3">
+                                身份证正
+                               </div>
+                               <div class="col-sm-3" style="background-color:#FFFFFF;">
+                                <img src="./img/smile.png">
+                               </div> <div class="col-sm-3">
+                                身份证反
+                               </div>
+                               <div class="col-sm-3" style="background-color: #FFFFFF;">
+                                <img src="./img/smile.png">
+                               </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--以上是基本信息-->
+
+
+
+  <!--以下是学历情况-->
+  <div class="row">
+      <div class="col-sm-9 col-md-offset-1" style="background-color: rgb(254, 254, 255);">
+          <div class="row" style=" background-color :#e4f0ff" >
+              <h4><font color="#1a56a8"> <strong>学历情况</strong></font></h4>
+          </div>
+          <div class="row">
+              <table class="table table-bordered table-hover">
+                  <thead>
+                  <tr style="background-color:#eef1f6" >
+                      <th scope="col">毕业时间</th>
+                      <th scope="col">学历项目</th>
+                      <th scope="col">学历</th>
+                      <th scope="col">毕业学校</th>
+                      <th scope="col">专业</th>
+                      <th scope="col">操作</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr th:each="list:${educationList}">
+                      <th scope="row" th:text="${#dates.format(list.educationGraduationTime, 'yyyy-MM-dd')}"></th>
+                      <td th:text="${list.educationGraduationProject}"></td>
+                      <td th:text="${list.educationLevel}"></td>
+                      <td th:text="${list.educationSchool}"></td>
+                      <td th:text="${list.educationMajor}"></td>
+                      <td>
+                          <button type="button" class="btn btn-primary" >＋详情</button>
+                      </td>
+                  </tr>
+                  </tbody>
+              </table>
+              <!--以下是具体学历信息：for循环这里-->
+
+              <!--以上是具体学历信息：for循环这里-->
+          </div>
+
+      </div>
+  </div>
+  <!--以上是学历情况-->
+
+
+  <!--以下是主要经历-->
+  <div class="row">
+      <div class="col-sm-9 col-md-offset-1" style="background-color: rgb(254, 254, 255);">
+          <div class="row" style=" background-color :#e4f0ff" >
+
+              <h4><font color="#1a56a8"> <strong>主要经历</strong></font></h4>
+
+          </div>
+
+
+
+          <div class="row">
+
+
+              <table class="table table-bordered table-hover">
+                  <thead>
+                  <tr style="background-color:#eef1f6" >
+                      <th scope="col">开始时间</th>
+                      <th scope="col">截至时间</th>
+                      <th scope="col">工作单位(学校)</th>
+                      <th scope="col">操作</th>
+
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr th:each="list:${experienceList}">
+                      <th scope="row" th:text="${#dates.format(list.experienceStarttime, 'yyyy-MM-dd')}"></th>
+                      <td th:text="${#dates.format(list.experienceEndtime, 'yyyy-MM-dd')}"></td>
+                      <td th:text="${list.experienceInstitution}"></td>
+                      <td>
+                          <button type="button" class="btn btn-primary" >＋详情</button>
+                      </td>
+                  </tr>
+                  </tbody>
+              </table>
+              <!--以上是具体主要经历：for循环这里-->
+          </div>
+
+      </div>
+  </div>
+  <!--以上是主要经历-->
+
+
+  <!--以下是论文/著作-->
+  <div class="row">
+      <div class="col-sm-9 col-md-offset-1" style="background-color: rgb(254, 254, 255);">
+          <div class="row" style=" background-color :#e4f0ff" >
+
+              <h4><font color="#1a56a8"> <strong>论文、著作</strong></font></h4>
+
+          </div>
+
+
+
+          <div class="row">
+
+
+
+
+
+              <table class="table table-bordered table-hover">
+                  <thead>
+                  <tr style="background-color:#eef1f6" >
+                      <th scope="col">序号</th>
+                      <th scope="col">发表时间</th>
+                      <th scope="col">论文类别</th>
+                      <th scope="col">论文著作名称</th>
+                      <th scope="col">登载刊物名称、刊号</th>
+                      <th scope="col">角色</th>
+
+                      <th scope="col">操作</th>
+
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr th:each="list,listStat:${paperList}">
+                      <th scope="row" th:text="${listStat.count}"></th>
+                      <th scope="row" th:text="${#dates.format(list.paperDate, 'yyyy-MM-dd')}"></th>
+                      <td th:text="${list.paperType}"></td>
+                      <td th:text="${list.paperName}"></td>
+                      <td th:text="${list.paperPart}"></td>
+                      <td th:text="${list.paperPublication}"></td>
+                      <td th:text="${list.paperPart}"></td>
+
+                      <td>
+                          <button type="button" class="btn btn-primary" >＋详情</button>
+                      </td>
+                  </tr>
+                  </tbody>
+              </table>
+
+
+
+
+
+
+
+              <!--以上是论文/著作：for循环这里-->
+          </div>
+
+      </div>
+  </div>
+  <!--以上是论文/著作-->
+
+
+
+
+
+
+<!--以下是else固定信息-->
+<div class="row">
+  <div class="col-sm-9 col-md-offset-1" style="background-color: rgb(254, 254, 255);">
+    <div class="row" style=" background-color :#e4f0ff" >
+    
+        <h4><font color="#1a56a8"> <strong>人才引进相关资料</strong></font></h4>
+                  
+    </div>
+  
+
+
+         <div class="row">
+          <div class="col-sm-10" >
+            材料名称
+           </div> 
+           <div class="col-sm-2" >
+            操作
+           </div>
+            <!--以下是论文/著作：for循环这里-->
+            <div class="col-sm-10" style="background-color:#FFFFFF;">
+              广西职称申报平台
+             </div> 
+             
+             <div class="col-sm-2" style="background-color:#FFFFFF;">
+              <button type="button" class="btn btn-primary" >＋详情</button>  
+             </div>
+            <!--以上是论文/著作：for循环这里-->
+          </div>
+                  
+          </div>
+  </div>
+
+
+
+  <div class="row">
+    <div class="col-sm-9 col-md-offset-1" style="background-color: rgb(254, 254, 255);">
+      <div class="row" style=" background-color :#e4f0ff" >
+      
+          <h4><font color="#1a56a8"> <strong>人才引进相关资料</strong></font></h4>
+                    
+      </div>
+    
+  
+
+
+
+
+           <div class="row">
+            <div class="col-sm-10" >
+              业绩成果
+             </div> 
+             <div class="col-sm-2" >
+              操作
+             </div>
+              <!--以下是论文/著作：for循环这里-->
+              <div class="col-sm-10" style="background-color:#FFFFFF;">
+                sci三篇，人民日报发表五篇文章
+               </div> 
+               
+               <div class="col-sm-2" style="background-color:#FFFFFF;">
+                <button type="button" class="btn btn-primary" >＋详情</button>  
+               </div>
+              <!--以上是论文/著作：for循环这里-->
+            </div>
+                    
+            </div>
+    </div>
+<!--以上是else固定信息-->
+
+
+
+
+
+
+
+
+</body>
+</html>
+
