@@ -6,6 +6,8 @@ import com.software.MODULE.UserDetails;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Mapper
 @Repository
 public interface userDao {
@@ -21,6 +23,8 @@ public interface userDao {
     @Select("select * from user where `user`.user_number=#{user_number} and `user`.user_password=#{user_password}")
     User Login(String user_number,String user_password);
 
+    @Select("select * from user where 'user'.user_corpID=#{corpID}")
+    List<User> getUsersByCorpID(int corpID);
 
     //根据账号查询用户信息
     @Select("select * from `user` where `user`.user_number=#{userNumber}")

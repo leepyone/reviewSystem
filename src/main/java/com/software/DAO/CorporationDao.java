@@ -28,6 +28,7 @@ public interface CorporationDao {
     @Select("select * from corporation")
     List<Corporation> FindAllCorporations();
 
+
     //插入一条公司 员工记录 用于给公司添加工作人员
     @Insert("insert into corporation_worker values(#{corporationId},#{userID},#{userStatus}) ")
     boolean insertCorporationWorkers(corporation_worker worker);
