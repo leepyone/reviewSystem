@@ -93,10 +93,10 @@
                           同意按照自治区有关文件及评审条件规定，自申报当年起，5年内不得申报。累计造假两次的，终身不得申报。
                         </font></h5>
                         <h5 align="right"><font color="#d9524e">
-                          本人已承诺：唐老师
+                            <label th:text="'本人已承诺：'+${session.PersonalLoginUser.getUserName()}">本人已承诺：魏腾飞</label>
                         </font></h5>
                         <h5 align="right"><font color="#d9524e">
-                          承诺日期：2020/1/1
+                          承诺日期：2020/1/12
                         </font></h5>
                        </div>
                     
@@ -131,7 +131,7 @@
             评审年度
            </div>
             <div class="col-sm-3" style="background-color: #FFFFFF;">
-              2020
+              <label th:text="${declare.getDeclareYear()}"></label>
              </div>
              <div class="col-sm-3">
               参加评审会
@@ -145,52 +145,52 @@
               曾用名
              </div>
               <div class="col-sm-3" style="background-color: #FFFFFF;">
-                唐小率
+                  <label th:text="'本人已承诺：'+${session.PersonalLoginUser.getUserName()}"></label>
                </div>
                <div class="col-sm-3">
                 填表时间
                </div>
                <div class="col-sm-3" style="background-color: #FFFFFF;">
-                2035/1/1
+                2020/07/01
                </div>
 
                <div class="col-sm-3 ">
                 性别
                </div>
                 <div class="col-sm-3" style="background-color: #FFFFFF;">
-                  女
+                  男
                  </div>
                  <div class="col-sm-3">
                   个人身份性质
                  </div>
                  <div class="col-sm-3" style="background-color: #FFFFFF;">
-                  事业单位人员
+                     <label th:text="${declare.getDeclarePersoncharacter()}"></label>
                  </div>
 
                  <div class="col-sm-3 ">
                   证件号码
                  </div>
                   <div class="col-sm-3" style="background-color: #FFFFFF;">
-                    1234567890
+                      <label th:text="'本人已承诺：'+${session.PersonalLoginUser.getUserIdentifyID()}"></label>
                    </div>
                    <div class="col-sm-3">
                     出生年月
                    </div>
                    <div class="col-sm-3" style="background-color: #FFFFFF;">
-                    1999-1-1
+                       <label th:text="${declare.getDeclareUserBirthday()}"></label>
                    </div>
   
                    <div class="col-sm-3 ">
                     民族
                    </div>
                     <div class="col-sm-3" style="background-color: #FFFFFF;">
-                      壮族
+                        <label th:text="${declare.getDeclareUserNation()}"></label>
                      </div>
                      <div class="col-sm-3">
                       参加工作时间
                      </div>
                      <div class="col-sm-3" style="background-color:#FFFFFF;">
-                      1999-1-1
+                         <label th:text="${#dates.format(declare.getDeclareWorktime(), 'yyyy-MM-dd')}"></label>
                      </div>
 
                      
@@ -198,63 +198,62 @@
                     籍贯
                    </div>
                     <div class="col-sm-3" style="background-color: #FFFFFF;">
-                      河南
+                        <label th:text="${declare.getDeclareUserHometown()}"></label>
                      </div>
                      <div class="col-sm-3">
                       专业技术工作年限
                      </div>
                      <div class="col-sm-3" style="background-color: #FFFFFF;">
-                      100
+                         <label th:text="${declare.getDeclareTimelimit()}"></label>
                      </div>
                      
                      <div class="col-sm-3 ">
                       联系电话
                      </div>
                       <div class="col-sm-3" style="background-color: #FFFFFF;">
-                        10086
+                          <label th:text="${session.PersonalLoginUser.getUserPhone()}"></label>
                        </div>
                        <div class="col-sm-3">
                         电子邮箱
                        </div>
                        <div class="col-sm-3" style="background-color: #FFFFFF;">
-                        2222222@qq.com
+                           <label th:text="${declare.getDeclareUserEmail()}"></label>
                        </div>
                        <div class="col-sm-3 ">
                         拟评级别
                        </div>
                         <div class="col-sm-3" style="background-color:#FFFFFF;">
-                          副高级
+                            <label th:text="${declare.getdeclareLevel_str()}"></label>
                          </div>
                          <div class="col-sm-3">
                           单位级别
                          </div>
                          <div class="col-sm-3" style="background-color:#FFFFFF;">
-                          区属
+                             <label th:text="${declare.getDeclareCorperationLevel()}"></label>
                          </div>
                          <div class="col-sm-3 ">
                           拟评专业系列
                          </div>
                           <div class="col-sm-3" style="background-color: #FFFFFF;">
-                            艺术系列
+                              <label th:text="${declare.getDeclareProfessionalSeries()}"></label>
                            </div>
                            <div class="col-sm-3">
                             拟评专业技术资格
                            </div>
                            <div class="col-sm-3" style="background-color:#FFFFFF;">
-                            二级作曲
+                               <label th:text="${declare.getDeclareQualification()}"></label>
                            </div>
-
                            <div class="col-sm-3 ">
                             拟评专业
                            </div>
                             <div class="col-sm-3" style="background-color:#FFFFFF;">
-                              画画
+                                <label th:text="${declare.getDeclareSeries()}"></label>
                              </div>
                              <div class="col-sm-3">
                               行政职务
                              </div>
                              <div class="col-sm-3" style="background-color:#FFFFFF;">
-                              书记
+                                 <label th:text="${declare.getDeclarePoliticsPost()}"></label>
                              </div>
                              <div class="col-sm-3 ">
                               政治面貌
