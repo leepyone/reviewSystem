@@ -51,7 +51,14 @@
       }
     </style>
 <script language="javascript">
-
+function check()
+{
+    if($("#txtname1").val()=="")
+    {
+        alter("请填写必写信息");
+        return false;
+    }
+}
     function tanchuang()
     
     {
@@ -135,7 +142,7 @@
   
   <!--以上是个人承诺-->
   
-  <form action="" method="post"  th:action="@{'/PersonalDeclare/CreateDeclareTable'}">
+  <form action="" method="post" onsubmit="return check()" th:action="@{'/PersonalDeclare/CreateDeclareTable'}">
   
   <!--以下是申报信息-->
   
@@ -246,7 +253,8 @@
             <h5><font color="#FF0033"> * </font>&nbsp拟评专业</h5>
          </div>
          <div class="col-sm-6" style="background-color: #FFFFFF;">
-            <input   name="declareSeries"  style="width: 400px; height:40px" type="text"/>
+            <input  id="txtname1" name="declareSeries"
+                    style="width: 400px; height:40px" type="text"/>
            </div>
 
            
