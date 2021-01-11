@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <base th:href="@{/}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <base th:href="@{/}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
     <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
@@ -164,6 +164,7 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="card">
                                 <h5 class="card-header">查询条件</h5>
+                                <form method="post" action="/corporation/selectdeclare">
                                 <div class="card-body">
                                     <!-- <div class="form-inline">
                                         <div class="col-lg-4 " >
@@ -188,20 +189,21 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group ">
-                                                <label for="inputText3" class="col-form-label ">姓名</label>
-                                                <input id="inputText3" type="text" class="form-control">
+                                                <label class="col-form-label ">姓名</label>
+                                                <input name="userName" type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group ">
-                                                <label for="inputText3" class="col-form-label ">身份证号</label>
-                                                <input id="inputText3" type="text" class="form-control">
+                                                <label class="col-form-label ">身份证号</label>
+                                                <input name="identifyNum" type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group ">
-                                                <label for="inputText3" class="col-form-label ">申报状态</label>
-                                                <select class="form-control">
+                                                <label class="col-form-label ">申报状态</label>
+                                                <select name="status" class="form-control">
+                                                    <option selected>选择状态</option>
                                                     <option>待审核</option>
                                                     <option>审核通过</option>
                                                     <option>审核驳回</option>
@@ -213,8 +215,9 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group ">
-                                                <label for="inputText3" class="col-form-label ">申报级别</label>
-                                                <select class="form-control">
+                                                <label class="col-form-label ">申报级别</label>
+                                                <select name="level" class="form-control">
+                                                    <option selected>选择级别</option>
                                                     <option>初级</option>
                                                     <option>中级</option>
                                                     <option>副高</option>
@@ -224,27 +227,25 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group ">
-                                                <label for="inputText3" class="col-form-label ">申报年度</label>
-                                            
-                                                
-                                                
-                                                <select class="form-control">
+                                                <label class="col-form-label ">申报年度</label>
+                                                <select name="year" class="form-control">
+                                                    <option selected>选择年度</option>
                                                     <option>2021</option>
                                                     <option>2020</option>
                                                     <option>2019</option>
                                                     <option>2018</option>
-                                                  </select>
+                                                </select>
                                             </div>
                                         </div>
                                         
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4 form-group">
-                                            <button type="button" class="btn btn-primary">查询</button>
+                                            <button type="submit" class="btn btn-primary">查询</button>
                                         </div>
                                     </div>
                                 </div>
-                               
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -270,118 +271,21 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>2020</td>
-                                                <td>2020-1-1</td>
-                                                <td>李明</td>
-                                                <td>待审核</td>
+                                            <tr th:each="list:${declareList}">
+                                                <th scope="row" th:text=${list.declareID}></th>
+                                                <td th:text=${list.declareYear}></td>
+                                                <td th:text=${list.declareTime}></td>
+                                                <td th:text=${list.declareUserName}></td>
+                                                <td th:text=${list.declareStatus}></td>
                                                 <td>
                                                     <div class="row">
                                                         <div class="col-md-2">
-                                                            <a href="#" class="btn btn-rounded btn-danger btn-xs">删除</a>
+                                                            <a th:href="@{'/corporation/deleteuser?declareID='+${list.declareID}}" class="btn btn-rounded btn-danger btn-xs">删除</a>
                                                         </div>
                                                         <div class="col-md-1">
-                                                            <a href="#" class="btn btn-rounded btn-primary btn-xs" onclick="window.location.href = './company_shenhe.html'" >编辑</a>
+                                                            <a th:href="@{'/corporation/todetails?declareID='+${list.declareID}}" class="btn btn-rounded btn-primary btn-xs">编辑</a>
                                                         </div>
                                                     </div>
-                                                    
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>2020</td>
-                                                <td>2020-1-1</td>
-                                                <td>李明</td>
-                                                <td>待审核</td>
-                                                <td>
-                                                    <div class="row">
-                                                        <div class="col-md-2">
-                                                            <a href="#" class="btn btn-rounded btn-danger btn-xs">删除</a>
-                                                        </div>
-                                                        <div class="col-md-1">
-                                                            <a href="#" class="btn btn-rounded btn-primary btn-xs" onclick="window.location.href = './company_shenhe.html'">编辑</a>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>2020</td>
-                                                <td>2020-1-1</td>
-                                                <td>李明</td>
-                                                <td>待审核</td>
-                                                <td>
-                                                    <div class="row">
-                                                        <div class="col-md-2">
-                                                            <a href="#" class="btn btn-rounded btn-danger btn-xs">删除</a>
-                                                        </div>
-                                                        <div class="col-md-1">
-                                                            <a href="#" class="btn btn-rounded btn-primary btn-xs" onclick="window.location.href = './company_shenhe.html'">编辑</a>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td >
-                                                    4
-                                                 </td>
-                                                <td>2020</td>
-                                                <td>2020-1-1</td>
-                                                <td>李明</td>
-                                                <td>待审核</td>
-                                                <td>
-                                                    <div class="row">
-                                                        <div class="col-md-2">
-                                                            <a href="#" class="btn btn-rounded btn-danger btn-xs">删除</a>
-                                                        </div>
-                                                        <div class="col-md-1">
-                                                            <a href="#" class="btn btn-rounded btn-primary btn-xs" onclick="window.location.href = './company_shenhe.html'">编辑</a>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td >
-                                                    4
-                                                 </td>
-                                                <td>2020</td>
-                                                <td>2020-1-1</td>
-                                                <td>李明</td>
-                                                <td>待审核</td>
-                                                <td>
-                                                    <div class="row">
-                                                        <div class="col-md-2">
-                                                            <a href="#" class="btn btn-rounded btn-danger btn-xs">删除</a>
-                                                        </div>
-                                                        <div class="col-md-1">
-                                                            <a href="#" class="btn btn-rounded btn-primary btn-xs" onclick="window.location.href = './company_shenhe.html'">编辑</a>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td >
-                                                    4
-                                                 </td>
-                                                <td>2020</td>
-                                                <td>2020-1-1</td>
-                                                <td>李明</td>
-                                                <td>待审核</td>
-                                                <td>
-                                                    <div class="row">
-                                                        <div class="col-md-2">
-                                                            <a href="#" class="btn btn-rounded btn-danger btn-xs">删除</a>
-                                                        </div>
-                                                        <div class="col-md-1">
-                                                            <a href="#" class="btn btn-rounded btn-primary btn-xs" onclick="window.location.href = './company_shenhe.html'">编辑</a>
-                                                        </div>
-                                                    </div>
-                                                    
                                                 </td>
                                             </tr>
                                         </tbody>

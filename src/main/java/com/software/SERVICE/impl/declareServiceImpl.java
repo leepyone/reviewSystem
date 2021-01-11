@@ -25,7 +25,7 @@ public class declareServiceImpl implements declareService {
     }
 
     @Override
-    public Declare getDeclareByIdentifyNum(String identifyNum) { return declareDao.getDeclareByIdentifyNumber(identifyNum); }
+    public List<Declare> getDeclareByIdentifyNum(String identifyNum) { return declareDao.getDeclareByIdentifyNumber(identifyNum); }
 
     @Override
     public List<Declare> getDeclareByStatus(int status) {
@@ -47,4 +47,7 @@ public class declareServiceImpl implements declareService {
 
     @Override
     public void deleteDeclare(int declareID){ declareDao.deleteDeclare(declareID); }
+
+    @Override
+    public List<Declare> getDeclareByUS(String userName,int status){ return declareDao.getDeclareByUS(userName,status); }
 }
