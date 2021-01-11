@@ -236,7 +236,7 @@ public class company {
             corporationService.UpdateDeclareStatus(d.getDeclareID(),2);
         }
         corporationService.InsertCheck(dCheck);
-        return "forward:todetails";
+        return "forward:toselect";
     }
 
 }
