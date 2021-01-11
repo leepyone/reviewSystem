@@ -1,8 +1,9 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
+ 
 <head>
-    <meta charset="UTF-8">
-    <base th:href="@{/}">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <base th:href="@{/}">
     <!-- Bootstrap CSS -->
@@ -15,13 +16,7 @@
     <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendor/charts/c3charts/c3.css">
     <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
-    <title>
-
-
-
-
-
-    </title>
+    <title></title>
 </head>
 
 <body>
@@ -286,9 +281,7 @@
                                                 <td>
                                                     <div class="row">
                                                         <div class="col-md-2">
-
-
-                                                            <a th:href="@{'/corporation/deleteuser?declareID='+${list.declareID}}" class="btn btn-rounded btn-danger btn-xs">删除</a>
+                                                            <a th:href="@{'/corporation/deletedeclare?declareID='+${list.declareID}}" class="btn btn-rounded btn-danger btn-xs">删除</a>
                                                         </div>
                                                         <div class="col-md-1">
                                                             <a th:href="@{'/corporation/todetails?declareID='+${list.declareID}}" class="btn btn-rounded btn-primary btn-xs">编辑</a>

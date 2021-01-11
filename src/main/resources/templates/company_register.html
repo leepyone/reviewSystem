@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="plugins/css/bootstrap.min.css">
+    <style>
+     
+      body{
+        padding-top: 70px;
+
+      }
+      .col-sm-9{border-radius: 10px;}
+      .div{border-radius: 10px;}
+      .starter{
+        padding: 40px 15px;
+        text-align:center;
+      }
+      
+      .row{
+        border-radius: 10px;
+        margin-bottom: 25px;
+        display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+      }
+
+      .row .row{
+        margin-top:0px;
+        margin-bottom: 15px;
+      }
+      [class*="col-"]{
+        padding-top: 15px;
+        padding-bottom: 15px;
+        background-color: #eee;
+        background-color:#eef1f6;
+        border:1px solid #ddd;
+        border:1px solid rgba(75, 74, 74, 0.2);
+      }
+    </style>
+</head>
+<body>
+
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2" style="background-color: #e4f0ff;">
+              <h4><font color=":#1216fa"> <strong>用户注册</strong></font></h4>   
+        </div>
+    </div>
+     <!--1.以下是账户信息-->
+     <!--以上是用户注册须知-->
+    <form method="post" action="/corporation/doregistration">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2" style="background-color: rgb(254, 254, 255);">
+
+      <div class="row" style=" background-color :#e4f0ff" >
+          <h4><font color="#1a56a8"> <strong>账户信息</strong></font></h4>           
+      </div>
+      <div class="row">
+        <div class="col-sm-12" style="border-color:#e4f0ff ;">
+         <h3 align="left"><font color="#d9524e"> 填报说明</font></h3>
+         <h4><font color="#d9524e"><strong>1.账户默认为单位统一社会信用代码，当填写了统一社会信用代码时，自动显示在单位账户处。</strong>
+         </font></h4>
+         <h4><font color="#d9524e"><strong>2.单位账户信息仅用于编辑单位信息，和单位工作人员账户。</strong>
+         </font></h4>       
+      </div>
+      </div>
+
+    <!--以下是弹窗内容-->
+    <div class="row">
+    <div class="col-sm-12"  > 
+       <div class="row">
+           <h5><font color="#FF0033"> * </font>&nbsp账户</h5>
+       </div>             
+       <div class="row" style="background-color: #FFFFFF;">
+           <input style="width: 1050px; height:40px" type="text">
+       </div>
+
+
+       <div class="row">
+           <h5><font color="#FF0033"> * </font>&nbsp密码</h5>
+       </div>             
+       <div class="row" style="background-color: #FFFFFF;">
+           <input style="width: 1050px; height:40px" type="text">
+       </div>
+
+
+       <div class="row">
+           <h5><font color="#FF0033"> * </font>&nbsp重复密码</h5>
+       </div>             
+       <div class="row" style="background-color: #FFFFFF;">
+           <input style="width: 1050px; height:40px" type="text">
+       </div>  
+    </div>
+    </div>
+    <!--以上是弹窗内容-->
+   
+    </div>
+  </div>
+   
+<!--1.以上是账户信息-->
+
+
+
+<!--2.以下是单位信息-->
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2" style="background-color: rgb(254, 254, 255);">
+
+      <div class="row" style=" background-color :#e4f0ff" >
+          <h4><font color="#1a56a8"> <strong>单位信息</strong></font></h4>            
+      </div>
+
+
+      <!--以下是弹窗内容-->
+    <div class="row">
+        <div class="col-sm-12"  > 
+           <div class="row">
+               <h5><font color="#FF0033"> * </font>&nbsp统一信用代码</h5>
+           </div>             
+           <div class="row" style="background-color: #FFFFFF;">
+               <input style="width: 1050px; height:40px" type="text">
+           </div>
+    
+    
+           <div class="row">
+               <h5><font color="#FF0033"> * </font>&nbsp单位名称</h5>
+           </div>             
+           <div class="row" style="background-color: #FFFFFF;">
+               <input style="width: 1050px; height:40px" type="text">
+           </div>
+    
+    
+           <div class="row">
+               <h5><font color="#FF0033"> * </font>&nbsp法定代表人</h5>
+           </div>             
+           <div class="row" style="background-color: #FFFFFF;">
+               <input style="width: 1050px; height:40px" type="text">
+           </div> 
+
+
+           <div class="row">
+               <h5><font color="#FF0033"> * </font>&nbsp单位级别</h5>
+           </div>             
+           <div class="row" style="background-color: #FFFFFF;">
+            <input style="width: 1050px; height:40px" type="text">
+            </div>
+
+
+            <div class="row">
+                <h5><font color="#FF0033"> * </font>&nbsp单位性质</h5>
+            </div>             
+            <div class="row" style="background-color: #FFFFFF;">
+                <input style="width: 1050px; height:40px" type="text">
+            </div> <div class="row">
+
+
+               <h5><font color="#FF0033"> * </font>&nbsp单位行业</h5>
+           </div>             
+           <div class="row" style="background-color: #FFFFFF;">
+               <input style="width: 1050px; height:40px" type="text">
+           </div>
+          
+           <div class="row">
+            <h5><font color="#FF0033"> * </font>&nbsp单位委托人</h5>
+            </div>             
+            <div class="row" style="background-color: #FFFFFF;">
+                <input style="width: 1050px; height:40px" type="text">
+            </div>
+
+            <div class="row">
+                <h5><font color="#FF0033"> * </font>&nbsp单位所在地</h5>
+            </div>             
+            <div class="row" style="background-color: #FFFFFF;">
+                <input style="width: 1050px; height:40px" type="text">
+            </div>
+
+
+            <div class="row">
+                <h5><font color="#FF0033"> * </font>&nbsp单位地址</h5>
+            </div>             
+            <div class="row" style="background-color: #FFFFFF;">
+                <input style="width: 1050px; height:40px" type="text">
+            </div>
+
+
+            <div class="row">
+                <h5><font color="#FF0033"> * </font>&nbsp单位营业执照</h5>
+            </div>             
+            <div class="row" style="background-color: #FFFFFF;">
+                <input style="width: 1050px; height:40px" type="file">
+            </div>
+
+
+            <div class="row">
+                <h5><font color="#FF0033"> * </font>&nbsp单位委托人手持身份证和单位营业执照照片</h5>
+            </div>             
+            <div class="row" style="background-color: #FFFFFF;">
+                <input style="width: 1050px; height:40px" type="file">
+            </div>
+
+
+            <div class="row">
+                <h5><font color="#FF0033"> * </font>&nbsp单位签章</h5>
+            </div>             
+            <div class="row" style="background-color: #FFFFFF;">
+                <input style="width: 1050px; height:40px" type="file">
+            </div>
+ 
+           
+        </div>
+    </div>
+    <!--以上是弹窗内容-->
+
+   
+    </div>
+  </div>
+  <!--2.以上是单位信息-->
+
+  <!--3.以下是单位工作人员账户信息信息-->
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2" style="background-color: rgb(254, 254, 255);">
+
+      <div class="row" style=" background-color :#e4f0ff" >
+          <h4><font color="#1a56a8"> <strong>单位工作人员账户信息信息</strong></font></h4>            
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12" style="border-color:#e4f0ff ;">
+         
+         <h4><font color="#d9524e"><strong>请输入单位工作人员身份证号码进行查询。</strong>
+         </font></h4>
+               
+        </div>
+      </div>
+
+
+      <!--以下是弹窗内容-->
+    <div class="row">
+        <div class="col-sm-12"  > 
+            <div class="col-sm-4">单位工作人员账户</div>
+            <div class="col-sm-4">联系手机</div>
+            <div class="col-sm-4">邮箱</div>
+            <div class="col-sm-4" style="background-color: #FFFFFF;"></div>
+            <div class="col-sm-4" style="background-color: #FFFFFF;"></div>
+            <div class="col-sm-4" style="background-color: #FFFFFF;"></div>
+        </div>
+        </div>
+        <!--以上是弹窗内容-->
+
+    </div>
+</div>
+<!--3.以上是单位工作人员账户信息信息-->
+
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2" style="background-color: rgb(254, 254, 255);">
+        <div class="modal-footer">
+            <button  style="float:left" type="button" class="btn btn-success"  
+        onclick="window.location.href = './company_login.html'">返回登陆 </button>
+            <button type="submit" class="btn btn-primary">立即创建</button>
+        </div>
+    </div>
+</div>
+
+    </form>
+
+</body>
+</html>

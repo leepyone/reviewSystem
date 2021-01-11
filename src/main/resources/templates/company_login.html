@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base th:href="@{/}">
+    <title>Document</title>
+    <link rel="stylesheet" href="plugins/css/bootstrap.min.css">
+    <style>
+     
+      body{
+        padding-top: 70px;
+
+      }
+      .col-sm-9{border-radius: 10px;}
+      .div{border-radius: 10px;}
+      .starter{
+        padding: 40px 15px;
+        text-align:center;
+      }
+      
+      .row{
+        border-radius: 10px;
+        margin-bottom: 25px;
+        display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+      }
+
+      .row .row{
+        margin-top:0px;
+        margin-bottom: 20px;
+      }
+      [class*="col-"]{
+        padding-top: 15px;
+        padding-bottom: 15px;
+        background-color: #eee;
+        background-color:#eef1f6;
+        border:1px solid #ddd;
+        border:1px solid rgba(75, 74, 74, 0.2);
+      }
+    </style>
+</head>
+<body>
+
+<!--1.以下是登录说明-->
+<div class="row">
+    <div class="col-sm-5 col-sm-offset-3" style="background-color: rgb(254, 254, 255);">
+  
+     
+  
+      <div class="row" style=" background-color :#e4f0ff" >
+      
+          <h2><font color="#1a56a8"> <strong>广西专业技术人员（职称）管理服务平台<small>&nbsp&nbsp&nbsp&nbsp&nbsp单位版</small></strong></font></h2>
+                    
+      </div>
+    
+  
+  
+           <div class="row">
+                   <div class="col-sm-12" style="border-color:#e4f0ff ;">
+                    <h3 align="left"><font color="#d9524e"> 重要说明</font></h3>
+                    <h4><font color="#d9524e"><strong>为了获得更好的用户体验，请使用以下浏览器：</strong>
+                    </font></h4>
+                    <h4><font color="#d9524e"><strong><ins>谷歌浏览器，火狐浏览器，360安全浏览器</ins></strong>
+                    </font></h4>       
+                   </div>
+        
+           </div>
+    </div>
+  </div>
+  
+  <!--1.以上是登录说明-->
+
+
+<div class="row">
+    <div class="col-sm-5 col-md-offset-3">
+        <div class="row">
+
+            <form method="post" action="/corporation/dologin">
+                <div class="form-group">
+                  <label><p>&nbsp&nbsp账&nbsp号</p></label>
+                  <input  style="width: 640px;" type="text" class="form-control" name="number" placeholder="">
+                </div>
+                <div class="form-group">
+                  <label><p>&nbsp&nbsp密&nbsp码</p></label>
+                  <input type="password" class="form-control" name="password" placeholder="">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">登录</button>
+                  </div>
+
+            </form>
+            <form method="post" action="/corporation/toregistration">
+                <div class="form-group">
+                    <button type="button" class="btn btn-default btn-lg btn-block">注册</button>
+                </div>
+            </form>
+        </div>
+      
+    </div>
+</div> 
+
+</body>
+</html>
