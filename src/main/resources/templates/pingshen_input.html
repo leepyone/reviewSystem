@@ -8,10 +8,11 @@
     <!-- Bootstrap CSS -->
        
        
-    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
-    <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/libs/css/style.css">
-    <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="plugins/css/bootstrap.min.css">
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment-with-locales.js"></script>
+   <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
     <title></title>
 
 
@@ -50,7 +51,14 @@
       }
     </style>
 <script language="javascript">
-
+function check()
+{
+    if($("#txtname1").val()=="")
+    {
+        alter("请填写必写信息");
+        return false;
+    }
+}
     function tanchuang()
     
     {
@@ -65,25 +73,27 @@
 </head>
 
 <body>
+
     <!--1.以下是导航栏-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      
-      <a class="nav-item" href="#">广西专业技术人员（职称）管理服务平台<small>（广西人才市场）</small></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link " href="#">首页 </a>
-          <a class="nav-item nav-link" href="#">个人资料</a>
-          <a class="nav-item nav-link" href="#">申报职称</a>
-          <a class="nav-item nav-link active" href="./index.html">职称评审</a>
-          <a class="nav-item nav-link " href="./zhichengrending.html">职称认定<span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link disabled" href="#">帮助中心</a>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+       
+      <div calss="row">
+        <ul class="nav navbar-nav" ><li ><a href="#">广西专业技术人员（职称）管理服务平台<small>（广西人才市场）</small></a></li></ul>
+           
+     
+   </div>
+        <div id="navbar" class="collapse-default navbar-collapse" >
+            <ul class="nav navbar-nav" >
+                <li  ><a th="#">首页</a></li>
+                <li  ><a th:href="@{'/PersonalUserInfo/toPersonalInfo'}">个人资料</a></li>
+                <li  ><a th:href="@{'/PersonalDeclare/Main'}">申报职称</a></li>
+                <li class="active"><a th:href="@{'/PersonalDeclare/Declare'}">职称评审</a></li>
+                <li  ><a th:href="@{'/PersonalJudge/Judge'}">职称认定</a></li>
+                <li><a href="#">帮助中心</a></li>
+            </ul>
         </div>
-      </div>
-    </nav>
-  <!--1.以上是导航栏-->
+  </nav>
+<!--1.以上是导航栏-->
   
   
   
@@ -91,7 +101,7 @@
   
   <!--以下是个人承诺-->
   <div class="row">
-    <div class="col-md-9 offset-md-1" style="background-color: rgb(254, 254, 255);">
+    <div class="col-md-9 col-md-offset-1" style="background-color: rgb(254, 254, 255);">
   
      
   
@@ -111,10 +121,10 @@
                       同意按照自治区有关文件及评审条件规定，自申报当年起，5年内不得申报。累计造假两次的，终身不得申报。
                     </font></h5>
                     <h5 align="right"><font color="#d9524e">
-                      本人已承诺：唐老师
+                        <label th:text="'本人已承诺：'+${session.PersonalLoginUser.getUserName()}">本人已承诺：魏腾飞</label>
                     </font></h5>
                     <h5 align="right"><font color="#d9524e">
-                      承诺日期：2020/1/1
+                      承诺日期：2020/1/12
                     </font></h5>
                    </div>
                    
@@ -132,12 +142,12 @@
   
   <!--以上是个人承诺-->
   
-  <form action="" method="post"  onsubmit="return false">
+  <form action="" method="post" onsubmit="return check()" th:action="@{'/PersonalDeclare/CreateDeclareTable'}">
   
   <!--以下是申报信息-->
   
   <div class="row">
-  <div class="col-md-9 offset-md-1" style="background-color: rgb(254, 254, 255);">
+  <div class="col-md-9 col-md-offset-1" style="background-color: rgb(254, 254, 255);">
   <div class="row" style=" background-color :#e4f0ff" >
   
   <h4><font color="#1a56a8"> <strong>申报信息</strong></font></h4>
@@ -148,29 +158,46 @@
   <div class="col-sm-12 ">
     
     <div class="row">
-
-
-
-
         <div class="col-sm-6">
             <h5><font color="#FF0033"> * </font>&nbsp参加评审会</h5>
          </div>
          <div class="col-sm-6" style="background-color: #FFFFFF;">
-            <input  style="width: 400px; height:40px" type="text"/>
+            <input name="" style="width: 400px; height:40px" type="text"/>
            </div>
 
            <div class="col-sm-6">
             <h5><font color="#FF0033"> * </font>&nbsp参加工作时间</h5>
          </div>
          <div class="col-sm-6" style="background-color: #FFFFFF;">
-            <input  style="width: 400px; height:40px" type="text"/>
+
+
+          <div class="row">
+            
+            
+                    <div class="form-group" style="width: 450px; ">
+                        <!--指定 date标记-->
+            
+                        <div class='input-group date' id='datetimepicker1'>
+            
+                            <input  name="declare_worktime"  type='text' class="form-control" />
+            
+                            <span class="input-group-addon">
+            
+                                <span class="glyphicon glyphicon-calendar"></span>
+            
+                            </span>
+            
+                        </div>
+            
+                    </div>
+            </div>
            </div>
 
            <div class="col-sm-6">
             <h5><font color="#FF0033"> * </font>&nbsp专业技术工作年限</h5>
          </div>
          <div class="col-sm-6" style="background-color: #FFFFFF;">
-            <input  style="width: 400px; height:40px" type="text"/>
+            <input  name="declareTimelimit"  style="width: 400px; height:40px" type="text"/>
            </div>
 
 
@@ -179,24 +206,21 @@
             <h5><font color="#FF0033"> * </font>&nbsp申报等级</h5>
          </div>
          <div class="col-sm-6" style="background-color: #FFFFFF;">
-            <select style="width: 400px; height:40px" >
+            <select name="declareLevel" style="width: 400px; height:40px" >
                 <option value="值" disabled selected style='display:none;'>请选择</option>
-                <option value="值">初级</option>
-                <option value="值">中级</option>
-                <option value="值">副高级</option>
-                <option value="值">正高级</option>
+                <option value="1">初级</option>
+                <option value="2">中级</option>
+                <option value="3">副高级</option>
+                <option value="4">正高级</option>
                 </select>
          </div>
-
-
-
-
 
          <div class="col-sm-6">
             <h5><font color="#FF0033"> * </font>&nbsp单位级别</h5>
          </div>
+
          <div class="col-sm-6" style="background-color: #FFFFFF;">
-            <input  style="width: 400px; height:40px" type="text"/>
+            <input name="declareCorperationLevel" style="width: 400px; height:40px" type="text"/>
            </div>
 
 
@@ -204,7 +228,7 @@
             <h5><font color="#FF0033"> * </font>&nbsp拟评专业系列</h5>
          </div>
          <div class="col-sm-6" style="background-color: #FFFFFF;">
-            <input  style="width: 400px; height:40px" type="text"/>
+            <input  name="declareProfessionalSeries"  style="width: 400px; height:40px" type="text"/>
            </div>
 
            
@@ -212,35 +236,28 @@
             <h5><font color="#FF0033"> * </font>&nbsp拟评专业技术资格</h5>
          </div>
          <div class="col-sm-6" style="background-color: #FFFFFF;">
-            <input  style="width: 400px; height:40px" type="text"/>
+            <input name="declareQualification" style="width: 400px; height:40px" type="text"/>
            </div>
 
            <div class="col-sm-6">
             <h5><font color="#FF0033"> * </font>&nbsp拟评专业</h5>
          </div>
          <div class="col-sm-6" style="background-color: #FFFFFF;">
-            <input  style="width: 400px; height:40px" type="text"/>
+            <input  id="txtname1" name="declareSeries"
+                    style="width: 400px; height:40px" type="text"/>
            </div>
-
-           
-
 
       <div class="col-sm-6 ">
           <h5><font color="#FF0033"> * </font>&nbsp单位（如无法搜索到所需单位信息，请先进行注册）</h5>
           
        </div>
         <div class="col-sm-6" style="background-color: #FFFFFF;">
-            <select style="width: 400px; height:40px">
+            <select   name="" style="width: 400px; height:40px">
                 <option value="值">单位1</option>
                 <option value="值">单位2</option>
                 <option value="值">单位3</option>
                 </select>
          </div>
-         
-  
-  
-           
-  
     </div>
   </div>
   </div>
@@ -255,7 +272,7 @@
   <!--以下是基本信息-->
   
   <div class="row">
-  <div class="col-md-9 offset-md-1" style="background-color: rgb(254, 254, 255);">
+  <div class="col-md-9 col-md-offset-1" style="background-color: rgb(254, 254, 255);">
   <div class="row" style=" background-color :#e4f0ff" >
   
     <h4><font color="#1a56a8"> <strong>基本情况</strong></font></h4>
@@ -270,13 +287,14 @@
             <h5><font color="#FF0033"> * </font>&nbsp姓名</h5>
            </div>
             <div class="col-sm-3">
-                <input  style="width: 200px; height:40px ;background-color:#eef1f6 ;" type="text" value="唐小率" readonly/>
+                <input  style="width: 200px; height:40px ;background-color:#eef1f6 ;" type="text" th:value="${session.PersonalLoginUser.getUserName()}" readonly/>
              </div>
              <div class="col-sm-3">
                 <h5><font color="#FF0033"> * </font>&nbsp民族</h5>
              </div>
+<!--          民族！！-->
              <div class="col-sm-3" style="background-color: #FFFFFF;">
-                <select style="width: 200px; height:40px">
+                <select  name="declareUserNation"  style="width: 200px; height:40px">
                     <option value="">请选择</option>
                     <option value="汉">汉族</option>
                     <option value="蒙古族">蒙古族</option>
@@ -341,13 +359,13 @@
                 <h5><font color="#FF0033"> * </font>&nbsp证件号码</h5>
              </div>
               <div class="col-sm-3" >
-                <input  style="width: 200px; height:40px;background-color:#eef1f6 ;" type="text" value="1234567890" readonly/>
+                <input  style="width: 200px; height:40px;background-color:#eef1f6 ;" type="text" th:value="${session.PersonalLoginUser.getUserIdentifyID()}" readonly/>
                </div>
                <div class="col-sm-3">
                 政治面貌
                </div>
-               <div class="col-sm-3" style="background-color: #FFFFFF;">
-                <select style="width: 200px; height:40px">
+               <div   class="col-sm-3" style="background-color: #FFFFFF;">
+                <select  name="declarePolitics" style="width: 200px; height:40px">
                     <option value="值">中共党员</option>
                     <option value="值">中共预备党员</option>
                     <option value="值">群众</option>
@@ -359,26 +377,48 @@
                 <h5><font color="#FF0033"> * </font>&nbsp出生年月</h5>
                </div>
                 <div class="col-sm-3" style="background-color: #FFFFFF;">
-                    <input  style="width: 200px; height:40px;" type="text" />
+                  <div class="row">
+            
+            
+                    <div class="form-group" style="width: 200px; ">
+                        <!--指定 date标记-->
+            
+                        <div class='input-group date' id='datetimepicker2'>
+            
+                            <input  name="declareUserBirthday"  type='text' class="form-control" />
+            
+                            <span class="input-group-addon">
+            
+                                <span class="glyphicon glyphicon-calendar"></span>
+            
+                            </span>
+            
+                        </div>
+            
+                    </div>
+            
+                
+        
+            </div>
                  </div>
                  <div class="col-sm-3">
                     <h5><font color="#FF0033"> * </font>&nbsp懂何种外国语言</h5>
                  </div>
                  <div class="col-sm-3" style="background-color: #FFFFFF;">
-                    <input  style="width: 200px; height:40px;" type="text" />
+                    <input  name="userLanguage"  style="width: 200px; height:40px;" type="text" />
                  </div>
   
                  <div class="col-sm-3 ">
                     <h5><font color="#FF0033"> * </font>&nbsp性别</h5>
                  </div>
                   <div class="col-sm-3" style="background-color: #FFFFFF;">
-                    <input  style="width: 200px; height:40px;background-color:#eef1f6 ;" type="text" value="男" readonly/>
+                    <input  style="width: 200px; height:40px;background-color:#eef1f6 ;" type="text"  value="男" readonly/>
                    </div>
                    <div class="col-sm-3">
                     有何特长
                    </div>
                    <div class="col-sm-3" style="background-color:#FFFFFF;">
-                    <input  style="width: 200px; height:40px;" type="text" />
+                    <input name="userSpecialty" style="width: 200px; height:40px;" type="text" />
                    </div>
   
                    
@@ -386,7 +426,7 @@
                     <h5><font color="#FF0033"> * </font>&nbsp出生地</h5>
                  </div>
                   <div class="col-sm-3" style="background-color: #FFFFFF;">
-                    <input  style="width: 200px; height:40px;" type="text" />
+                    <input  name="declareUserHometown"  style="width: 200px; height:40px;" type="text" />
                    </div>
                    <div class="col-sm-3">
                     <h5>奖惩情况</h5>
@@ -399,13 +439,13 @@
                     <h5><font color="#FF0033"> * </font>&nbsp联系电话</h5>
                    </div>
                     <div class="col-sm-3" style="background-color: #FFFFFF;">
-                        <input  style="width: 200px; height:40px;" type="text" />
+                        <input  name="declareUserPhone" style="width: 200px; height:40px;" type="text" />
                      </div>
                      <div class="col-sm-3">
                         <h5><font color="#FF0033"> * </font>&nbsp档案所在地机构名称</h5>
                      </div>
                      <div class="col-sm-3" style="background-color: #FFFFFF;">
-                        <input  style="width: 200px; height:40px;" type="text" />
+                        <input  name="declareInstitution"  style="width: 200px; height:40px;" type="text" />
                      </div>
                      <div class="col-sm-3 ">
                       参加过何种学术，有何兼职
@@ -430,20 +470,11 @@
   <!--以下是工作小结-->
   
   <div class="row">
-    <div class="col-md-9 offset-md-1" style="background-color: rgb(254, 254, 255);">
+    <div class="col-md-9 col-md-offset-1" style="background-color: rgb(254, 254, 255);">
     <div class="row" style=" background-color :#e4f0ff" >
     
       <h4><font color="#1a56a8"> <strong>见习期工作小结</strong></font></h4>
       <h4> &nbsp&nbsp&nbsp&nbsp&nbsp</h4>
-      
-    
-    
-    
-     
-    
-    
-    
-    
     
     </div>
     <div class="row">
@@ -465,16 +496,11 @@
       </div>
 
 
-
-
-
-
-
   
   <!--以下是学历信息-->
   
   <div class="row">
-  <div class="col-md-9 offset-md-1" style="background-color: rgb(254, 254, 255);">
+  <div class="col-md-9 col-md-offset-1" style="background-color: rgb(254, 254, 255);">
   <div class="row" style=" background-color :#e4f0ff" >
   
     <h4><font color="#1a56a8"> <strong>学历情况</strong></font></h4>
@@ -486,8 +512,6 @@
    data-toggle="modal" data-target="#exampleModalLong" >
   ＋新增学历
   </button>
-
-
 
   
   <!-- Modal -->
@@ -501,7 +525,7 @@
       </button>
     </div>
 
-    <form action="" method="post"  onsubmit="return false">
+    <form action="" method="post" th:action="@{'/PersonalDeclare/AddEducation'}">
     <div class="modal-body">
      
         <!--以下是弹窗内容-->
@@ -510,18 +534,18 @@
           </div>
 
           <div class="row" style="background-color: #FFFFFF;">
-            <input style="width: 400px; height:40px" tyoe="text"></div>
+            <input  name="education_graduation_time" style="width: 400px; height:40px" tyoe="text"></div>
           <div class="row">
             <h5><font color="#FF0033"> * </font>&nbsp学历项目</h5>
            </div>
            <div class="row" style="background-color: #FFFFFF;">
-            <select style="width: 400px; height:40px">
+            <select name="educationGraduationProject" style="width: 400px; height:40px">
               <option value="值">请选择</option>
-                <option value="值">无学历</option>
-                <option value="值">第一学历</option>
-                <option value="值">第二学历</option>
-                <option value="值">第三学历</option>
-                <option value="值">最高</option>
+                <option value="无学历">无学历</option>
+                <option value="第一学历">第一学历</option>
+                <option value="第二学历">第二学历</option>
+                <option value="第三学历">第三学历</option>
+                <option value="最高">最高</option>
                 </select>
            </div>
            <div class="row">
@@ -530,15 +554,15 @@
 
 
            <div class="row" style="background-color: #FFFFFF;">
-            <select style="width: 400px; height:40px">
+            <select name="educationLevel" style="width: 400px; height:40px">
               <option value="值">请选择</option>
-                <option value="值">博士研究生</option>
-                <option value="值">硕士研究生</option>
-                <option value="值">本科</option>
-                <option value="值">党校本科</option>
-                <option value="值">党校大专</option>
-                <option value="值">大专</option>
-                <option value="值">中专</option>
+                <option value="博士研究生">博士研究生</option>
+                <option value="硕士研究生">硕士研究生</option>
+                <option value="本科">本科</option>
+                <option value="党校本科">党校本科</option>
+                <option value="党校大专">党校大专</option>
+                <option value="大专">大专</option>
+                <option value="中专">中专</option>
                 </select>
            </div>
 
@@ -548,20 +572,20 @@
             <h5><font color="#FF0033"> * </font>&nbsp毕业院校</h5>
            </div>
            <div class="row" style="background-color: #FFFFFF;">
-            <input style="width: 400px; height:40px" tyoe="text"></div>
+            <input  name="educationSchool" style="width: 400px; height:40px" tyoe="text"></div>
            <div class="row">
             <h5><font color="#FF0033"> * </font>&nbsp学历性质</h5>
            </div>
 
 
            <div class="row" style="background-color: #FFFFFF;">
-            <select style="width: 400px; height:40px">
+            <select name="" style="width: 400px; height:40px">
               <option value="值">请选择</option>
-                <option value="值">全日制普通高校毕业生</option>
-                <option value="值">党校</option>
-                <option value="值">国外已认证</option>
-                <option value="值">国外未认证</option>
-                <option value="值">成人继续教育权力</option>
+                <option value="全日制普通高校毕业生">全日制普通高校毕业生</option>
+                <option value="党校">党校</option>
+                <option value="国外已认证">国外已认证</option>
+                <option value="国外未认证">国外未认证</option>
+                <option value="成人继续教育权力">成人继续教育权力</option>
                 </select>
            </div>
 
@@ -574,7 +598,7 @@
 
 
            <div class="row" style="background-color: #FFFFFF;">
-            <input style="width: 400px; height:40px" tyoe="text"></div>
+            <input  name="educationMajor"   style="width: 400px; height:40px" tyoe="text"></div>
 
 
 
@@ -586,13 +610,13 @@
 
 
            <div class="row" style="background-color: #FFFFFF;">
-            <select style="width: 400px; height:40px">
+            <select  name="" style="width: 400px; height:40px">
               <option value="值">请选择</option>
-                <option value="值">无学位</option>
-                <option value="值">双学士</option>
-                <option value="值">学士</option>
-                <option value="值">硕士</option>
-                <option value="值">博士</option>
+                <option value="无学位">无学位</option>
+                <option value="双学士">双学士</option>
+                <option value="学士">学士</option>
+                <option value="硕士">硕士</option>
+                <option value="博士">博士</option>
                 </select>
            </div>
 
@@ -603,7 +627,7 @@
            </div>
 
            <div class="row" style="background-color: #FFFFFF;">
-            <input style="width: 400px; height:40px" tyoe="text"></div>
+            <input  name="" style="width: 400px; height:40px" tyoe="text"></div>
           
         <!--以上是弹窗内容-->
        
@@ -630,57 +654,48 @@
 
 
 
-
-
-
-
-
-
   </div>
   <div class="row">
-    
-    <div class="col-sm-12 ">
-      
-      <div class="row">
-        <div class="col-sm-2 ">
-            <h5>毕业时间</h5>
-            
-         </div>
-         
-         <div class="col-sm-2 ">
-            <h5>学历项目</h5>
-            
-         </div>
-         <div class="col-sm-2 ">
-            <h5>学历水平</h5>
-            
-         </div>
-         <div class="col-sm-2 ">
-            <h5>学历性质</h5>
-            
-         </div>
-         <div class="col-sm-2 ">
-            <h5>毕业院校</h5>
-            
-         </div>
-         <div class="col-sm-2 ">
-            <h5>所学专业</h5>
-            
-         </div>
-       
-        
-          
-           
-  
-  
-           
-  
-  
-             
-  
-      </div>
-    </div>
+
+
+
+
+
+
+      <table class="table table-bordered table-hover">
+          <thead>
+          <tr style="background-color:#eef1f6" >
+              <th scope="col">毕业时间</th>
+              <th scope="col">学历项目</th>
+              <th scope="col">学历水平</th>
+              <th scope="col">学历性质</th>
+              <th scope="col">毕业院校</th>
+              <th scope="col">所学专业</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="list:${educationList}">
+              <th scope="row" th:text=${list.educationGraduationTime}></th>
+              <td th:text=${list.educationGraduationProject}></td>
+              <td th:text=${list.educationLevel}></td>
+              <td th:text=${list.educationSchool}></td>
+              <td th:text=${list.educationMajor}></td>
+              <td>
+                  <button type="button" class="btn btn-primary" >＋详情</button>
+              </td>
+          </tr>
+          </tbody>
+      </table>
+      <!--以下是具体学历信息：for循环这里-->
+
+      <!--以上是具体学历信息：for循环这里-->
+
   </div>
+
+
+
+
+
   </div>
   </div>
   
@@ -688,21 +703,16 @@
   <!--以上是学历信息-->
   
   
-  
-  
-  
-  
-  
+
   
   <!--以下是工作情况-->
   
   <div class="row">
-  <div class="col-md-9 offset-md-1" style="background-color: rgb(254, 254, 255);">
+  <div class="col-md-9 col-md-offset-1" style="background-color: rgb(254, 254, 255);">
   <div class="row" style=" background-color :#e4f0ff" >
   
     <h4><font color="#1a56a8"> <strong>主要工作经历及成绩</strong></font></h4>
     <h4> &nbsp&nbsp&nbsp&nbsp&nbsp</h4>
-    
   
   <!-- Button trigger modal -->
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong2">
@@ -721,7 +731,7 @@
     </div>
 
 
-    <form action="" method="post"  onsubmit="return false">
+    <form action="" method="post" th:action="@{'/PersonalDeclare/AddExperience'}">
     <div class="modal-body">
       
       
@@ -733,7 +743,7 @@
  </div>
 
  <div class="row" style="background-color: #FFFFFF;">
-   <input style="width: 400px; height:40px" type="text"></div>
+   <input  name="experienceStarttime" style="width: 400px; height:40px" type="text"></div>
 
 
 
@@ -742,7 +752,7 @@
    </div>
   
    <div class="row" style="background-color: #FFFFFF;">
-     <input style="width: 400px; height:40px" type="text"></div>
+     <input name="experienceEndtime" style="width: 400px; height:40px" type="text"></div>
 
 
 
@@ -751,8 +761,7 @@
      </div>
     
      <div class="row" style="background-color: #FFFFFF;">
-       <input style="width: 400px; height:40px" type="text"></div>
-
+       <input  name="experienceInstitution" style="width: 400px; height:40px" type="text"></div>
 
 
        <div class="row">
@@ -760,14 +769,14 @@
        </div>
       
        <div class="row" style="background-color: #FFFFFF;">
-         <input style="width: 400px; height:40px" type="text"></div>
+         <input  name="experienceStatus" style="width: 400px; height:40px" type="text"></div>
 
          <div class="row">
-          <h5><font color="#FF0033"> * </font>&nbsp取得成绩</h5>
+          <h5><font color="#FF0033"> * </font>&nbsp从事何种专业技术学习(工作）</h5>
          </div>
         
          <div class="row" style="background-color: #FFFFFF;">
-           <input style="width: 400px; height:120px" type="text" placeholder="请输入最近的工作情况及取得成绩，不超过200字"></div>
+           <input  name="experienceType" style="width: 400px; height:120px" type="text" placeholder="请输入最近的工作情况及取得成绩，不超过200字"></div>
 
          
            <div class="modal-footer">
@@ -775,9 +784,6 @@
             <button type="submit" class="btn btn-primary" onclick="tanchuang()">提交</button>
           </div>
 <!--以上是弹窗内容-->
-
-
-
 
     </div>
 
@@ -787,50 +793,49 @@
   </div>
   </div>
   </div>
-  
-  
-   
-  
-  
-  
-  
-  
+
   </div>
+      <!--以下是工作情况-->
   <div class="row">
-    
-    <div class="col-sm-12 ">
-      
-      <div class="row">
-        <div class="col-sm-3 ">
-            <h5>时间</h5>
-            
-         </div>
-         
-         <div class="col-sm-3 ">
-            <h5>工作单位</h5>
-            
-         </div>
-         <div class="col-sm-3 ">
-            <h5>任何职</h5>
-            
-         </div>
-         <div class="col-sm-3 ">
-            <h5>取得成绩</h5>
-            
-         
-        
-          
-           
-  
-  
-           
-  
-  
-             
-  
-      </div>
-    </div>
-  </div>
+
+
+
+
+      <table class="table table-bordered table-hover">
+          <thead>
+          <tr style="background-color:#eef1f6" >
+              <th scope="col">开始时间</th>
+              <th scope="col">结束时间</th>
+              <th scope="col">工作单位</th>
+              <th scope="col">任何职</th>
+              <th scope="col">从事何种专业技术学习(工作）</th>
+
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="list:${experienceList}">
+              <th scope="row" th:text=${list.experienceStarttime}></th>
+              <th scope="row" th:text=${list.experienceEndtime}></th>
+              <td th:text=${list.experienceInstitution}></td>
+              <td th:text=${list.experienceStatus}></td>
+              <td th:text=${list.experienceType}></td>
+
+          </tr>
+          </tbody>
+      </table>
+      <!--以下是具体学历信息：for循环这里-->
+
+      <!--以上是具体学历信息：for循环这里-->
+
+
+
+
+
+
+
+
+
+
   </div>
   </div>
   </div>
@@ -841,25 +846,14 @@
   <!--以下是else固定信息-->
   
   <div class="row">
-    <div class="col-md-9 offset-md-1" style="background-color: rgb(254, 254, 255);">
+    <div class="col-md-9 col-md-offset-1" style="background-color: rgb(254, 254, 255);">
     <div class="row" style=" background-color :#e4f0ff" >
     
       <h4><font color="#1a56a8"> <strong>论文著作</strong></font></h4>
       <h4> &nbsp&nbsp&nbsp&nbsp&nbsp</h4>
-      
-    
-    
-    
-     
-    
-    
-    
-    
-    
+
     </div>
     <div class="row">
-      
-        
             <div class="col-sm-2" >
                 序号
              </div> <div class="col-sm-2">
@@ -900,40 +894,30 @@
     </div>
     </div>
     </div>
-    
     <!--以上是以下是else固定信息-->
-  
-  
-  
 
-  
-  
-  
+    <script type="text/javascript">
+
+
+      $(function () {
       
-      <!-- ============================================================== -->
-      <!-- end main wrapper  -->
-      <!-- ============================================================== -->
-      <!-- Optional JavaScript -->
-      <!-- jquery 3.3.1 -->
-      <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
-      <!-- bootstap bundle js -->
-      <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
-      <!-- slimscroll js -->
-      <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
-      <!-- main js -->
-      <script src="assets/libs/js/main-js.js"></script>
-      <!-- chart chartist js -->
-      <script src="assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
-      <!-- sparkline js -->
-      <script src="assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
-      <!-- morris js -->
-      <script src="assets/vendor/charts/morris-bundle/raphael.min.js"></script>
-      <script src="assets/vendor/charts/morris-bundle/morris.js"></script>
-      <!-- chart c3 js -->
-      <script src="assets/vendor/charts/c3charts/c3.min.js"></script>
-      <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
-      <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
-      <script src="assets/libs/js/dashboard-ecommerce.js"></script>
-  
+          $('#datetimepicker1').datetimepicker({
+      
+              format: 'YYYY-MM-DD',
+      
+              locale: moment.locale('zh-cn')
+      
+          });
+      
+          $('#datetimepicker2').datetimepicker({
+      
+              format: 'YYYY-MM-DD ',
+      
+              locale: moment.locale('zh-cn')
+      
+          });
+      
+      });
+      </script>
   </body>
 </html>
