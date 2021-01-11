@@ -259,32 +259,32 @@
                               政治面貌
                              </div>
                               <div class="col-sm-3" style="background-color:#FFFFFF;">
-                                党员
+                                  <label th:text="${declare.getDeclarePolitics()}"></label>
                                </div>
                                <div class="col-sm-3">
                                 行政职务任命时间
                                </div>
                                <div class="col-sm-3" style="background-color: #FFFFFF;">
-                                2020-3
+                                   <label th:text="${#dates.format(declare.getDeclareTime(), 'yyyy-MM-dd')}"></label>
                                </div>
 
                                <div class="col-sm-3">
                                 行政职务说明
                                </div>
                                <div class="col-sm-9" style="background-color:#FFFFFF;">
-                                1巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉
+                                   <label th:text="${declare.getDeclareExplain()}"></label>
                                </div>
                                <div class="col-sm-3">
                                 档案所在地名称
                                </div>
                                <div class="col-sm-9" style="background-color: #FFFFFF;">
-                                2巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉
+                                   <label th:text="${declare.getDeclareInstitution()}"></label>
                                </div>
                                <div class="col-sm-3">
                                 联系地址
                                </div>
                                <div class="col-sm-9" style="background-color: #FFFFFF;">
-                                广西壮族自治区
+                                   <label th:text="${declare.getDeclareCommunicate()}"></label>
                                </div>
                                <div class="col-sm-3">
                                 身份证正
@@ -313,14 +313,9 @@
 <div class="row">
   <div class="col-sm-9 col-md-offset-1" style="background-color: rgb(254, 254, 255);">
     <div class="row" style=" background-color :#e4f0ff" >
-    
-    
         <h4><font color="#1a56a8"> <strong>学历情况</strong></font></h4>
                   
     </div>
-  
-
-
          <div class="row">
           <div class="col-sm-2" >
             毕业时间
@@ -373,9 +368,6 @@
         <h4><font color="#1a56a8"> <strong>主要经历</strong></font></h4>
                   
     </div>
-  
-
-
          <div class="row">
           <div class="col-sm-2" >
             开始时间

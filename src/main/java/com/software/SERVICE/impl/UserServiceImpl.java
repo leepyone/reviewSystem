@@ -27,13 +27,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public String PersonalRegister(User user){
 
-        User u=userDao.getUserByIDCard(user.getUserIdentifyID());
-        if(u==null) {
+        User u=userDao.getUserByAccount(user.getUserNumber());
+        if(u!=null){
+            return "用户名已存在";
+        }
+        u=userDao.getUserByIDCard(user.getUserIdentifyID());
+        if(u!=null) {
             return "身份证已存在";
         }
         u=userDao.getUserByPhone(user.getUserPhone());
-        if(u==null){
-            return "电话号码已经存在已存在";
+        if(u!=null){
+            return "电话号码已存在";
         }
         userDao.insertUser(user);
         int user_id=user.getUserID();
