@@ -10,7 +10,7 @@ public interface declareService {
 
     public List<Declare> getDeclareByUserName(String userName);//通过用户名称获得评审单集合
 
-    public Declare getDeclareByIdentifyNum(String identifyNum);//通过身份证号获取单个评审单
+    public List<Declare> getDeclareByIdentifyNum(String identifyNum);//通过身份证号获取单个评审单
 
     public List<Declare> getDeclareByStatus(int status);//通过报申报状态获取评审单列表
 
@@ -21,5 +21,7 @@ public interface declareService {
     public Declare findDeclare(int declareID);
 
     public void deleteDeclare(int declareID);
+
+    public List<Declare> getDeclareByUS(String userName,int status);
 
 }

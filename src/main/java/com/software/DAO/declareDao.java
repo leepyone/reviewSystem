@@ -37,10 +37,13 @@ public interface declareDao {
     public List<Declare> getDeclareByStatus(int status);//根据评审状态查询评审单列表List
 
     @Select("select * FROM  `declare` WHERE `declare`.declare_user_identifynumber=#{identifynumber}")
-    public Declare getDeclareByIdentifyNumber(String identifynumber);//根据身份证号查询评审表单List
+    public List<Declare> getDeclareByIdentifyNumber(String identifynumber);//根据身份证号查询评审表单List
 
     @Select("select * FROM  `declare` WHERE `declare`.declare_qualification=#{qualification}")
     public List<Declare> getDeclareByQualification(String qualification);//根据申报资格名称查询评审表单List
+
+    @Select("select * FROM `declare` where declare.declare_user_name=#{userName} and declare.declare_status=#{status}")
+    public List<Declare> getDeclareByUS(String userName,int status);//根据用户姓名查询评审单列表List
 
     @Insert("insert into `declare` (`declare_ID`,`user_ID`, `declare_year`,`declare_user_name`," +
             "`corporation_ID`,`declare_corID`,`declare_status`,`declare_user_sex`," +

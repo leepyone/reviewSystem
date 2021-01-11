@@ -2,8 +2,6 @@ package com.software.controller;
 
 import com.software.MODULE.*;
 import com.software.SERVICE.*;
-
-
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
-
 import javax.servlet.http.HttpServletRequest;
-
 import javax.servlet.http.HttpSession;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
@@ -27,7 +22,6 @@ import java.util.List;
 @RequestMapping("corporation")
 public class company {
     private static final Logger LOGGER = Logger.getLogger(company.class);
-
 
     @Autowired
     private CorporationService corporationService;
@@ -69,40 +63,57 @@ public class company {
     public String Toselect(HttpServletRequest request){
         LOGGER.info("查询申报表！");
         List<Declare> declareList = declareService.getAllDeclare();
-        request.setAttribute("userList",declareList);
+        request.setAttribute("declareList",declareList);
         return "company";
     }
-    @RequestMapping("company")
+    @RequestMapping("selectdeclare")
     public String SelectUser(String userName,String identifyNum,String status,
                              String level,String year,HttpServletRequest request){
         LOGGER.info("查询申报表！");
-        List<Declare> declareUsernameList = new ArrayList<Declare>();
-        Declare declareIdentifynumList = new Declare();
-        List<Declare> declareStatusList = new ArrayList<Declare>();
-        List<Declare> declareLevelList = new ArrayList<Declare>();
-        List<Declare> declareYearList = new ArrayList<Declare>();
         List<Declare> declareList = new ArrayList<Declare>();
-        if(!userName.equals(""))
-            declareUsernameList=declareService.getDeclareByUserName(userName);
-        if(!identifyNum.equals(""))
-            declareIdentifynumList=declareService.getDeclareByIdentifyNum(identifyNum);
-        if(!status.equals("")){
-            int s=Integer.parseInt(status);
-            declareStatusList=declareService.getDeclareByStatus(s);
+        if (!userName.equals("") && status.equals("选择状态"))
+            declareList=declareService.getDeclareByUserName(userName);
+        else if(!identifyNum.equals(""))
+            declareList=declareService.getDeclareByIdentifyNum(identifyNum);
+        else if (!status.equals("选择状态") && userName.equals("")){
+            int s;
+            if (status.equals("审核通过"))
+                s=3;
+            else if (status.equals("退回"))
+                s=1;
+            else if (status.equals("待审核"))
+                s=0;
+            else
+                s=2;
+            declareList=declareService.getDeclareByStatus(s);
         }
-        if(!level.equals("")){
-            int l=Integer.parseInt(level);
-            declareLevelList=declareService.getDeclareByLevel(l);
+        else if (!level.equals("选择级别")){
+            int l;
+            if (level.equals("低级"))
+                l=1;
+            else if (level.equals("中级"))
+                l=2;
+            else
+                l=3;
+            declareList=declareService.getDeclareByLevel(l);
         }
-        if(!year.equals(""))
-            declareYearList=declareService.getDeclareByYear(year);
-        declareList.addAll(declareUsernameList);
-        declareList.add(declareIdentifynumList);
-        declareList.addAll(declareStatusList);
-        declareList.addAll(declareLevelList);
-        declareList.addAll(declareYearList);
-        declareList = new ArrayList<Declare>(new LinkedHashSet<>(declareList));
-        request.setAttribute("userList",declareList);
+        else if(!year.equals("选择年度"))
+            declareList=declareService.getDeclareByYear(year);
+        else if (!userName.equals("") && !status.equals("选择状态")){
+            int s;
+            if (status.equals("审核通过"))
+                s=3;
+            else if (status.equals("退回"))
+                s=1;
+            else if (status.equals("待审核"))
+                s=0;
+            else
+                s=2;
+            declareList=declareService.getDeclareByUS(userName,s);
+        }
+        else
+            declareList=declareService.getAllDeclare();
+        request.setAttribute("declareList",declareList);
         LOGGER.info("查询成功！");
         return "company";
     }
