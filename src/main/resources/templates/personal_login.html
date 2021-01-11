@@ -81,7 +81,7 @@
             <form method="post" th:action="@{'/PersonalUser/doLogin'}">
                 <div class="form-group">
                   <label for="exampleInputEmail1"><p>&nbsp&nbsp账&nbsp号</p></label>
-                  <input  style="width: 640px;" type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="username">
+                  <input  style="width: 630px;" type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="username">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1"><p>&nbsp&nbsp密&nbsp码</p></label>
@@ -92,7 +92,7 @@
                     <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="window.location.href = '#'">登录</button>
                   </div>
                 <div class="form-group">
-                    <button type="button" class="btn btn-default btn-lg btn-block" onclick="window.location.href = '#'">注册</button>
+                    <a type="button" class="btn btn-default btn-lg btn-block" th:href="@{'/PersonalUser/Register'}">注册</a>
                 </div>
             </form>
         </div>
