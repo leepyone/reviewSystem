@@ -6,6 +6,8 @@ import com.software.MODULE.UserDetails;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Mapper
 @Repository
 public interface userDao {
@@ -62,6 +64,6 @@ public interface userDao {
     @Update("update `user_details` set  user_details.user_sex= #{userSex},user_details.user_birthday= #{userBirthday},user_details.user_hometown= #{userHometown},user_details.user_liveplace= #{userLiveplace},user_details.user_email= #{userEmail},user_details.user_QQ= #{userQQ},user_details.user_profile= #{userProfile},user_details.user_education= #{userEducation},user_details.user_workexp= #{userWorkexp},user_details.user_title= #{userTitle},user_details.user_phone= #{userPhone},user_details.politics_status= #{politicsStatus},user_details.user_language= #{userLanguage},user_details.user_specialty= #{userSpecialty},user_details.rew_pub= #{rewPub},user_details.part_time= #{partTime} where user_details.user_ID = #{userID}")
     boolean changeUserDetail(UserDetails userDetails);
 
-
-
+    @Select("select user_ID from user where 'user'.user_name=#{userName}")
+    int getUserID(String userName);
 }

@@ -1,6 +1,7 @@
 package com.software.DAO;
 
 import com.software.MODULE.Corporation;
+import com.software.MODULE.User;
 import com.software.MODULE.corporation_worker;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
@@ -40,7 +41,9 @@ public interface CorporationDao {
     @Delete("delete from corporation_worker where corporation_worker.corporation_id= #{corporationId} and corporation_worker.user_ID= #{userId}")
     boolean deleteCorporationWorkers(int corporationId,int userId);
 
-    //
+    @Select("select * from user where user.user_corpID=#{corpID}")
+    List<User> getWorkers(int corpID);
 
-
+    @Select("select user_status from corporation_worker where corporation_worker.user_ID=#{userID}")
+    int getUserStatus(int userID);
 }

@@ -13,10 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedHashSet;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @RequestMapping("corporation")
@@ -34,29 +31,56 @@ public class company {
     @Autowired
     private PaperService paperService;
 
-    @RequestMapping("toindex")
-    public String ToIndex() { return "index"; }
+    @RequestMapping("toregistration")
+    public String ToRegistration() { return "company_register"; }
+    @RequestMapping("doregistration")
+    public String DoRegistration(String corporationName, String password, HttpSession session, HttpServletRequest request){
+
+        return "tologin";
+    }
+
     @RequestMapping("tologin")
     public String ToLogin(){
-        return "login";
+        return "company_login";
     }
-    @RequestMapping("tocenter")
-    public String ToCenter() { return "center"; }
-
     @RequestMapping("dologin")
-    public String DoLogin(String corporationName, String password, HttpSession session, HttpServletRequest request){
+    public String DoLogin(String number, String password, HttpSession session, HttpServletRequest request){
         LOGGER.info("begin login---->>>>>>>>>>>>>");
-        Corporation cModel = corporationService.FindCorporation(corporationName);
+        Corporation cModel = corporationService.FindCorporation(number);
         if (cModel != null) {
-            if (DigestUtils.md5Hex(password).equals(cModel.getPassword())) {
-                session.setAttribute("loginUser", cModel);
-                LOGGER.info(corporationName + "登录成功！");
-                return "index";
+            if (password.equals(cModel.getPassword())) {
+                session.setAttribute("loginCorp", cModel);
+                LOGGER.info(number + "登录成功！");
+                return "forward:ManageUser";
             }
         }
-        LOGGER.error(corporationName + "登录失败！");
+        LOGGER.error(number + "登录失败！");
         request.setAttribute("loginerror","用户名或密码错误！");
-        return "login";
+        return "company_login";
+    }
+
+    @RequestMapping("ManageUser")
+    public String ManageUser(HttpSession session, HttpServletRequest request){
+        LOGGER.info("用户管理！");
+        Corporation thisCorp = (Corporation) session.getAttribute("loginCorp");
+        List<User> workerList = corporationService.getWorkers(thisCorp.getCorporationId());
+        HashMap<String, String> map = new HashMap<>();
+        List<Map> maps = new ArrayList<Map>();
+        for(User worker : workerList) {
+            map.put("workerName",worker.getUserName());
+            map.put("workerPhone",worker.getUserPhone());
+            map.put("workerStatus",String.valueOf(corporationService.FindUserStatus(worker.getUserID())));
+            LOGGER.info(map);
+            maps.add(map);
+            LOGGER.info(maps);
+        }
+        request.setAttribute("workerList",maps);
+        return "Manage";
+    }
+    @RequestMapping("deleteuser")
+    public String DeleteUser(@RequestParam String userName) {
+        corporationService.DeleteUser(corporationService.FindUserID(userName));
+        return "forward:Manage";
     }
 
     @RequestMapping("toselect")
@@ -135,7 +159,7 @@ public class company {
         session.setAttribute("thisD",declare);
         return "company_shenhe";
     }
-    @RequestMapping("deleteuser")
+    @RequestMapping("deletedeclare")
     public String DeleteUser(@RequestParam String declareID,HttpServletRequest request){
         int dID = Integer.parseInt(declareID);
         declareService.deleteDeclare(dID);

@@ -1,25 +1,17 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
- 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <base th:href="@{/}">
     <!-- Bootstrap CSS -->
-       
-       
     <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
     <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/libs/css/style.css">
     <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
     <title></title>
-
-
-
     <style>
-     
-    
       .col-sm-9{border-radius: 10px;}
       .div{border-radius: 10px;border-top:25px}
       .starter{
@@ -54,122 +46,53 @@
 <script language="javascript">
 
     function tanchuang()
-    
     {
-    
     //这个基本没有什么说的，就是弹出一个提醒的对话框
-    
     alert("操作成功");
-    
     }
-</script>   
-
+</script>
 </head>
-
 <body>
-   
-  
-  
-  
- 
-
     <div class="col-sm-9 col-md-offset-3" style=" border-style:hidden" >
-        
         <h4><font color="#009900"> <strong>&nbsp</strong></font></h4>
       </div>
-
-
   <form action="" method="post"  onsubmit="return false">
   
   <!--以下是审核报送1-->
-  
   <div class="row">
   <div class="col-md-9 offset-md-1" style="background-color: rgb(254, 254, 255);">
   <div class="row" style=" background-color :#bdebd0" >
-    
-        
     <a   type="button" class="btn btn-success"
-    href ="/corporation/todetails" > 返回</a>
-      
+    href ="/corporation/todetails"> 返回</a>
   <h4><font color="#009900"> <strong>&nbsp审核报送</strong></font></h4>
- 
-            
   </div>
   <div class="row">
-  
   <div class="col-sm-12 ">
-    
     <div class="row">
-
-
-
-
         <div class="col-sm-12">
             <h5><font color="#FF0033"> * </font>&nbsp本单位负责人</h5>
          </div>
          <div class="col-sm-12" style="background-color: #FFFFFF;">
             <input  style="width: 900px; height:40px" type="text"/>
            </div>
-
-
            <div class="col-sm-12">
             <h5><font color="#FF0033"> * </font>&nbsp报送职改部门</h5>
          </div>
          <div class="col-sm-12" style="background-color: #FFFFFF;">
             <input  style="width: 900px; height:40px" type="text"/>
            </div>
-
-
-
-           
-
            <div class="col-sm-9 col-md-offset-6" style=" border-style:hidden" >
             <button   type="submit" class="btn btn-primary" 
             onclick="tanchuang()"> 报送</button>
-          
-           
           </div>
-           
-  
-  
-           
-  
     </div>
   </div>
   </div>
   </div>
   </div>
-  
-  
+
   <!--以上是审核报送1-->
-  
-  
-  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-  
-
-  
-  
-  
-      
       <!-- ============================================================== -->
       <!-- end main wrapper  -->
       <!-- ============================================================== -->
@@ -194,6 +117,5 @@
       <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
       <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
       <script src="assets/libs/js/dashboard-ecommerce.js"></script>
-  
   </body>
 </html>

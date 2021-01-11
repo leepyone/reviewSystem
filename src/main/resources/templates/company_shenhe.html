@@ -307,7 +307,7 @@
                             单位级别
                         </div>
                         <div class="col-sm-3" style="background-color:#FFFFFF;">
-                            <td th:text=${thisDeclare.declareLevel}></td>
+                            <td th:text=${thisDeclare.declareCorperationLevel}></td>
                         </div>
                         <div class="col-sm-3 ">
                             拟评专业系列
@@ -436,42 +436,28 @@
     <div class="row">
         <div class="col-sm-9 col-md-offset-3" style="background-color: rgb(254, 254, 255);">
             <div class="row" style=" background-color :#e4f0ff" >
-
                 <h4><font color="#1a56a8"> <strong>主要经历</strong></font></h4>
-
             </div>
-
-
-
-            <div class="row">
-                <div class="col-sm-2" >
-                    开始时间
-                </div> <div class="col-sm-2">
-                截至时间
-            </div>
-                <div class="col-sm-6" >
-                    工作单位(学校)
-                </div>
-
-                <div class="col-sm-2" >
-                    操作
-                </div>
-                <!--以下是具体主要经历：for循环这里-->
-                <div class="col-sm-2" style="background-color:#FFFFFF;">
-                    2020-1-1
-                </div> <div class="col-sm-2" style="background-color:#FFFFFF;">
-                2035-1-1
-            </div>
-                <div class="col-sm-6" style="background-color:#FFFFFF;">
-                    清华大学
-                </div>
-
-                <div class="col-sm-2" style="background-color:#FFFFFF;">
-                    <button type="button" class="btn btn-primary" >＋详情</button>
-                </div>
-                <!--以上是具体主要经历：for循环这里-->
-            </div>
-
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr style="background-color:#eef1f6" >
+                    <th scope="col">开始时间</th>
+                    <th scope="col">截止时间</th>
+                    <th scope="col">工作单位(学校)</th>
+                    <th scope="col">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="list1:${thisExp}">
+                    <th scope="row" th:text=${list1.experienceStarttime}></th>
+                    <td th:text=${list1.experienceEndtime}></td>
+                    <td th:text=${list1.experienceInstitution}></td>
+                    <td>
+                        <button type="button" class="btn btn-primary" >＋详情</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <!--以上是主要经历-->
@@ -481,59 +467,34 @@
     <div class="row">
         <div class="col-sm-9 col-md-offset-3" style="background-color: rgb(254, 254, 255);">
             <div class="row" style=" background-color :#e4f0ff" >
-
                 <h4><font color="#1a56a8"> <strong>论文、著作</strong></font></h4>
-
             </div>
-
-
-
-            <div class="row">
-                <div class="col-sm-1" >
-                    序号
-                </div> <div class="col-sm-1">
-                发表时间
-            </div>
-                <div class="col-sm-2" >
-                    论文类别
-                </div>
-
-                <div class="col-sm-2" >
-                    论文著作名称
-                </div>
-                <div class="col-sm-2" >
-                    登载刊物名称、刊号
-                </div>
-                <div class="col-sm-2" >
-                    角色
-                </div>
-                <div class="col-sm-2" >
-                    操作
-                </div>
-                <!--以下是论文/著作：for循环这里-->
-                <div class="col-sm-1" style="background-color:#FFFFFF;">
-                    2020-1-1
-                </div> <div class="col-sm-1" style="background-color:#FFFFFF;">
-                2035-1-1
-            </div>
-                <div class="col-sm-2" style="background-color:#FFFFFF;">
-                    清华大学
-                </div>
-                <div class="col-sm-2" style="background-color:#FFFFFF;">
-                    清华大学
-                </div>
-                <div class="col-sm-2" style="background-color:#FFFFFF;">
-                    清华大学
-                </div>
-                <div class="col-sm-2" style="background-color:#FFFFFF;">
-                    清华大学
-                </div>
-                <div class="col-sm-2" style="background-color:#FFFFFF;">
-                    <button type="button" class="btn btn-primary" >＋详情</button>
-                </div>
-                <!--以上是论文/著作：for循环这里-->
-            </div>
-
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr style="background-color:#eef1f6" >
+                    <th scope="col">序号</th>
+                    <th scope="col">发表时间</th>
+                    <th scope="col">论文类别</th>
+                    <th scope="col">论文著作名称</th>
+                    <th scope="col">登载刊物名称、刊号</th>
+                    <th scope="col">角色</th>
+                    <th scope="col">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="list2:${thisPaper}">
+                    <th scope="row" th:text=${list2.paperID}></th>
+                    <td th:text=${list2.paperDate}></td>
+                    <td th:text=${list2.paperType}></td>
+                    <td th:text=${list2.paperName}></td>
+                    <td th:text=${list2.paperPublication}></td>
+                    <td th:text=${list2.paperPart}></td>
+                    <td>
+                        <button type="button" class="btn btn-primary" >＋详情</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <!--以上是论文/著作-->
