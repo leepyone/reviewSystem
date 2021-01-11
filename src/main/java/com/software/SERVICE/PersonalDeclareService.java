@@ -15,16 +15,16 @@ public interface PersonalDeclareService {
     //根据用户id返回职称评审表list
     public List<Declare> getDeclareByUserID(User user);
 
-    //根据用户id返回职称评状态表list
+    //根据用户id返回职称评状态表list,个人端无用
     public List<Declare_check> getDeclareCheckListByUserId(User user);
 
     //根据评审表id返回相应评审表
     public Declare getDeclareByDeclareID(Declare declare);
 
     //根据评审表id返回相应评审状态表
-    public Declare_check getDeclareCheckByDeclareId(Declare declare);
+    public List<Declare_check> getDeclareCheckListByDeclareId(Declare declare);
 
-    //新建评审表,user作为获取id的东西
-    public void CreateDeclare(Declare declare, User user);
+    //新建评审表
+    public void CreateDeclare(Declare declare,User user);
 
 }
