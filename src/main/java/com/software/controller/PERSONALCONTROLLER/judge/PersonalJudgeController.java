@@ -60,7 +60,7 @@ public class PersonalJudgeController {
         //提交认定表
         personalJudgeService.addTitleJudge(titleJudge,user);
 
-        return "redirect:/PersonalJudge/Judge";
+        return "redirect:/PersonalJudge/Judge";//返回职称认定界面
     }
 
 
