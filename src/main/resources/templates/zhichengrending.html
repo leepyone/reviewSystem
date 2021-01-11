@@ -64,7 +64,7 @@
                   <li  ><a th:href="@{'/PersonalDeclare/Main'}">申报职称</a></li>
                   <li class="active"><a th:href="@{'/PersonalDeclare/Declare'}">职称评审</a></li>
                   <li  ><a th:href="@{'/PersonalJudge/Judge'}">职称认定</a></li>
-                  <li><a href="#">帮助中心</a></li>
+                  <li><a>帮助中心</a></li>
               </ul>
           </div>
       </nav>
@@ -87,8 +87,7 @@
 
 
    <div >
-    <button  style="float:right" type="button" class="btn btn-success"  
-    onclick="window.location.href = './rending_input.html'">+点我进行申报 </button>
+    <a  style="float:right" type="button" class="btn btn-success" th:href="@{'/PersonalJudge/toCreateJudgeTable'}">+点我进行申报 </a>
  
    </div>
              <!--回车-->
@@ -106,14 +105,12 @@
               <!--回车-->
 
 
-
-
               <!--#1职称认定循环体由此开始-->
-              <div class="row">
+              <div class="row" th:each="Judge,JudgeStat:${titleJudgeList}">
       <div class="col-md-12" > 
             <div class="row" style=" background-color :#e4f0ff" >
     
-                <h4><font color="#1a56a8"> <strong>&nbsp&nbsp&nbsp&nbsp#1职称认定（正在认定）
+                <h4><font color="#1a56a8"> <strong>&nbsp&nbsp&nbsp&nbsp#1职称认定
                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -121,31 +118,33 @@
                     &nbsp&nbsp&nbsp&nbsp
                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                   
                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                   
                 </strong></font></h4>
-                <button  style="float:right" type="button" class="btn btn-primary"  
-               >重置职改办 </button>
                <h4>&nbsp&nbsp&nbsp</h4>
-                <button  style="float:right" type="button" class="btn btn-danger"
-                onclick="window.location.href = './rending_input.html'"  
-    >编辑 </button>     
+                <button  style="float:right" type="button" class="btn btn-danger">详情</button>
             </div>
 
             <!--流程-->
           <div class="row">
               <div class="col-sm-12">
-                <div class="progress progress-striped active">
-                  <div class="bar" style="width: 40%;"></div>
-                </div>
-                <div class="progress progress-striped"> 
-                  <div class="progress-bar" role="progessbar" aria-valuenow="30"
-                   aria-valuemin="0" aria-valuemax="100" style="width:30%">
-                      <span class="sr-only">30% Complete</span>
-                    </div>
-                </div>
+                  <td th:if="${Judge.judgeStatus==0}">
+                      <div class="progress progress-striped">
+                          <div class="progress-bar" role="progessbar" aria-valuenow="30"
+                               aria-valuemin="0" aria-valuemax="100" style="width:30%">
+                              <span class="sr-only">30% Complete</span>
+                          </div>
+                      </div>
+                  </td>
+                  <td th:if="${Judge.judgeStatus==1}">
+                      <div class="progress progress-striped">
+                          <div class="progress-bar" role="progessbar" aria-valuenow="30"
+                               aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                              <span class="sr-only">100% Complete</span>
+                          </div>
+                      </div>
+                  </td>
                 
               当前流程：--------------1.个人申报----------------------------------------2.单位审核--------
               --------------------------------------------3.材料报送成功
@@ -157,107 +156,39 @@
                         申报年度
                        </div>
                         <div class="col-sm-3" style="background-color: #FFFFFF;">
-                          2020
+                          <label th:text="${Judge.getJudgeYear()}"></label>
                          </div>
                          <div class="col-sm-3">
                             报送职改办
                          </div>
                          <div class="col-sm-3" style="background-color:#FFFFFF;">
-                          北海广播电视台
+                             <label th:text="${Judge.getJudgeZgb()}"></label>
                          </div>
-
                          <div class="col-sm-3 ">
                           拟申报资格名称
                          </div>
                           <div class="col-sm-3" style="background-color: #FFFFFF;">
-                            艺术系列/副高级/二级作曲
+                              <label th:text="${Judge.getJudgeTitle()}+'/'+${Judge.getjudgeLevel_str()}"></label>
                            </div>
                            <div class="col-sm-3">
                             创办时间
                            </div>
                            <div class="col-sm-3" style="background-color:#FFFFFF;">
-                            2020-1-1
+                            2020-01-07
                            </div>
-
                            <div class="col-sm-3 ">
-                            材料报送时间段
+                            材料报送时间
                            </div>
                             <div class="col-sm-9" style="background-color: #FFFFFF;">
-                              2020-1-1至2030-22-2
+                              2020-01-12
                              </div>
                              
                 </div>
                 </div>
             </div>
-
             <!--#1职称认定循环体到此结束-->
 
 
-
-<!--以下是职称认定ed-->
- <!--#1职称认定循环体由此开始-->
- <div class="row">
-    <div class="col-md-12" > 
-          <div class="row" style=" background-color :#e4f0ff" >
-  
-              <h4><font color="#1a56a8"> <strong>&nbsp&nbsp&nbsp&nbsp#2职称认定（已完成）
-                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                  &nbsp&nbsp&nbsp&nbsp
-                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                 
-                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                  &nbsp&nbsp&nbsp&nbsp
-              </strong></font></h4>
-              
-             <h4>&nbsp&nbsp&nbsp</h4>
-              <button  style="float:right" type="button" class="btn btn-danger"  
-               onclick="window.location.href = './zhichengrending_detail.html'"
-  >详情 </button>     
-          </div>
-
-        
-             <div class="row">
-                     <div class="col-sm-3 ">
-                      申报年度
-                     </div>
-                      <div class="col-sm-3" style="background-color: #FFFFFF;">
-                        2020
-                       </div>
-                       <div class="col-sm-3">
-                          报送职改办
-                       </div>
-                       <div class="col-sm-3" style="background-color:#FFFFFF;">
-                        北海广播电视台
-                       </div>
-
-                       <div class="col-sm-3 ">
-                        拟申报资格名称
-                       </div>
-                        <div class="col-sm-3" style="background-color: #FFFFFF;">
-                          艺术系列/副高级/二级作曲
-                         </div>
-                         <div class="col-sm-3">
-                          创办时间
-                         </div>
-                         <div class="col-sm-3" style="background-color:#FFFFFF;">
-                          2020-1-1
-                         </div>
-
-                         
-                           
-              </div>
-              </div>
-          </div>
-
-          <!--#1职称认定循环体到此结束-->
-<!--以上是职称认定ed-->
 
 
 

@@ -14,13 +14,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-//职称评审/PersonalDeclare/Declare
+//职称评审/PersonalDeclare/toCreateDeclareTable
 @Controller
 @RequestMapping("/PersonalDeclare")
 public class DeclareController {
@@ -181,12 +182,19 @@ public class DeclareController {
         if(!isLogin(session)){
             return "redirect:/PersonalUser/Login";//返回登录界面
         }
+        System.out.println(declare);
+        //日期格式转换
         User user=(User) session.getAttribute("PersonalLoginUser");
         Date declareWorkTime=StringToDate(declare_worktime);
         declare.setDeclareWorktime(declareWorkTime);
+        Date date =new Date();
+        DateFormat df=new SimpleDateFormat("yyyy-MM-dd");
+        String setUptime=df.format(date);
+        declare.setDeclareSetuptime(setUptime);
+        declare.setDeclareYear("2021");
         //提交相应的信息
         personalDeclareService.CreateDeclare(declare,user);
-        return "pingshen_input";
+        return "redirect:/PersonalDeclare/toCreateDeclareTable";
     }
 
     //添加学历信息记录，education_graduation_time为前端传回来的信息，需要格式化
@@ -194,10 +202,12 @@ public class DeclareController {
     public String AddEducation(Education education, String education_graduation_time,
                                Map<String, Object> map, HttpSession session){
 
+        System.out.println(education);
         User user=(User) session.getAttribute("PersonalLoginUser");
         //日期格式转换
         Date educationGraduationTime=StringToDate(education_graduation_time);
         education.setEducationGraduationTime(educationGraduationTime);
+        education.setUserID(user.getUserID());
         //添加学历基本信息
         educationService.addEducation(education);
         //返回学历的list
@@ -205,7 +215,7 @@ public class DeclareController {
         //map.put上去
         map.put("educationList",educationList);
 
-        return "pingshen_input";
+        return "redirect:/PersonalDeclare/toCreateDeclareTable";
     }
 
     //添加工作经历记录
@@ -219,14 +229,16 @@ public class DeclareController {
         Date experienceEndtime=StringToDate(experience_endtime);
         experience.setExperienceStarttime(experienceStarttime);
         experience.setExperienceEndtime(experienceEndtime);
+        experience.setUserID(user.getUserID());
         //添加工作经历基本信息
         experienceService.addExperience(experience);
         //返回工作经历的list
         List<Experience> experienceList=experienceService.getExperienceByUserID(user);
         //map.put上去
+
         map.put("experienceList",experienceList);
 
-        return "pingshen_input";
+        return "redirect:/PersonalDeclare/toCreateDeclareTable";
     }
 
     //添加论文记录
@@ -241,7 +253,7 @@ public class DeclareController {
         //map.put上去
         map.put("paperList",paperList);
 
-        return "pingshen_input";
+        return "redirect:/PersonalDeclare/toCreateDeclareTable";
     }
 
     //修改学历信息
