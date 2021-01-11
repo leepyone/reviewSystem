@@ -72,16 +72,16 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link " href="#">首页 </a>
-          <a class="nav-item nav-link" href="#">个人资料</a>
-          <a class="nav-item nav-link" href="#">申报职称</a>
-          <a class="nav-item nav-link" href="./index.html">职称评审</a>
-          <a class="nav-item nav-link active" href="./zhichengrending.html">职称认定<span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link disabled" href="#">帮助中心</a>
+        <div id="navbar" class="collapse-default navbar-collapse" >
+            <ul class="nav navbar-nav" >
+                <li  ><a th="#">首页</a></li>
+                <li  ><a th:href="@{'/PersonalUserInfo/toPersonalInfo'}">个人资料</a></li>
+                <li  ><a th:href="@{'/PersonalDeclare/Main'}">申报职称</a></li>
+                <li class="active"><a th:href="@{'/PersonalDeclare/Declare'}">职称评审</a></li>
+                <li  ><a th:href="@{'/PersonalJudge/Judge'}">职称认定</a></li>
+                <li><a href="#">帮助中心</a></li>
+            </ul>
         </div>
-      </div>
     </nav>
   <!--1.以上是导航栏-->
   

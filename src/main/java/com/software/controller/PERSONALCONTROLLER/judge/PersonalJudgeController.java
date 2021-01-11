@@ -46,7 +46,17 @@ public class PersonalJudgeController {
 
         map.put("titleJudgeList",titleJudgeList);
 
-        return "认定界面";
+        return "zhichengrending";
+    }
+
+    //跳转至新建认定表界面
+    @RequestMapping("/toCreateJudgeTable")
+    public String toCreateJudgeTable(HttpSession session,Map<String, Object> map){
+        if(!isLogin(session)){
+            return "redirect:/PersonalUser/Login";//返回登录界面
+        }
+
+        return "rending_input";
     }
 
     //新建认定表

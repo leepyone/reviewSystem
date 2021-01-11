@@ -134,7 +134,7 @@ function check()
   
   <!--以上是个人承诺-->
   
-  <form action="" method="post" onsubmit="return check()" th:action="@{'/PersonalDeclare/CreateDeclareTable'}">
+  <form action="" method="post" onsubmit="return check()" th:action="@{'/PersonalDeclare/CreateDeclareTable'}" name="iframeForm"  target="iframeForm">
   
   <!--以下是申报信息-->
   
@@ -368,19 +368,12 @@ function check()
                </div>
                 <div class="col-sm-3" style="background-color: #FFFFFF;">
                   <div class="row">
-            
-            
                     <div class="form-group" style="width: 200px; ">
                         <!--指定 date标记-->
-            
                         <div class='input-group date' id='datetimepicker2'>
-            
                             <input  name="declareUserBirthday"  type='text' class="form-control" />
-            
                             <span class="input-group-addon">
-            
                                 <span class="glyphicon glyphicon-calendar"></span>
-            
                             </span>
             
                         </div>
@@ -479,7 +472,7 @@ function check()
     <button type="submit" class="btn btn-danger" style="text-align: center" onclick="tanchuang()">提交</button>  
     </div>
     </form>
-
+    <iframe id="iframeForm" name="iframeForm" style="display:none;"></iframe>
 
 
     <div class="row">
@@ -524,7 +517,18 @@ function check()
           </div>
 
           <div class="row" style="background-color: #FFFFFF;">
-            <input  name="education_graduation_time" style="width: 400px; height:40px" tyoe="text"></div>
+              <div class="form-group" style="width: 400px; ">
+                  <!--指定 date标记-->
+                  <div class='input-group date' id='datetimepicker3'>
+                      <input  name="education_graduation_time"  type='text' class="form-control" />
+                      <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+
+                  </div>
+
+              </div>
+          </div>
           <div class="row">
             <h5><font color="#FF0033"> * </font>&nbsp学历项目</h5>
            </div>
@@ -556,8 +560,6 @@ function check()
                 </select>
            </div>
 
-
-
            <div class="row">
             <h5><font color="#FF0033"> * </font>&nbsp毕业院校</h5>
            </div>
@@ -566,7 +568,6 @@ function check()
            <div class="row">
             <h5><font color="#FF0033"> * </font>&nbsp学历性质</h5>
            </div>
-
 
            <div class="row" style="background-color: #FFFFFF;">
             <select name="" style="width: 400px; height:40px">
@@ -588,7 +589,7 @@ function check()
 
 
            <div class="row" style="background-color: #FFFFFF;">
-            <input  name="educationMajor"   style="width: 400px; height:40px" tyoe="text"></div>
+            <input  name="educationMajor"  style="width: 400px; height:40px" tyoe="text"></div>
 
 
 
@@ -596,8 +597,6 @@ function check()
            <div class="row">
             <h5><font color="#FF0033"> * </font>&nbsp学位</h5>
            </div>
-
-
 
            <div class="row" style="background-color: #FFFFFF;">
             <select  name="" style="width: 400px; height:40px">
@@ -645,6 +644,7 @@ function check()
               <th scope="col">学历性质</th>
               <th scope="col">毕业院校</th>
               <th scope="col">所学专业</th>
+              <th scope="col">操作</th>
           </tr>
           </thead>
           <tbody>
@@ -652,6 +652,7 @@ function check()
               <th scope="row" th:text="${#dates.format(list.educationGraduationTime, 'yyyy-MM-dd')}"></th>
               <td th:text="${list.educationGraduationProject}"></td>
               <td th:text="${list.educationLevel}"></td>
+              <td th:text="'全日制普通高校毕业生'"></td>
               <td th:text="${list.educationSchool}"></td>
               <td th:text="${list.educationMajor}"></td>
               <td>
@@ -698,7 +699,7 @@ function check()
     </div>
 
 
-    <form action="" method="post" th:action="@{'/PersonalDeclare/AddExperience'}">
+    <form action="" method="post" th:action="@{'/PersonalDeclare/AddExperience'}" >
     <div class="modal-body">
 
  <!--以下是弹窗内容-->
@@ -707,7 +708,17 @@ function check()
  </div>
 
  <div class="row" style="background-color: #FFFFFF;">
-   <input  name="experienceStarttime" style="width: 400px; height:40px" type="text"></div>
+     <div class="form-group" style="width: 400px; ">
+         <!--指定 date标记-->
+         <div class='input-group date' id='datetimepicker4'>
+             <input  name="experience_starttime"  type='text' class="form-control" />
+             <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+         </div>
+     </div>
+ </div>
+
 
 
 
@@ -716,9 +727,17 @@ function check()
    </div>
   
    <div class="row" style="background-color: #FFFFFF;">
-     <input name="experienceEndtime" style="width: 400px; height:40px" type="text"></div>
 
-
+       <div class="form-group" style="width: 400px; ">
+           <!--指定 date标记-->
+           <div class='input-group date' id='datetimepicker5'>
+               <input  name="experience_endtime"  type='text' class="form-control" />
+               <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+           </div>
+       </div>
+   </div>
 
      <div class="row">
       <h5><font color="#FF0033"> * </font>&nbsp工作单位</h5>
@@ -773,6 +792,7 @@ function check()
               <th scope="col">工作单位</th>
               <th scope="col">任何职</th>
               <th scope="col">从事何种专业技术学习(工作）</th>
+              <th scope="col">操作</th>
 
           </tr>
           </thead>
@@ -781,6 +801,8 @@ function check()
               <th scope="row" th:text="${#dates.format(list.experienceStarttime, 'yyyy-MM-dd')}"></th>
               <td th:text="${#dates.format(list.experienceEndtime, 'yyyy-MM-dd')}"></td>
               <td th:text="${list.experienceInstitution}"></td>
+              <td th:text="${list.experienceStatus}"></td>
+              <td th:text="${list.experienceType}"></td>
               <td>
                   <button type="button" class="btn btn-primary" >＋详情</button>
               </td>
@@ -871,8 +893,33 @@ function check()
               locale: moment.locale('zh-cn')
       
           });
+
+          $('#datetimepicker3').datetimepicker({
+
+              format: 'YYYY-MM-DD ',
+
+              locale: moment.locale('zh-cn')
+
+          });
+
+          $('#datetimepicker4').datetimepicker({
+
+              format: 'YYYY-MM-DD ',
+
+              locale: moment.locale('zh-cn')
+
+          });
+
+          $('#datetimepicker5').datetimepicker({
+
+              format: 'YYYY-MM-DD ',
+
+              locale: moment.locale('zh-cn')
+
+          });
       
       });
+
       </script>
   </body>
 </html>
