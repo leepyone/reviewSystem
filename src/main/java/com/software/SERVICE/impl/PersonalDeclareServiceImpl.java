@@ -8,6 +8,7 @@ import com.software.SERVICE.PersonalDeclareService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -55,6 +56,8 @@ public class PersonalDeclareServiceImpl implements PersonalDeclareService {
         int userID=user.getUserID();
         declare.setDeclareStatus(0);//未审核
         declare.setUserID(userID);
+
+
         declareDao.InsertDeclare(declare);
     }
 }
