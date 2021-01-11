@@ -64,7 +64,7 @@
                   <li  ><a th:href="@{'/PersonalDeclare/Main'}">申报职称</a></li>
                   <li class="active"><a th:href="@{'/PersonalDeclare/Declare'}">职称评审</a></li>
                   <li  ><a th:href="@{'/PersonalJudge/Judge'}">职称认定</a></li>
-                  <li><a href="#">帮助中心</a></li>
+                  <li><a>帮助中心</a></li>
               </ul>
           </div>
       </nav>
@@ -129,15 +129,22 @@
             <!--流程-->
           <div class="row">
               <div class="col-sm-12">
-                <div class="progress progress-striped active">
-                  <div class="bar" style="width: 40%;"></div>
-                </div>
-                <div class="progress progress-striped"> 
-                  <div class="progress-bar" role="progessbar" aria-valuenow="30"
-                   aria-valuemin="0" aria-valuemax="100" style="width:30%">
-                      <span class="sr-only">30% Complete</span>
-                    </div>
-                </div>
+                  <td th:if="${Judge.judgeStatus==0}">
+                      <div class="progress progress-striped">
+                          <div class="progress-bar" role="progessbar" aria-valuenow="30"
+                               aria-valuemin="0" aria-valuemax="100" style="width:30%">
+                              <span class="sr-only">30% Complete</span>
+                          </div>
+                      </div>
+                  </td>
+                  <td th:if="${Judge.judgeStatus==1}">
+                      <div class="progress progress-striped">
+                          <div class="progress-bar" role="progessbar" aria-valuenow="30"
+                               aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                              <span class="sr-only">100% Complete</span>
+                          </div>
+                      </div>
+                  </td>
                 
               当前流程：--------------1.个人申报----------------------------------------2.单位审核--------
               --------------------------------------------3.材料报送成功
@@ -173,7 +180,7 @@
                             材料报送时间
                            </div>
                             <div class="col-sm-9" style="background-color: #FFFFFF;">
-                              2020-01-012
+                              2020-01-12
                              </div>
                              
                 </div>
