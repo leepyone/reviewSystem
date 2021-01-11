@@ -79,9 +79,10 @@ public interface declareDao {
     public List<Declare_check> getDeclareCheckListByUserId(int user_id);//通过用户id获取declare_check的list
 
     @Select("select * from declare_check where declare_id=#{declare_id}")
-    public Declare_check getDeclareCheckByDeclareId(int declare_id);//通过评审表id获取相应declare_check对象
+    public List<Declare_check> getDeclareCheckListByDeclareId(int declare_id);//通过评审表id获取相应declare_check对象
 
     @Delete("DELETE FROM `declare` WHERE `declare`.declare_ID=#{declareID}")
-    public void deleteDeclare(int declareID);
+    public void deleteDeclare(int declareID);//通过评审表id删除相应评审表
+
 
 }

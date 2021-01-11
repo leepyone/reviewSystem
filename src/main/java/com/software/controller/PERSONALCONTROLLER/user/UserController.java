@@ -24,15 +24,15 @@ public class UserController {
     public String toLogin(HttpSession session){
         if(isLogin(session)){
             //如果登录了
-            return "redirect:个人资料页面(主界面)";
+            return "redirect:首页(有评审表list的)";
         }
-        return "ok";//跳转到登录页面
+        return "登录界面";
     }
 
     //跳转个人版注册界面
     @RequestMapping("/Register")
     public String toRegister(){
-        return "ok";//跳转页面
+        return "注册界面";//跳转页面
     }
 
     //个人版登录

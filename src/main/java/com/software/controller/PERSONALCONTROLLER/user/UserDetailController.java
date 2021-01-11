@@ -34,6 +34,27 @@ public class UserDetailController {
     //简单日期格式转换
     private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
+    //跳转个人资料界面
+    @RequestMapping("/toPersonalInfo")
+    public String toPersonalInfo(HttpSession session,Map<String, Object> map){
+        if(!isLogin(session)){
+            return "redirect:/PersonalUser/Login";//返回登录界面
+        }
+        User user=(User) session.getAttribute("PersonalLoginUser");
+
+        //返回学历的list
+        List<Education> educationList=educationService.getEducationByUserID(user);
+        //map.put上去
+        map.put("educationList",educationList);
+        //返回工作经历的list
+        List<Experience> experienceList=experienceService.getExperienceByUserID(user);
+        //map.put上去
+        map.put("experienceList",experienceList);
+
+        return "个人资料界面";
+
+    }
+
     //修改个人基本信息信息，user_detail
     @PostMapping("/UpdatePersonalUserDetail")
     public String UpdatePersonalUserDetail(UserDetails userDetails, Map<String, Object> map, HttpSession session){
@@ -44,7 +65,7 @@ public class UserDetailController {
         //修改用户基本信息
         userService.changeUserDetail(userDetails);
 
-        return "个人资料页面(主界面)";
+        return "个人资料页面";
     }
 
     //添加学历信息记录
