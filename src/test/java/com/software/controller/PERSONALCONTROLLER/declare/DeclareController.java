@@ -93,7 +93,7 @@ public class DeclareController {
         Declare declareTemp=new Declare();
         declareTemp.setDeclareID(declareId);
         Declare declare=personalDeclareService.getDeclareByDeclareID(declareTemp);
-        Declare_check declareCheck=personalDeclareService.getDeclareCheckByDeclareId(declareTemp);
+        List<Declare_check> declareCheckList=personalDeclareService.getDeclareCheckListByDeclareId(declareTemp);
 
         //学历信息，主要经历，论文
         List<Education> educationList=educationService.getEducationByUserID(user);
@@ -102,7 +102,7 @@ public class DeclareController {
 
         //map.put上去
         map.put("declare",declare);
-        map.put("declareCheck",declareCheck);
+        map.put("declareCheckList",declareCheckList);
         map.put("educationList",educationList);
         map.put("experienceList",experienceList);
         map.put("paperList",paperList);
@@ -120,7 +120,7 @@ public class DeclareController {
         Declare declareTemp=new Declare();
         declareTemp.setDeclareID(declareId);
         Declare declare=personalDeclareService.getDeclareByDeclareID(declareTemp);
-        Declare_check declareCheck=personalDeclareService.getDeclareCheckByDeclareId(declareTemp);
+        List<Declare_check> declareCheckList=personalDeclareService.getDeclareCheckListByDeclareId(declareTemp);
         //学历信息，主要经历，论文
         List<Education> educationList=educationService.getEducationByUserID(user);
         List<Experience> experienceList=experienceService.getExperienceByUserID(user);
@@ -128,7 +128,7 @@ public class DeclareController {
 
         //map.put上去
         map.put("declare",declare);
-        map.put("declareCheck",declareCheck);
+        map.put("declareCheckList",declareCheckList);
         map.put("educationList",educationList);
         map.put("experienceList",experienceList);
         map.put("paperList",paperList);
@@ -146,14 +146,14 @@ public class DeclareController {
         Declare declareTemp=new Declare();
         declareTemp.setDeclareID(declareId);
         Declare declare=personalDeclareService.getDeclareByDeclareID(declareTemp);
-        Declare_check declareCheck=personalDeclareService.getDeclareCheckByDeclareId(declareTemp);
+        List<Declare_check> declareCheckList=personalDeclareService.getDeclareCheckListByDeclareId(declareTemp);
         //学历信息，主要经历，论文
         List<Education> educationList=educationService.getEducationByUserID(user);
         List<Experience> experienceList=experienceService.getExperienceByUserID(user);
         List<Paper> paperList=paperService.getPaperByUserID(user);
         //map.put上去
         map.put("declare",declare);
-        map.put("declareCheck",declareCheck);
+        map.put("declareCheckList",declareCheckList);
         map.put("educationList",educationList);
         map.put("experienceList",experienceList);
         map.put("paperList",paperList);
