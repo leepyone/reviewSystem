@@ -91,7 +91,7 @@ public class DeclareController {
         map.put("experienceList",experienceList);
         map.put("paperList",paperList);
 
-        return "新建评审表界面";
+        return "pingshen_input";
     }
 
     //查看某个职称评审表详细情况
@@ -184,7 +184,7 @@ public class DeclareController {
         User user=(User) session.getAttribute("PersonalLoginUser");
         //提交相应的信息
         personalDeclareService.CreateDeclare(declare,user);
-        return "redirect:/PersonalDeclare/Declare";
+        return "pingshen_input";
     }
 
     //添加学历信息记录，education_graduation_time为前端传回来的信息，需要格式化
@@ -203,7 +203,7 @@ public class DeclareController {
         //map.put上去
         map.put("educationList",educationList);
 
-        return "新建评审界面,不刷新";
+        return "pingshen_input";
     }
 
     //添加工作经历记录
@@ -224,7 +224,7 @@ public class DeclareController {
         //map.put上去
         map.put("experienceList",experienceList);
 
-        return "新建评审界面,不刷新";
+        return "pingshen_input";
     }
 
     //添加论文记录
@@ -239,7 +239,7 @@ public class DeclareController {
         //map.put上去
         map.put("paperList",paperList);
 
-        return "新建评审界面,不刷新";
+        return "pingshen_input";
     }
 
     //修改学历信息
@@ -257,7 +257,7 @@ public class DeclareController {
         //map.put上去
         map.put("educationList",educationList);
 
-        return "新建评审界面,不刷新";
+        return "pingshen_input";
     }
 
     //修改工作经历
@@ -277,7 +277,7 @@ public class DeclareController {
         //map.put上去
         map.put("experienceList",experienceList);
 
-        return "新建评审界面,不刷新";
+        return "pingshen_input";
     }
 
     //修改论文信息
@@ -292,7 +292,7 @@ public class DeclareController {
         //map.put上去
         map.put("paperList",paperList);
 
-        return "新建评审界面,不刷新";
+        return "pingshen_input";
     }
 
     //删除某条学历信息记录
@@ -309,7 +309,7 @@ public class DeclareController {
         //map.put上去
         map.put("educationList",educationList);
 
-        return "新建评审界面,不刷新";
+        return "pingshen_input";
     }
 
     //删除某条工作经历记录
@@ -326,7 +326,7 @@ public class DeclareController {
         //map.put上去
         map.put("experienceList",experienceList);
 
-        return "新建评审界面,不刷新";
+        return "pingshen_input";
     }
 
     //删除某条论文记录
@@ -343,7 +343,7 @@ public class DeclareController {
         //map.put上去
         map.put("paperList",paperList);
 
-        return "新建评审界面,不刷新";
+        return "pingshen_input";
     }
 
 
