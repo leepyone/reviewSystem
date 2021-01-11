@@ -108,29 +108,33 @@
 
 
  <!--以下是职称评审item-->
+    <div th:each="declareItem,declare:${declareList}">
       <div class="row">
         <div class="col-sm-9 col-md-offset-1">
-          #1职称评审
+            <label th:text="${declare.count}+'#职称评审'">#1职称评审</label>
+<!--            目前没有跳转-->
           <button type="button" class="btn btn-primary"
-           onclick="window.location.href = './detail.html'">详情 </button> 
+           onclick="window.location.href = './detail.html'">详情 </button>
           <button type="button" class="btn btn-danger" >推荐表</button>  
           <button type="button" class="btn btn-danger" >评审表</button>
           <lable>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</lable> 
           
-          <code ><lable   >当前状态：</lable></code>
-          
+          <code ><lable th:text="'当前状态：'+${declareItem.getdeclareStatus_str()}" >当前状态：</lable></code>
+
+<!--            什么鸡巴?-->
           <span class="label label-success"><lable>Success</lable></span>
           
                <div class="row">
                        <div class="col-sm-3 ">
-                        申报年度
+                           申报年度
                        </div>
                         <div class="col-sm-3" style="background-color: rgb(247, 248, 248);">
-                          2020
+                            <label th:text="${declareItem.getDeclareYear()}">2020</label>
                          </div>
                          <div class="col-sm-3">
                           评委会所属职改办
                          </div>
+<!--                   前端写死-->
                          <div class="col-sm-3" style="background-color: rgb(247, 248, 248);">
                           桂林电子科技大学职称改革工作领导小组办公室
                          </div>
@@ -139,8 +143,9 @@
                           拟申报资格名称
                          </div>
                           <div class="col-sm-3" style="background-color: rgb(247, 248, 248);">
-                            艺术系列/副高级/二级作曲
+                              <label th:text="${declareItem.getDeclareSeries()}+'/'+${declareItem.getdeclareLevel_str()}">艺术系列/副高级/二级作曲</label>
                            </div>
+<!--                   写死-->
                            <div class="col-sm-3">
                             评审会名称
                            </div>
@@ -152,21 +157,19 @@
                             评审等级
                            </div>
                             <div class="col-sm-3" style="background-color: rgb(247, 248, 248);">
-                              副高级
+                                <label th:text="${declareItem.getdeclareLevel_str()}">副高级</label>
                              </div>
                              <div class="col-sm-3">
                               创建时间
                              </div>
                              <div class="col-sm-3" style="background-color: rgb(247, 248, 248);">
-                              2020-11-15
+                                 <label th:text="${declareItem.getDeclareSetuptime()}">2020-11-15</label>
                              </div>
                 </div>
         </div>
       </div>
+  </div>
     
 <!--以上是职称评审item-->
-
-
-
 </body>
 </html>
