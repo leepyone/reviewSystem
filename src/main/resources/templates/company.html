@@ -4,6 +4,7 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <base th:href="@{/}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
@@ -276,7 +277,7 @@
                                                 <td th:text=${list.declareYear}></td>
                                                 <td th:text=${list.declareTime}></td>
                                                 <td th:text=${list.declareUserName}></td>
-                                                <td th:text=${list.declareStatus}></td>
+                                                <td th:text=${list.getdeclareStatus_str()}></td>
                                                 <td>
                                                     <div class="row">
                                                         <div class="col-md-2">

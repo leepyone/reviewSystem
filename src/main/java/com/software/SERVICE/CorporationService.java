@@ -24,4 +24,12 @@ public interface CorporationService {
 
     public int FindUserID(String userName);
 
+    int changeUserStatus(int corpID,int userID,int status);
+
+    void deleteUserFromCor(int userID,int CorpId);
+
+//    boolean isCompanyAccount(String number);
+
+    User getUserByAccount(String userAccount);
+
 }

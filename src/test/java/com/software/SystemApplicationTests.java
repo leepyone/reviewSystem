@@ -34,8 +34,8 @@ class SystemApplicationTests {
         UserDetails userDetails = new UserDetails(0,0,new Date(),"122","122","122","122","122","122","122","122","122",1,"122","122","122","122");
 
 //        System.out.println(dao.insertUserDetail(userDetails));
-        userDetails.setUserEmail("1679108504");
-        System.out.println(dao.changeUserDetail(userDetails));
+//        userDetails.setUserEmail("1679108504");
+//        System.out.println(dao.changeUserDetail(userDetails));
 
     }
 

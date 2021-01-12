@@ -8,6 +8,8 @@ public interface declareService {
 
     public List<Declare> getAllDeclare();//查看所有职称评审列表集合
 
+    List<Declare> getAllDeclareByCorpID(int corpId);
+
     public List<Declare> getDeclareByUserName(String userName);//通过用户名称获得评审单集合
 
     public List<Declare> getDeclareByIdentifyNum(String identifyNum);//通过身份证号获取单个评审单

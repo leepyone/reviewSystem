@@ -20,6 +20,11 @@ public class declareServiceImpl implements declareService {
     public List<Declare> getAllDeclare(){return declareDao.getAllDeclare();}
 
     @Override
+    public List<Declare> getAllDeclareByCorpID(int corpId) {
+        return declareDao.getDeclareByCorporationID(corpId);
+    }
+
+    @Override
     public List<Declare> getDeclareByUserName(String userName) {
         return declareDao.getDeclareByUserName(userName);
     }

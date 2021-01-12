@@ -159,7 +159,7 @@
                                             <a class="nav-link" href="#" >单位信息</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">工作账号</a>
+                                            <a class="nav-link" th:href="@{'/corporation/ManageUser'}" >工作账号</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="#">分公司信息</a>
@@ -182,7 +182,7 @@
                                 <div id="submenu-2" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item ">
-                                            <a class="nav-link" href="#" >查阅授权码</a>
+                                            <a class="nav-link" th:href="@{'/review/toReviewCodePage'}" >查阅授权码</a>
                                         </li>
                                         
                                     </ul>
@@ -308,15 +308,20 @@
                                             <td th:text=${list.workerName}></td>
                                             <td th:text=${list.workerPhone}></td>
                                             <td>
-                                                <div class="switch-button switch-button-danger">
-                                                    <input type="checkbox" checked="" name="switch18" id="switch18">
-                                                    <span><label for="switch18"></label></span>
+                                                <div class="row" >
+<!--                                                    <div  class="col-md-2 " >-->
+
+<!--                                                    </div>-->
+                                                    <div  class="col-md-2 " >
+                                                        <a th:if="${list.workerStatus}==1" th:href="@{'/corporation/changeUserStatus?userStatus=0&userID='+${list.userID}}" class="btn btn-rounded btn-danger btn-xs" >禁止</a>
+                                                        <a th:if="${list.workerStatus}==0" th:href="@{'/corporation/changeUserStatus?userStatus=1&userID='+${list.userID}}" class="btn btn-rounded btn-success btn-xs" >启用</a>
+                                                    </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="row">
                                                     <div class="col-md-2">
-                                                        <a th:href="@{'/corporation/deleteuser?userName='+${list.workerName}}" class="btn btn-rounded btn-danger btn-xs">删除</a>
+                                                        <a th:href="@{'/corporation/deleteuser?userId='+${list.userID}}" class="btn btn-rounded btn-danger btn-xs">删除</a>
                                                     </div>
                                                 </div>
                                             </td>

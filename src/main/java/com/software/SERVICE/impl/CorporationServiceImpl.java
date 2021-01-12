@@ -51,4 +51,23 @@ public class CorporationServiceImpl implements CorporationService {
 
     @Override
     public int FindUserID(String userName){ return userDao.getUserID(userName); }
+
+    @Override
+    public int changeUserStatus(int corpID, int userID, int status) {
+        corporation_worker corporation_worker = new corporation_worker(corpID,userID,status);
+        System.out.println("修改公司信息："+corporation_worker);
+        corporationDao.updateCorporationWorkers(corporation_worker);
+        return 0;
+    }
+
+    @Override
+    public void deleteUserFromCor(int userID, int CorpId) {
+        corporationDao.deleteCorporationWorkers(CorpId,userID );
+        userDao.changeUserCorpId(-1,userID);
+    }
+
+    @Override
+    public User getUserByAccount(String userAccount) {
+        return userDao.getUserByAccount(userAccount);
+    }
 }

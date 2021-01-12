@@ -2,6 +2,7 @@ package com.software.controller;
 
 import com.software.MODULE.*;
 import com.software.SERVICE.*;
+import com.sun.deploy.security.WSeedGenerator;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,22 +42,35 @@ public class company {
 
     @RequestMapping("tologin")
     public String ToLogin(){
-        return "company_login";
+        return "signin_corporation";
+//        return "company_login";
     }
     @RequestMapping("dologin")
     public String DoLogin(String number, String password, HttpSession session, HttpServletRequest request){
         LOGGER.info("begin login---->>>>>>>>>>>>>");
         Corporation cModel = corporationService.FindCorporation(number);
+        User worker = corporationService.getUserByAccount(number);
+        String loginerror="用户名或密码错误";
         if (cModel != null) {
             if (password.equals(cModel.getPassword())) {
                 session.setAttribute("loginCorp", cModel);
                 LOGGER.info(number + "登录成功！");
                 return "forward:ManageUser";
             }
+        } else if (worker!=null){
+            LOGGER.info( "非单位管理员用户");
+            if(worker.getUserType()!=2){
+                LOGGER.info( "非单位用户");
+                loginerror = "非单位用户！";
+            }
+            else if(password.equals(worker.getUserPassword())) {
+                session.setAttribute("corpId",worker.getUserCorpID());
+                return "forward:toselect";
+            }
         }
         LOGGER.error(number + "登录失败！");
-        request.setAttribute("loginerror","用户名或密码错误！");
-        return "company_login";
+        request.setAttribute("loginerror",loginerror);
+        return "signin_corporation";
     }
 
     @RequestMapping("ManageUser")
@@ -64,35 +78,52 @@ public class company {
         LOGGER.info("用户管理！");
         Corporation thisCorp = (Corporation) session.getAttribute("loginCorp");
         List<User> workerList = corporationService.getWorkers(thisCorp.getCorporationId());
-        HashMap<String, String> map = new HashMap<>();
+
         List<Map> maps = new ArrayList<Map>();
         for(User worker : workerList) {
+            HashMap<String, String> map = new HashMap<>();
+            map.put("userID",String.valueOf(worker.getUserID()));
             map.put("workerName",worker.getUserName());
             map.put("workerPhone",worker.getUserPhone());
             map.put("workerStatus",String.valueOf(corporationService.FindUserStatus(worker.getUserID())));
-            LOGGER.info(map);
+//            LOGGER.info(map);
             maps.add(map);
-            LOGGER.info(maps);
+//
         }
+        LOGGER.info("查询的用户信息");
+        LOGGER.info(maps);
         request.setAttribute("workerList",maps);
         return "Manage";
     }
     @RequestMapping("deleteuser")
-    public String DeleteUser(@RequestParam String userName) {
-        corporationService.DeleteUser(corporationService.FindUserID(userName));
-        return "forward:Manage";
+    public String DeleteUser(@RequestParam String userId,HttpSession session) {
+        int userID = Integer.parseInt(userId);
+        Corporation thisCorp = (Corporation) session.getAttribute("loginCorp");
+        corporationService.deleteUserFromCor(thisCorp.getCorporationId(),userID);
+        return "forward:ManageUser";
     }
-
+    @RequestMapping("changeUserStatus")
+    public String ChangeUserStatus(@RequestParam String userID ,@RequestParam String userStatus,HttpSession session) {
+        int status = Integer.parseInt(userStatus);
+        int userId = Integer.parseInt(userID);
+        Corporation thisCorp = (Corporation) session.getAttribute("loginCorp");
+        corporation_worker corporation_worker = new corporation_worker(thisCorp.getCorporationId(), userId, status);
+        LOGGER.info(corporation_worker);
+        corporationService.changeUserStatus(thisCorp.getCorporationId(),userId,status);
+        return "forward:ManageUser";
+    }
     @RequestMapping("toselect")
-    public String Toselect(HttpServletRequest request){
+    public String Toselect(HttpServletRequest request,HttpSession session){
+        int corpId = (Integer) session.getAttribute("corpId");
+
         LOGGER.info("查询申报表！");
-        List<Declare> declareList = declareService.getAllDeclare();
+        List<Declare> declareList = declareService.getAllDeclareByCorpID(corpId);
         request.setAttribute("declareList",declareList);
         return "company";
     }
     @RequestMapping("selectdeclare")
     public String SelectUser(String userName,String identifyNum,String status,
-                             String level,String year,HttpServletRequest request){
+                             String level,String year,HttpServletRequest request,HttpSession session){
         LOGGER.info("查询申报表！");
         List<Declare> declareList = new ArrayList<Declare>();
         if (!userName.equals("") && status.equals("选择状态"))
@@ -137,7 +168,15 @@ public class company {
         }
         else
             declareList=declareService.getAllDeclare();
-        request.setAttribute("declareList",declareList);
+
+        List<Declare> declares = new ArrayList<>();
+        Integer corpId =(Integer)session.getAttribute("corpId");
+        for(Declare declare :declareList){
+            if (declare.getCorporationID()==corpId)
+                declares.add(declare);
+        }
+
+        request.setAttribute("declareList",declares);
         LOGGER.info("查询成功！");
         return "company";
     }
@@ -238,6 +277,10 @@ public class company {
         corporationService.InsertCheck(dCheck);
         return "forward:toselect";
     }
+
+
+
+
 
 }
 
