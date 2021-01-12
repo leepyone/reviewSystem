@@ -24,7 +24,7 @@ public class UserController {
     public String toLogin(HttpSession session){
         if(isLogin(session)){
             //如果登录了
-//            return "redirect:个人资料界面";
+            return "redirect:/PersonalUserInfo/toPersonalInfo";
         }
         return "personal_login";
     }

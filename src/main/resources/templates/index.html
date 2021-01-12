@@ -32,8 +32,8 @@
       [class*="col-"]{
         padding-top: 15px;
         padding-bottom: 15px;
-        background-color: #eee;
-        background-color:rgba(145, 146, 153, 0.5);
+        background-color: #eef1f6;
+
         border:1px solid #ddd;
         border:1px solid rgba(75, 74, 74, 0.2);
       }
@@ -56,7 +56,7 @@
               <li  ><a th:href="@{'/PersonalDeclare/Main'}">申报职称</a></li>
               <li class="active"><a th:href="@{'/PersonalDeclare/Declare'}">职称评审</a></li>
               <li  ><a th:href="@{'/PersonalJudge/Judge'}">职称认定</a></li>
-              <li><a href="#">帮助中心</a></li>
+              <li><a>帮助中心</a></li>
             </ul>
           </div>
       </nav>
@@ -72,7 +72,7 @@
     <h4><font color="#000000">职称评审</font></h4>
   <div class="row">
     <div class="col-md-1 "><img src="./img/ear.png" style="width:100%;height:auto; align-items:middle" /></div>
-          <div class="col-md-9 "><header><h3><strong><font color="#00008B">填报说明</font></strong></h3></header>
+          <div class="col-md-11 "><header><h3><strong><font color="#00008B">填报说明</font></strong></h3></header>
              <h5><font color="#00008B">欢迎您参加广西壮族自治区专业技术资格的申报，为使您更为准确的掌握申报评审的相关政策，
                减少因政策原因导致的申报障碍，敬请认真阅读并掌握评审相关的政策规定。主要包括以下政策：</font></h5>
               <h5><font color="#00008B">1.国家、自治区职称管理方面的政策文件；</font></h5>
@@ -142,7 +142,7 @@
                           拟申报资格名称
                          </div>
                           <div class="col-sm-3" style="background-color: rgb(247, 248, 248);">
-                              <label th:text="${declareItem.getDeclareSeries()}+'/'+${declareItem.getdeclareLevel_str()}">艺术系列/副高级/二级作曲</label>
+                              <label th:text="${declareItem.getDeclareSeries()}+'/'+${declareItem.getdeclareLevel_str()}+'/'+${declareItem.getDeclareQualification()}">艺术系列/副高级/二级作曲</label>
                            </div>
 <!--                   写死-->
                            <div class="col-sm-3">

@@ -51,7 +51,7 @@ public class UserDetailController {
         //map.put上去
         map.put("experienceList",experienceList);
 
-        return "个人资料界面";
+        return "personaldata";
 
     }
 
@@ -65,7 +65,7 @@ public class UserDetailController {
         //修改用户基本信息
         userService.changeUserDetail(userDetails);
 
-        return "个人资料页面";
+        return "redirect:/PersonalUserInfo/toPersonalInfo";
     }
 
     //添加学历信息记录
@@ -84,7 +84,7 @@ public class UserDetailController {
         //map.put上去
         map.put("educationList",educationList);
 
-        return "个人资料页面(主界面)";
+        return "personaldata";
     }
 
     //添加工作经历记录
@@ -105,7 +105,7 @@ public class UserDetailController {
         //map.put上去
         map.put("experienceList",experienceList);
 
-        return "个人资料页面(主界面)";
+        return "personaldata";
     }
 
 
@@ -125,7 +125,7 @@ public class UserDetailController {
         //map.put上去
         map.put("educationList",educationList);
 
-        return "个人资料页面(主界面)";
+        return "personaldata";
     }
 
     //修改工作经历
@@ -146,7 +146,7 @@ public class UserDetailController {
         //map.put上去
         map.put("experienceList",experienceList);
 
-        return "个人资料页面(主界面)";
+        return "personaldata";
     }
 
 
@@ -164,7 +164,7 @@ public class UserDetailController {
         //map.put上去
         map.put("educationList",educationList);
 
-        return "个人资料页面(主界面)";
+        return "personaldata";
     }
 
     //删除某条工作经历记录
@@ -181,7 +181,7 @@ public class UserDetailController {
         //map.put上去
         map.put("experienceList",experienceList);
 
-        return "个人资料页面(主界面)";
+        return "personaldata";
     }
 
 
