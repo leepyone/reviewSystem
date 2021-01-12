@@ -1,5 +1,6 @@
 package com.software.SERVICE;
 
+import com.software.MODULE.Corporation;
 import com.software.MODULE.Declare;
 import com.software.MODULE.Declare_check;
 import com.software.MODULE.User;
@@ -26,5 +27,8 @@ public interface PersonalDeclareService {
 
     //新建评审表
     public void CreateDeclare(Declare declare,User user);
+
+    //查询所有公司
+    public List<Corporation> FindAllCorporations();
 
 }

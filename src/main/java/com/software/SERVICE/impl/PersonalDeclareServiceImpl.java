@@ -1,6 +1,8 @@
 package com.software.SERVICE.impl;
 
+import com.software.DAO.CorporationDao;
 import com.software.DAO.declareDao;
+import com.software.MODULE.Corporation;
 import com.software.MODULE.Declare;
 import com.software.MODULE.Declare_check;
 import com.software.MODULE.User;
@@ -21,6 +23,9 @@ public class PersonalDeclareServiceImpl implements PersonalDeclareService {
 
     @Autowired
     declareDao declareDao;
+
+    @Autowired
+    CorporationDao corporationDao;
 
     //根据用户id返回职称评审表list
     @Override
@@ -55,9 +60,14 @@ public class PersonalDeclareServiceImpl implements PersonalDeclareService {
     public void CreateDeclare(Declare declare,User user){
         int userID=user.getUserID();
         declare.setDeclareStatus(0);//未审核
+        declare.setDeclareTime(new Date());
         declare.setUserID(userID);
-
-
         declareDao.InsertDeclare(declare);
+    }
+
+    //查询所有公司
+    @Autowired
+    public List<Corporation> FindAllCorporations(){
+        return corporationDao.FindAllCorporations();
     }
 }

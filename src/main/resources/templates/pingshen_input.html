@@ -242,10 +242,8 @@ function check()
           
        </div>
         <div class="col-sm-6" style="background-color: #FFFFFF;">
-            <select   name="" style="width: 400px; height:40px">
-                <option value="单位1">单位1</option>
-                <option value="单位2">单位2</option>
-                <option value="单位3">单位3</option>
+            <select  name="corporationID" style="width: 400px; height:40px" >
+                <option  th:each="corporation:${corporationList}" th:value="${corporation.getCorporationId()}" th:text="${corporation.getCorporationName()}">单位1</option>
                 </select>
          </div>
     </div>

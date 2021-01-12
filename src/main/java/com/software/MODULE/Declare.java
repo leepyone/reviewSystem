@@ -11,7 +11,7 @@ public class Declare {
     int userID;
     String declareYear;
     String declareUserName;
-    int corporationID;
+    int corporationID;//单位id
     int declareCorID;//职改办ID
     int declareStatus;//审批状态
     String declareUserSex;

@@ -82,15 +82,17 @@ public class DeclareController {
             return "redirect:/PersonalUser/Login";//返回登录界面
         }
         User user=(User)session.getAttribute("PersonalLoginUser");
-        //学历信息，主要经历，论文
+        //学历信息，主要经历，论文,所有公司信息
         List<Education> educationList=educationService.getEducationByUserID(user);
         List<Experience> experienceList=experienceService.getExperienceByUserID(user);
         List<Paper> paperList=paperService.getPaperByUserID(user);
+        List<Corporation> corporationList=personalDeclareService.FindAllCorporations();
 
         //map.put
         map.put("educationList",educationList);
         map.put("experienceList",experienceList);
         map.put("paperList",paperList);
+        map.put("corporationList",corporationList);
 
         return "pingshen_input";
     }
